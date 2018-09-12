@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './component/header/header.component';
 import { CardComponent } from './component/card-destination/card-destination.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { CardSiteComponent } from './component/card-site/card-site.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    CardSiteComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { FooterComponent } from './component/footer/footer.component';
   exports: [
     HeaderComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    CardSiteComponent,
   ]
 })
 
