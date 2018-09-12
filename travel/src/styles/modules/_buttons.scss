@@ -65,3 +65,11 @@
   @extend %btn;
   background-color: $bg-color-1;
 }
+
+.btn-detail {
+  @extend %btn;
+  background-color: $w-color;
+  border: solid 1px;
+  border-color: $border-color-1;
+  color: $txt-color-1;
+}

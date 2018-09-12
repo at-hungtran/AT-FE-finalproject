@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './component/header/header.component';
+import { CardComponent } from './component/card-destination/card-destination.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ArticleComponent } from './component/card-article/card-article.component';
 
@@ -11,6 +12,8 @@ import { ArticleComponent } from './component/card-article/card-article.componen
     HeaderComponent,
     FooterComponent,
     ArticleComponent,
+    CardComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +23,8 @@ import { ArticleComponent } from './component/card-article/card-article.componen
     HeaderComponent,
     FooterComponent,
     ArticleComponent,
+    CardComponent,
+    FooterComponent
   ]
 })
 

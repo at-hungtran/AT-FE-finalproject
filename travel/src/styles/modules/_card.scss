@@ -1,0 +1,69 @@
+.card-destiantion {
+  width: 100%;
+  float: left;
+  margin-left: 100px;
+  border: solid 1px;
+  border-color: $border-color-2;
+  .image-border {
+    width: 100%;
+  }
+  .img-des {
+    width: 100%;
+    height: 247px;
+    @include background-size(cover);
+    position: relative;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+  .card-bottom {
+    width: 100%;
+    float: left;
+  }
+  .des-name, .site-name, .category-name {
+    color: $w-color;
+    padding: 0 10px 0;
+  }
+  .des-name {
+    padding: 20px 14px;
+    font-size: $font-size-3;
+    font-weight: 300;
+    background: $bg-color-1;
+  }
+  .des-name-a {
+    color: $w-color;
+  }
+  .wrap-info {
+    width: 50%;
+    background: $color-2;
+  }
+  .site-name, .category-name {
+    padding: 14px;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  .while-alpha {
+    position: relative;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: $bg-color-2;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  .card-content {
+    padding: 15px 14px;
+    float: left;
+    line-height: 20px;
+    color: $txt-color-1;
+    .content {
+      float: left;
+    }
+  }
+  .btn-detail {
+    margin: 15px 0;
+  }
+}
