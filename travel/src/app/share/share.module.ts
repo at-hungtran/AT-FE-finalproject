@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { ArticleComponent } from './component/card-article/card-article.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ArticleComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { FooterComponent } from './component/footer/footer.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ArticleComponent,
   ]
 })
 
