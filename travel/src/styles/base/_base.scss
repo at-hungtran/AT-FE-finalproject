@@ -2,3 +2,14 @@ body {
   font-size: 15px;
   font-family: 'Open Sans', sans-serif;
 }
+
+.container {
+  width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
