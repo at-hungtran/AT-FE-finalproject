@@ -1,0 +1,67 @@
+%btn {
+  color: $w-color;
+  font-size: $font-size-1;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn {
+  @extend %btn;
+}
+
+.btn-green {
+  background-color: $primary-color;
+  @include hover-transition(all 300ms ease-in-out);
+  &:hover {
+    background-color: $primary-color-o;
+  }
+}
+
+.btn-blue {
+  background-color: $third-color;
+  @include hover-transition(all 300ms ease-in-out);
+  &:hover {
+    background-color: $third-color-o;
+  }
+}
+
+.btn-red {
+  background-color: $four-color;
+  @include hover-transition(all 300ms ease-in-out);
+  &:hover {
+    background-color: $four-color-o;
+  }
+}
+
+.btn-small {
+  @extend %btn;
+  padding: 8px 12px;
+}
+
+.btn-medium {
+  @extend %btn;
+  padding: 10px 20px;
+}
+
+.btn-large {
+  @extend %btn;
+  padding: 15px 30px;
+}
+
+.btn-disable {
+  @extend %btn;
+  cursor: not-allowed;
+  opacity: 0.5;
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+}
+
+.btn-another {
+  @extend %btn;
+  background-color: $bg-color-1;
+}

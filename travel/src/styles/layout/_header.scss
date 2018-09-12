@@ -1,5 +1,5 @@
 .nav-bar {
-  padding: 35px 0;
+  padding: 32px 0;
   .logo-border {
     width: 136px;
     padding-right: 50px;
@@ -13,15 +13,23 @@
   .menu-item {
     padding: 0;
     line-height: 25px;
+    font-size: $font-size-2;
+    text-transform: uppercase;
     &::after {
       content: "|";
       display: inline-block;
       margin: 0px 40px;
       color: #f1f1f1;
     }
+    .menu-item-a {
+      color: $txt-color-1;
+    }
   }
   .menu-right-item {
     float: right;
     padding-left: 20px;
+  }
+  .sign-up {
+    color: $txt-color-1;
   }
 }
