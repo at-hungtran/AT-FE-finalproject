@@ -1,0 +1,27 @@
+.nav-bar {
+  padding: 35px 0;
+  .logo-border {
+    width: 136px;
+    padding-right: 50px;
+  }
+  .logo {
+    width: 100%;
+  }
+  .menu-item, .logo-border {
+    float: left;
+  }
+  .menu-item {
+    padding: 0;
+    line-height: 25px;
+    &::after {
+      content: "|";
+      display: inline-block;
+      margin: 0px 40px;
+      color: #f1f1f1;
+    }
+  }
+  .menu-right-item {
+    float: right;
+    padding-left: 20px;
+  }
+}
