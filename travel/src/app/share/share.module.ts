@@ -6,6 +6,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { CardComponent } from './component/card-destination/card-destination.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ArticleComponent } from './component/card-article/card-article.component';
+import { CardSiteComponent } from './component/card-site/card-site.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ArticleComponent } from './component/card-article/card-article.componen
     FooterComponent,
     ArticleComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    CardSiteComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ArticleComponent } from './component/card-article/card-article.componen
     FooterComponent,
     ArticleComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    CardSiteComponent,
   ]
 })
 
