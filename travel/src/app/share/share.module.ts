@@ -23,7 +23,7 @@ import { BackgroundHeaderComponent } from './component/background-header/backgro
     CardSiteComponent,
     SliderComponent,
     DetailComponent,
-    BackgroundHeaderComponent
+    BackgroundHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,7 @@ import { BackgroundHeaderComponent } from './component/background-header/backgro
     CardSiteComponent,
     SliderComponent,
     DetailComponent,
-    BackgroundHeaderComponent
+    BackgroundHeaderComponent,
   ]
 })
 

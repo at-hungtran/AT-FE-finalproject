@@ -45,8 +45,13 @@
   }
   .wrap-content-site {
     width: 63%;
+    float: left;
   }
   .wrap-sidebar {
     float: right;
+    width: 34%;
+    .wrap-detail {
+      margin-bottom: 40px;
+    }
   }
 }
