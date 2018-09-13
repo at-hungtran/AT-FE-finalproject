@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FeatureComponent } from './feature.component';
 import { HomeModule } from './home/home.module';
+import { SiteModule } from './site/site.module';
 
 @NgModule({
   declarations: [
-   FeatureComponent,
+    FeatureComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    HomeModule
+    HomeModule,
+    SiteModule,
   ],
   exports: [
     HomeModule
