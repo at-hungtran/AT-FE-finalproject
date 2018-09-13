@@ -1,0 +1,52 @@
+.detail-article {
+  .detail-title-inner {
+    border: 1px solid $border-color-1;
+    width: 100%;
+    box-sizing: border-box;
+    color: $txt-color-2;
+    .title-content {
+      width: 80%;
+      float: right;
+      box-sizing: border-box;
+      padding-left: 15px;
+    }
+    .detail-title-list {
+      width: 100%;
+    }
+    .detail-title-item {
+      float: left;
+      width: calc(100%/3);
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .detail-icon {
+      float: left;
+      padding: 15px 10px 15px 15px;
+      background-color: $four-color;
+      height: 100%;
+      width: 19%;
+      box-sizing: border-box;
+      img {
+        width: 80%;
+      }
+    }
+    .title-main {
+      text-transform: capitalize;
+      margin-bottom: 14px;
+      font-size: $font-size-3;
+
+    }
+    .title-main-des {
+      font-size: $font-size-1;
+    }
+  }
+  .detail-content {
+    .detail-content-main {
+      line-height: 30px;
+      color: $border-color-1;
+      &::first-letter {
+        font-size: $font-size-6;
+      }
+    }
+  }
+}
