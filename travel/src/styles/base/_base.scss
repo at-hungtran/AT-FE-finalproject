@@ -1,0 +1,23 @@
+body {
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+
+.clearfix {
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
