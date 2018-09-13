@@ -1,6 +1,8 @@
 .detail-article {
   .detail-title-inner {
-    border: 1px solid $border-color-1;
+    position: absolute;
+    background-color: $bg-color-3;
+    border: 1px solid $border-color-2;
     width: 100%;
     box-sizing: border-box;
     color: $txt-color-2;

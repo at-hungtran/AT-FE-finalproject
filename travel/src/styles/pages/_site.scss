@@ -1,0 +1,33 @@
+.site-page {
+  swiper {
+    height: 53vh;
+    width: 100%;
+  }
+  .wrap-detail {
+    width: 63%;
+  }
+  .wrap-slider {
+    width: 63%;
+    height: 294px;
+  }
+  .site-title {
+    text-transform: uppercase;
+    color: $txt-color-1;
+    font-size: $font-size-3;
+    padding: 20px 0;
+  }
+  .site-list-inner {
+    padding: 80px 0 20px;
+    .site-list-destination {
+      width: 100%;
+      float: left;
+      .site-list-destination-item {
+        float: left;
+        width: calc(100% / 3);
+      }
+      .site-list-card-border {
+        padding: 15px;
+      }
+    }
+  }
+}
