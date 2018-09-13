@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FeatureComponent } from './feature.component';
 import { HomeModule } from './home/home.module';
+import { FeatureRoutingModule } from './feature-routing.module';
+import { ShareModule } from '../share/share.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { HomeModule } from './home/home.module';
   imports: [
     CommonModule,
     RouterModule,
-    HomeModule
+    FeatureRoutingModule,
+    ShareModule
   ],
   exports: [
     HomeModule
