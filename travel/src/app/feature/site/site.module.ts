@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { SiteRoutingModule } from './site-routing.module';
 import { ShareModule } from '../../share/share.module';
 import { RouterModule } from '@angular/router';
+import { TitleComponent } from './title-site/title-site.component';
 
 @NgModule({
   declarations: [
     SiteComponent,
+    TitleComponent,
   ],
   imports: [
     CommonModule,
@@ -16,6 +18,7 @@ import { RouterModule } from '@angular/router';
     ShareModule
   ],
   exports: [
+    TitleComponent,
   ],
 })
 export class SiteModule { }

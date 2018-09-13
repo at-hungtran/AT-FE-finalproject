@@ -11,6 +11,7 @@ import { CardSiteComponent } from './component/card-site/card-site.component';
 import { SliderComponent } from './component/slider/slider.component';
 import { SwiperModule } from 'angular2-useful-swiper';
 import { DetailComponent } from './component/card-detail/card-detail.component';
+import { BackgroundHeaderComponent } from './component/background-header/background-header.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DetailComponent } from './component/card-detail/card-detail.component';
     CardSiteComponent,
     SliderComponent,
     DetailComponent,
+    BackgroundHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { DetailComponent } from './component/card-detail/card-detail.component';
     CardSiteComponent,
     SliderComponent,
     DetailComponent,
+    BackgroundHeaderComponent
   ]
 })
 

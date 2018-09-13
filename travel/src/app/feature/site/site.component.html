@@ -1,12 +1,23 @@
-<div class="site-page">
+<div class="wrap-background-header">
+  <app-header-background></app-header-background>
+</div>
+<div class="site-page clearfix">
+  <div class="container">
+    <app-title></app-title>
+  </div>
   <section class="section-site">
     <div class="container">
-      <div class="wrap-detail">
-        <app-card-detail></app-card-detail>
+      <div class="wrap-content-site">
+        <div class="wrap-detail">
+          <app-card-detail></app-card-detail>
+        </div>
+        <h2 class="site-title">view the photos</h2>
+        <div class="wrap-slider">
+          <app-slider></app-slider>
+        </div>
       </div>
-      <h2 class="site-title">view the photos</h2>
-      <div class="wrap-slider">
-        <app-slider></app-slider>
+      <div class="wrap-sidebar">
+
       </div>
       <div class="site-list-inner">
         <h2 class="site-title">you may also like</h2>
@@ -31,4 +42,3 @@
     </div>
   </section>
 </div>
-  
