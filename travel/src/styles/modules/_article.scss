@@ -2,23 +2,23 @@
   padding: 15px 0;
   .article-img {
     float: left;
-    width: 20%;
+    width: 30%;
   }
   .article-img-inner {
     width: 100%;
-    height: 247px;
+    height: 170px;
     @include background-size(cover);
     background-position: 50% 50%;
     background-repeat: no-repeat;
   }
   .article-row-content {
-    width: 80%;
+    width: 70%;
     float: right;
     color: $border-color-1;
     position: relative;
     box-sizing: border-box;
     border: 1px solid $border-color-2;
-    height: 247px;
+    height: 170px;
   }
   .article-row-title {
     padding: 15px;
@@ -29,7 +29,6 @@
   }
   .article-row-description {
     padding: 15px;
-    letter-spacing: 1px;
   }
   .article-button {
     position: absolute;
