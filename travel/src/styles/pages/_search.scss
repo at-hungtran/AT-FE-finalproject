@@ -1,0 +1,28 @@
+.page-search {
+  .wrap-background {
+    width: 100%;
+  }
+  .search-main {
+    padding: 30px;
+    width: 100%;
+    float: left;
+  }
+  .wrap-sidebar {
+    width: 33%;
+    float: left;
+  }
+    .wrap-destination {
+      width: 67%;
+      float: left;
+    .wrap-des-list {
+      width: 100%;
+      margin: -15px;
+      box-sizing: border-box;
+    }
+    .wrap-des-item {
+      width: 45%;
+      float: left;
+      padding: 15px;
+    }
+  }
+}

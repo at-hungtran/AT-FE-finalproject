@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: 'site',
         loadChildren: './site/site.module#SiteModule'
+      },
+      {
+        path: 'search',
+        loadChildren: './search/search.module#PageSearchModule'
       }
     ]
   }
