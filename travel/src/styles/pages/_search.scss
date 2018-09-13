@@ -10,6 +10,24 @@
   .wrap-sidebar {
     width: 33%;
     float: left;
+    padding-right: 15px;
+    box-sizing: border-box;
+    .sidebar-title {
+      background-color: $primary-color;
+      color: $border-color-2;
+      width: 80%;
+      line-height: 27px;
+      padding: 15px;
+    }
+    .sidebar-option {
+      width: 87.5%;
+      padding: 15px;
+      box-sizing: border-box;
+      border: 1px solid $border-color-1;
+      select {
+        width: 100%;
+      }
+    }
   }
     .wrap-destination {
       width: 67%;
