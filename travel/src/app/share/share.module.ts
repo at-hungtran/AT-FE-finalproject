@@ -10,6 +10,7 @@ import { ArticleComponent } from './component/card-article/card-article.componen
 import { CardSiteComponent } from './component/card-site/card-site.component';
 import { SliderComponent } from './component/slider/slider.component';
 import { SwiperModule } from 'angular2-useful-swiper';
+import { BackgroundHeaderComponent } from './component/background-header/background-header.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SwiperModule } from 'angular2-useful-swiper';
     FooterComponent,
     CardSiteComponent,
     SliderComponent,
+    BackgroundHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { SwiperModule } from 'angular2-useful-swiper';
     CardComponent,
     FooterComponent,
     CardSiteComponent,
-    SliderComponent
+    SliderComponent,
+    BackgroundHeaderComponent
   ]
 })
 
