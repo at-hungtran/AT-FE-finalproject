@@ -14,7 +14,7 @@
       padding: 10px 10px 0 0;
     }
     .footer-icon {
-      width: 80%;
+      width: 55%;
     }
   }
   .footer-list-item {
@@ -26,6 +26,7 @@
     padding: 10px 0;
     text-transform: capitalize;
     letter-spacing: 1px;
+    font-weight: 300;
   }
   .footer-description {
     font-size: $font-size-0;
@@ -33,6 +34,7 @@
     padding: 10px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: $txt-color-1;
   }
   .copyright {
     font-size: $font-size-0;

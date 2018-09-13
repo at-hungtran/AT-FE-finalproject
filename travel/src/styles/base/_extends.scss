@@ -5,3 +5,14 @@
     clear: both;
   }
 }
+
+%btn {
+  color: $w-color;
+  font-size: $font-size-1;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+}
