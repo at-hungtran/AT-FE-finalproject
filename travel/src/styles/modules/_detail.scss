@@ -1,0 +1,11 @@
+.detail-article {
+  .detail-content {
+    .detail-content-main {
+      line-height: 30px;
+      color: $border-color-1;
+      &::first-letter {
+        font-size: $font-size-6;
+      }
+    }
+  }
+}
