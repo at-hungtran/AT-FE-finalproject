@@ -23,12 +23,12 @@ const routes: Routes = [
         loadChildren: './search/search.module#PageSearchModule'
       },
       {
-        path: 'destination',
-        loadChildren: './destination/destination.module#DestinationPageModule'
+        path: 'articles',
+        loadChildren: './article/article.module#ArticlePageModule'
       }
     ]
   }
-];
+]
 
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],

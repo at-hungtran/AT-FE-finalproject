@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
-import { DestinationPageComponent } from './destination.component';
+import { ArticlePageComponent } from './article.component';
 import { CommonModule } from '@angular/common';
-import { DestinationPageRoutingModule } from './destination-routing.module';
+import { ArticlePageRoutingModule } from './article-routing.module';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../../share/share.module';
 
 @NgModule({
   declarations: [
-    DestinationPageComponent
+    ArticlePageComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    DestinationPageRoutingModule,
+    ArticlePageRoutingModule,
     ShareModule
   ],
   exports: [
-    DestinationPageComponent
+    ArticlePageComponent
   ],
 })
-export class DestinationPageModule { }
+export class ArticlePageModule { }
