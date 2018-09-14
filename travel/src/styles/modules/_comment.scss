@@ -1,5 +1,4 @@
 .section-comment {
-  padding-left: 15px;
   .count-comment {
     text-transform: capitalize;
     font-size: $font-size-3;
@@ -21,10 +20,10 @@
   .comment-inner {
     color: $txt-color-2;
     .comment-date {
-      padding: 15px;
+      padding: 15px 15px 15px 0;
     }
     .comment-content {
-      padding: 15px;
+      padding: 15px 15px 15px 0;
     }
   }
   .reply {

@@ -21,10 +21,14 @@ const routes: Routes = [
       {
         path: 'search',
         loadChildren: './search/search.module#PageSearchModule'
+      },
+      {
+        path: 'articles',
+        loadChildren: './article/article.module#ArticlePageModule'
       }
     ]
   }
-];
+]
 
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],
