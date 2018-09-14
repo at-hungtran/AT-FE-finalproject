@@ -13,6 +13,9 @@ import { SwiperModule } from 'angular2-useful-swiper';
 import { DetailComponent } from './component/card-detail/card-detail.component';
 import { BackgroundHeaderComponent } from './component/background-header/background-header.component';
 import { CommentComponent } from './component/comment/comment.component';
+import { ScrollDirective } from './directive/scroll-directive';
+import { NavigateComponent } from './component/header/navigate/navigate.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { CommentComponent } from './component/comment/comment.component';
     SliderComponent,
     DetailComponent,
     BackgroundHeaderComponent,
-    CommentComponent
+    CommentComponent,
+    ScrollDirective,
+    NavigateComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +48,9 @@ import { CommentComponent } from './component/comment/comment.component';
     SliderComponent,
     DetailComponent,
     BackgroundHeaderComponent,
-    CommentComponent
+    CommentComponent,
+    ScrollDirective,
+    NavigateComponent
   ]
 })
 
