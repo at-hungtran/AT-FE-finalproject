@@ -1,0 +1,40 @@
+.wrap-background-header {
+  position: relative;
+}
+.destination-title {
+  .destination-title-inner {
+    width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    position: absolute;
+    bottom: 10px;
+    .des-title-item {
+      box-sizing: border-box;
+      color: $w-color;
+      font-size: $font-size-3;
+      text-transform: uppercase;
+      float: left;
+      width: calc(100% / 3);
+      padding: 10px;
+      img {
+        width: 32px;
+      }
+    }
+    .content-top {
+      padding: 10px;
+    }
+    .wrap-des-title {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+}
+.section-wrap {
+  padding-top: 40px;
+  width: 100%;
+  float: left;
+}
+.wrap-comment {
+  padding-top: 15px;
+}

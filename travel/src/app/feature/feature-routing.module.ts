@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'search',
         loadChildren: './search/search.module#PageSearchModule'
+      },
+      {
+        path: 'destination',
+        loadChildren: './destination/destination.module#DestinationPageModule'
       }
     ]
   }
