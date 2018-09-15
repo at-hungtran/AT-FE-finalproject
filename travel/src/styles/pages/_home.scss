@@ -35,7 +35,7 @@
       padding: 15px;
     }
   }
-  .section-destination {
+  .section-site {
     padding: 30px 0;
     .title-small {
       padding: 10px 0 50px;
@@ -67,6 +67,15 @@
     }
     .card-boder {
       padding: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .home-page {
+    .slide-title {
+      font-size: $font-size-4;
+      padding: 10px 0 50px;
     }
   }
 }
