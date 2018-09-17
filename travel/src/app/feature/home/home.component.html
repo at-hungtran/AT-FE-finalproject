@@ -12,9 +12,9 @@
       <h3 class="title-center">Most Destination</h3>
       <p class="title-small">best destination available</p>
       <ul class="list-destination">
-        <li class="destination-item">
+        <li class="destination-item" *ngFor="let destinations of listDestinations">
           <div class="card-border">
-            <app-card-destination></app-card-destination>
+            <app-card-destination [destination]=destinations></app-card-destination>
           </div>
         </li>
       </ul>

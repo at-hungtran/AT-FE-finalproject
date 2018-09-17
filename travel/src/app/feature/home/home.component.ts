@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, EventEmitter, Output } from '@angular/cor
 import { APIService } from '../../share/service/api.service';
 import { END_POINT } from '../../share/service/api.registry';
 import { Site } from '../../share/model/site';
+import { Destination } from '../../share/model/destination';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,14 @@ import { Site } from '../../share/model/site';
 
 export class HomeComponent implements OnInit, OnChanges {
   listSite: Site[];
+  listDestinations: Destination[];
   listBackground;
 
   constructor(private apiService: APIService) {}
 
   ngOnInit() {
     this.bindToListSite();
+    this.bindTolistDestinations();
   }
 
   ngOnChanges() {}
@@ -36,6 +39,12 @@ export class HomeComponent implements OnInit, OnChanges {
         name: item.name,
         backgroundImg: item.backgroundImg
       };
+    });
+  }
+
+  bindTolistDestinations() {
+    this.apiService.get([END_POINT.destinations]).subscribe(item => {
+      this.listDestinations = item;
     });
   }
 }
