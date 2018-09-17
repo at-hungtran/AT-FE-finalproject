@@ -11,7 +11,7 @@ const API_ROOT = environment.api_url;
 })
 
 export class APIService {
-  constructor (private http: HttpClient) { console.log('get'); }
+  constructor (private http: HttpClient) {}
 
   get(endpoint: string[], prams?: object): Observable<any> {
     const pram = this.query(endpoint, prams);
@@ -34,7 +34,7 @@ export class APIService {
   }
 
   query(endpoint: string[], prams?: object): string {
-    const url = [API_ROOT, endpoint.join('/')].join('/');
+    const url = [API_ROOT, endpoint.join('/'), prams].join('/');
     return url;
   }
 

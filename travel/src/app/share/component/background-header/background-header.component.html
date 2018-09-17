@@ -1,7 +1,7 @@
 <div class="header-background">
     <div class="img-background"
-    style="background-image: url('https://images.pexels.com/photos/68491/pexels-photo-68491.jpeg')">
-    <p class="title">title</p>
+    [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
+    <p class="title">{{site.name}}</p>
     <p class="text-line"></p>
   </div>
 </div>

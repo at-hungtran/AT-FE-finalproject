@@ -9,11 +9,11 @@ export const TOKEN_NAME = 'user_token';
 export class AuthService {
   constructor () { }
 
-  getToken() : string {
+  getToken(): string {
     return localStorage.getItem(TOKEN_NAME);
   }
 
-  setToken(name: string) : void {
+  setToken(name: string): void {
     return localStorage.setItem(TOKEN_NAME, name);
   }
 }

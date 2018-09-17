@@ -1,20 +1,20 @@
 <div class="wrap-background-header">
-  <app-header-background></app-header-background>
+  <app-header-background *ngIf="site" [site]="site"></app-header-background>
 </div>
 <div class="site-page clearfix">
   <div class="container">
-    <app-title></app-title>
+    <app-title *ngIf="site" [site]="site"></app-title>
   </div>
   <section class="section-site">
     <div class="container">
       <div class="clearfix">
       <div class="wrap-content-site">
         <div class="wrap-detail">
-          <app-card-detail></app-card-detail>
+          <app-card-detail *ngIf="site" [article]="site.articleSite"></app-card-detail>
         </div>
         <h2 class="site-title">view the photos</h2>
         <div class="wrap-slider">
-          <app-slider></app-slider>
+          <app-slider *ngIf="site" [listImg]="listBackground"></app-slider>
         </div>
       </div>
       <div class="wrap-sidebar">
@@ -22,9 +22,9 @@
         <div class="wrap-detail">
           <app-article></app-article>
         </div>
-        <div class="wrap-destination">
+        <!-- <div class="wrap-destination">
           <app-card-site></app-card-site>
-        </div>
+        </div> -->
       </div>
       </div>
       <div class="site-list-inner">

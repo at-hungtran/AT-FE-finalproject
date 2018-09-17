@@ -1,22 +1,15 @@
 <div class="slider">
   <swiper [config]="config">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide slider-img"
-      style="background-image: url('https://images.pexels.com/photos/68491/pexels-photo-68491.jpeg')">
-        <p class="slide-title">Title</p>
-      </div>
-      <div class="swiper-slide slider-img"
-      style="background-image: url('https://images.pexels.com/photos/68491/pexels-photo-68491.jpeg')">
-        <p class="slide-title">Title</p>
-      </div>
-      <div class="swiper-slide slider-img"
-      style="background-image: url('https://images.pexels.com/photos/68491/pexels-photo-68491.jpeg')">
-        <p class="slide-title">Title</p>
-      </div>
+    <div *ngIf="listImgAfterFetch" class="swiper-wrapper">
+      <ng-container *ngFor="let img of listImgAfterFetch">
+        <div class="swiper-slide slider-img "
+        [ngStyle]="{'background-image': 'url(' + img.backgroundImg + ')'}">
+          <p *ngIf="img.name" class="slide-title">Title</p>
+        </div>
+      </ng-container>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </swiper>
 </div>
-

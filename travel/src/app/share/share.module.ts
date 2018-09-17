@@ -15,6 +15,7 @@ import { BackgroundHeaderComponent } from './component/background-header/backgro
 import { CommentComponent } from './component/comment/comment.component';
 import { ScrollDirective } from './directive/scroll-directive';
 import { NavigateComponent } from './component/header/navigate/navigate.component';
+import { PipeModule } from './pipe/pipe.module';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
     CommonModule,
     RouterModule,
     SliderModule,
-    SwiperModule
+    SwiperModule,
+    PipeModule
   ],
   exports: [
     HeaderComponent,
@@ -50,7 +52,8 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
     BackgroundHeaderComponent,
     CommentComponent,
     ScrollDirective,
-    NavigateComponent
+    NavigateComponent,
+    PipeModule
   ]
 })
 

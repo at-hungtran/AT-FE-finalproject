@@ -15,7 +15,7 @@ const routes: Routes = [
         loadChildren: './home/home.module#HomeModule',
       },
       {
-        path: 'site',
+        path: 'site/:id',
         loadChildren: './site/site.module#SiteModule'
       },
       {
@@ -23,12 +23,12 @@ const routes: Routes = [
         loadChildren: './search/search.module#PageSearchModule'
       },
       {
-        path: 'articles',
+        path: 'article',
         loadChildren: './article/article.module#ArticlePageModule'
       }
     ]
   }
-]
+];
 
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],

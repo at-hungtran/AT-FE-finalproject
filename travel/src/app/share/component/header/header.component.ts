@@ -12,10 +12,6 @@ export class HeaderComponent {
       routerLink: '/home'
     },
     {
-      name: 'site',
-      routerLink: '/site'
-    },
-    {
       name: 'search',
       routerLink: '/search'
     }
