@@ -1,0 +1,19 @@
+.hide-nav {
+  top: -100px;
+}
+
+.show-nav {
+  top: 0;
+}
+
+.active {
+  color: $primary-color;
+}
+
+.left-side {
+  float: left;
+}
+
+.right-side {
+  float: right;
+}

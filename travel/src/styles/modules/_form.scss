@@ -1,6 +1,6 @@
 .search {
   .wrap-form {
-    max-width: 1000px;
+    max-width: 80%;
     margin: 0 auto;
   }
   .form-search {
@@ -17,5 +17,13 @@
   }
   .input, .btn-green {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .search {
+    .wrap-input {
+      width: 100%;
+    }
   }
 }

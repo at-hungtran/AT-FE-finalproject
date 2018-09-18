@@ -1,5 +1,12 @@
 .nav-bar {
-  padding: 32px 0;
+  padding: 25px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: top 0.2s ease-in-out;
+  background: $w-color;
   .logo-border {
     width: 136px;
     padding-right: 50px;
@@ -15,6 +22,7 @@
     line-height: 25px;
     font-size: $font-size-2;
     text-transform: uppercase;
+    outline: none;
     &::after {
       content: "|";
       display: inline-block;

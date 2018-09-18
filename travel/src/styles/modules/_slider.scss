@@ -1,8 +1,4 @@
 .slider {
-  swiper {
-    height: 90vh;
-    width: 100%;
-  }
   .swiper-wrapper {
     box-sizing: border-box;
   }
@@ -20,5 +16,13 @@
     left: 300px;
     font-size: $font-size-6;
     color: $w-color;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .swiper-button-next, .swiper-button-prev {
+    right: 38px;
+    width: 26px;
+    height: 20px;
   }
 }

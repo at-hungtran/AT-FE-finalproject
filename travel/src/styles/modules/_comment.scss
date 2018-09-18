@@ -1,0 +1,49 @@
+.section-comment {
+  .count-comment {
+    text-transform: capitalize;
+    font-size: $font-size-3;
+    color: $txt-color-1;
+  }
+  .comment-top {
+    padding: 15px;
+    img {
+      width: 32px;
+      height: 32px;
+    }
+    &::after {
+      content: 'says';
+      display: inline-block;
+      padding-left: 10px;
+      color: $txt-color-2;
+    }
+  }
+  .comment-inner {
+    color: $txt-color-2;
+    .comment-date {
+      padding: 15px 15px 15px 0;
+    }
+    .comment-content {
+      padding: 15px 15px 15px 0;
+    }
+  }
+  .reply {
+    margin-bottom: 20px;
+    padding-top: 20px;
+    .reply-comment {
+      color: $txt-color-2;
+      font-weight: bold;
+      padding: 15px 0;
+      font-size: $font-size-3;
+      text-transform: capitalize;
+    }
+    .rep-area {
+      margin-bottom: 20px;
+      display: block;
+      font-size: $font-size-3;
+      color:  $txt-color-2;
+      padding: 15px;
+      height: 120px;
+      border: 1px solid $txt-color-2;
+    }
+  }
+}

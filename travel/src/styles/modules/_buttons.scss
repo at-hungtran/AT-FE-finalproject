@@ -26,6 +26,12 @@
   }
 }
 
+.btn-1 {
+  @extend %btn;
+  padding: 5px;
+  font-size: $font-size;
+}
+
 .btn-small {
   @extend %btn;
   padding: 8px 12px;
