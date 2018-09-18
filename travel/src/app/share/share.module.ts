@@ -15,7 +15,7 @@ import { BackgroundHeaderComponent } from './component/background-header/backgro
 import { CommentComponent } from './component/comment/comment.component';
 import { ScrollDirective } from './directive/scroll-directive';
 import { NavigateComponent } from './component/header/navigate/navigate.component';
-
+import { TourComponent } from './component/card-tour/card-tour.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
     BackgroundHeaderComponent,
     CommentComponent,
     ScrollDirective,
-    NavigateComponent
+    NavigateComponent,
+    TourComponent
   ],
   imports: [
     CommonModule,
@@ -50,7 +51,8 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
     BackgroundHeaderComponent,
     CommentComponent,
     ScrollDirective,
-    NavigateComponent
+    NavigateComponent,
+    TourComponent
   ]
 })
 

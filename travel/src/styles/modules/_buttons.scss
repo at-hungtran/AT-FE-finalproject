@@ -26,6 +26,11 @@
   }
 }
 
+.btn-inherit {
+  background-color: inherit;
+  border: 1px solid;
+}
+
 .btn-1 {
   @extend %btn;
   padding: 5px;

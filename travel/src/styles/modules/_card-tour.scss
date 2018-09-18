@@ -1,0 +1,69 @@
+.tour-row {
+  padding: 15px 0;
+  .tour-img {
+    float: left;
+    width: 30%;
+  }
+  .tour-img-inner {
+    width: 100%;
+    height: 170px;
+    @include background-size(cover);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+  .tour-row-content {
+    width: 45%;
+    float: left;
+    color: $border-color-1;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid $border-color-2;
+    height: 170px;
+  }
+  .tour-row-title {
+    padding: 15px;
+    font-size: $font-size-3;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    background-color: $bg-color-3;
+  }
+  .tour-row-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+  .tour-price {
+    width: 25%;
+    float: left;
+    height: 170px;
+    background-color: $primary-color;
+    position: relative;
+    .tour-price-price {
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+      &::after {
+        content: '$';
+        display: inline-block;
+        margin-left: 10px;
+      }
+    }
+    .tour-inner {
+      color: $w-color;
+      padding-top: 50px;
+      width: 60%;
+      font-size: $font-size-3;
+      margin:  0 auto;
+    }
+    .tour-button {
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+}
