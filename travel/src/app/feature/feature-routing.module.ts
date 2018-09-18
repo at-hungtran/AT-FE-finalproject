@@ -25,10 +25,18 @@ const routes: Routes = [
       {
         path: 'articles',
         loadChildren: './article/article.module#ArticlePageModule'
+      },
+      {
+        path: 'login',
+        loadChildren: './login/login.module#LoginModule'
+      },
+      {
+        path: 'register',
+        loadChildren: './register/register.module#RegisterModule'
       }
     ]
   }
-]
+];
 
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],

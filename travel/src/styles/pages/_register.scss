@@ -1,0 +1,32 @@
+.register-page {
+  padding: 70px 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  float: left;
+  background: url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&h=650&w=940') no-repeat;
+  background-size: cover;
+  .form-border {
+    width: 50%;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 20px 40px 50px;
+    background: $bg-color-3;
+  }
+  .title {
+    text-align: center;
+    padding: 30px 0;
+    font-size: $font-size-4;
+  }
+  .form-register {
+    width: 100%;
+    float: left;
+  }
+  .left-side, .right-side {
+    width: 45%;
+    box-sizing: border-box;
+  }
+  .input-login {
+    width: 100%;
+    margin: 15px 0;
+  }
+}
