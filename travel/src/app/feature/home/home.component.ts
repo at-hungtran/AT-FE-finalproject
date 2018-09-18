@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private apiService: APIService) {}
 
   ngOnInit() {
-    this.bindListSite();
+    //this.bindListSite();
   }
 
   bindListSite() {
