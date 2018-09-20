@@ -2,7 +2,7 @@
   height: 40px;
   border: none;
   background: $bg-color-2;
-  color: $txt-color-2;
+  color: $txt-color-1;
   padding: 10px;
   outline: none;
   font-size: $font-size-1;
@@ -10,5 +10,5 @@
 }
 
 .input-login {
-  border: solid 1px $txt-color-2;;
+  border: solid 1px $txt-color-2;
 }

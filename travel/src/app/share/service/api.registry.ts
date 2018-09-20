@@ -6,6 +6,7 @@ export const END_POINT = {
   'destinations': 'destinations',
   'pictures': 'pictures',
   'plans': 'plans',
-  'sites': 'sites'
+  'sites': 'sites',
+  'login': 'login'
 };
 export class APIRegistry { }

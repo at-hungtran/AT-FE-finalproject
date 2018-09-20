@@ -4,6 +4,8 @@ import { ShareModule } from '../../share/share.module';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,10 @@ import { LoginRoutingModule } from './login-routing.module';
     CommonModule,
     RouterModule,
     LoginRoutingModule,
-    ShareModule
+    ShareModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     LoginComponent

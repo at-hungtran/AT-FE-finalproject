@@ -6,7 +6,7 @@
   background: url('assets/images/bg-login.jpg') no-repeat;
   background-size: cover;
   .login-border {
-    width: 30%;
+    width: 400px;
     margin: 0 auto;
     overflow: auto;
     padding: 20px 20px 50px;
@@ -28,11 +28,43 @@
     margin: 10px 0;
     border-radius: 3px;
     border-color: $border-color-3;
+    background: $w-color;
+  }
+  .error-message {
+    font-size: 13px;
+    color: #0a0a0a;
+    background-color: #eae8e8;
+    border-left: solid 5px #ef0202;
+    padding: 10px;
+    display: none;
   }
   .btn-medium {
     width: 40%;
     margin: 20px auto 0;
     display: block;
     border-radius: 3px;
+  }
+  .forgot-password {
+    width: 100px;
+    padding: 30px 0 0;
+    margin: 0 auto;
+    color: $txt-color-1;
+    font-size: $font-size-0;
+    display: block;
+    text-decoration: underline;
+    &:hover {
+      color: yellowgreen;
+    }
+  }
+  .input.ng-invalid.ng-dirty + .error-message {
+    display: block;
+  }
+  .server-message {
+    margin: 20px 0 0;
+    font-size: 13px;
+    color: #0a0a0a;
+    background-color: #eae8e8;
+    border-left: solid 5px #ef0202;
+    padding: 10px;
   }
 }

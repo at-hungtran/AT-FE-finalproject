@@ -1,5 +1,5 @@
 .nav-bar {
-  padding: 25px 0;
+  height: 77px;
   position: fixed;
   top: 0;
   left: 0;
@@ -7,6 +7,11 @@
   z-index: 1000;
   transition: top 0.2s ease-in-out;
   background: $w-color;
+  .wrap-header {
+    float: left;
+    width: 100%;
+    padding-top: 24px;
+  }
   .logo-border {
     width: 136px;
     padding-right: 50px;
@@ -39,5 +44,64 @@
   }
   .sign-up {
     color: $txt-color-1;
+  }
+  .wrap-icon-notifi {
+    padding-top: 3px;
+    position: relative;
+  }
+  .icon-notifi {
+    width: 24px;
+    position: relative;
+    top: 0;
+    right: 3px;
+  }
+  .counter {
+    padding: 4px 7px;
+    border-radius: 50%;
+    position: absolute;
+    color: $w-color;
+    top: 0;
+    right: 0;
+    background: $four-color-o;
+    font-size: $font-size-0;
+  }
+  .avatar-user {
+    width: 27px;
+    border-radius: 50%;
+    position: relative;
+  }
+  .menu-right-item:hover > .dropdown-list { 
+    display: block;
+  }
+  .dropdown-list {
+    width: 200px;
+    position: absolute;
+    top: 60px;
+    right: 50px;
+    background: $w-color;
+    font-size: $font-size-1;
+    box-sizing: border-box;
+    display: none;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+                0 6px 30px 5px rgba(0, 0, 0, 0.12),
+                0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  }
+  .dropdown-item {
+    cursor: pointer;
+    padding: 25px;
+    @include hover-transition(all 100ms ease-in-out);
+    &:hover {
+      background: $bg-color-hover;
+    }
+  }
+  .wrap-item {
+    box-sizing: border-box;
+  }
+  .icon-logout {
+    margin-top: 1px;
+    width: 16px;
+  }
+  .text {
+    padding: 10px;
   }
 }
