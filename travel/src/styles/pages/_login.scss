@@ -12,6 +12,7 @@
     padding: 20px 20px 50px;
     box-sizing: border-box;
     background: $bg-color-3;
+    border-radius: 4px;
   }
   .title {
     text-align: center;
@@ -25,5 +26,13 @@
   .input {
     width: 100%;
     margin: 10px 0;
+    border-radius: 3px;
+    border-color: $border-color-3;
+  }
+  .btn-medium {
+    width: 40%;
+    margin: 20px auto 0;
+    display: block;
+    border-radius: 3px;
   }
 }
