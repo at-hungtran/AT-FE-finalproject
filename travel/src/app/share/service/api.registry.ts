@@ -10,5 +10,6 @@ export const END_POINT = {
   'login': 'login',
   'auth': 'auth',
   'forgot': 'forgot',
+  'reset': 'reset',
 };
 export class APIRegistry { }

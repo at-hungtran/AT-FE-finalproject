@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { APIService } from '../../share/service/api.service';
 import { DialogService } from '../../share/service/dialog.service';
 import { ActivatedRoute } from '@angular/router';
+import { END_POINT } from '../../share/service/api.registry';
 
 const MAX_LENGTH_USERNAME = 5;
 const MIN_LENGTH_USERNAME = 20;
@@ -16,8 +17,9 @@ const MAX_LENGTH_PASSWORD = 5;
 export class ResetComponent implements OnInit {
   formReset: FormGroup;
   errorMessage: string;
-  userName: string;
   password: string;
+  confirmPassword: string;
+  token: string;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
@@ -26,40 +28,54 @@ export class ResetComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    console.log(this.route.snapshot.params['token']);
   }
 
   createForm() {
     this.formReset = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(MAX_LENGTH_USERNAME), Validators.maxLength(MIN_LENGTH_USERNAME)]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(MAX_LENGTH_USERNAME), Validators.maxLength(MIN_LENGTH_USERNAME)]],
+      confirmPassword: ['', [Validators.required]],
     });
-  }
-
-  userNameValidate() {
-    this.userName = this.formReset.controls.userName.value;
-    this.errorMessage = '';
-    if (!this.userName) {
-      this.errorMessage = 'User Name is required.';
-    } else if (this.userName.length <= MAX_LENGTH_USERNAME) {
-      this.errorMessage = 'User Name must greater than 5 character.';
-    } else if (this.userName.length > MAX_LENGTH_USERNAME) {
-      this.errorMessage = 'User Name must less than 20 character.';
-    }
-    return this.errorMessage;
   }
 
   passwordValidate() {
     this.password = this.formReset.controls.password.value;
     if (!this.password) {
-      this.errorMessage = 'password is required.';
-    } else if (this.userName.length < MAX_LENGTH_PASSWORD) {
-      this.errorMessage = 'User Name must greater than 5 character.';
+      this.errorMessage = 'Password is required.';
+    } else if (this.password.length < MAX_LENGTH_PASSWORD) {
+      this.errorMessage = 'Password must greater than 5 character.';
     }
     return this.errorMessage;
   }
 
-  reset() {
+  confirmPasswordValidate() {
+    this.confirmPassword = this.formReset.controls.confirmPassword.value;
+    if (!this.password) {
+      this.errorMessage = 'Password is required.';
+    }
+    return this.errorMessage;
+  }
 
+  checkconfirmPassword() {
+    if (this.password === this.confirmPassword) {
+      return true;
+    }
+    return false;
+  }
+
+  reset() {
+    if (this.checkconfirmPassword()) {
+      this.token = this.route.snapshot.params['token'];
+      const body = {
+        newPassword: this.password,
+        verifyPassword: this.confirmPassword,
+      };
+      this.apiService.post([END_POINT.auth, END_POINT.reset, this.token], body).subscribe(res => {
+        this.dialogService.openDialog('Password was change', 'login-success');
+      }, err => {
+        this.dialogService.openDialog(err.error.message, 'login-error');
+      });
+    } else {
+      this.dialogService.openDialog('Password not match', 'login-error');
+    }
   }
 }

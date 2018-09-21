@@ -41,6 +41,7 @@ export class ForgotPasswodComponent implements OnInit {
     this.apiService.post([END_POINT.auth, END_POINT.forgot], body).subscribe(res => {
       this.dialogService.openDialog(res.message, 'login-success');
     }, (err) => {
+      console.log(err);
       this.dialogService.openDialog(err.error.message, 'login-error');
     });
   }
