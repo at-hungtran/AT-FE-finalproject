@@ -26,15 +26,10 @@ export class LoginComponent implements OnInit {
   loginMessage = { 'message': ' ', 'messageName':  '' };
   formLogin: FormGroup;
   error = [];
-
   show = false;
+
   get stateName() {
     return this.show ? 'show' : 'hide';
-  }
-
-  toggle() {
-    console.log('a');
-    this.show = !this.show;
   }
 
   constructor(private fb: FormBuilder,
@@ -46,7 +41,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.hideServerMessageOnValueChange();
   }
 
   createForm() {
@@ -84,7 +78,7 @@ export class LoginComponent implements OnInit {
       userName: this.formLogin.controls.userName.value,
       password: this.formLogin.controls.password.value
     };
-    this.apiService.post([END_POINT.login], body).subscribe(res => {
+    this.apiService.post([END_POINT.auth, END_POINT.login], body).subscribe(res => {
       this.storageService.set('token', res.token);
       this.dialogService.openDialog('login success', 'login-success');
       this.checkUserService.isUserLogin(true);
@@ -94,9 +88,5 @@ export class LoginComponent implements OnInit {
     }, err => {
       this.dialogService.openDialog(err.error.error, 'login-error');
     });
-  }
-
-  hideServerMessageOnValueChange() {
-    this.formLogin.valueChanges.subscribe(val => this.isMessage = false);
   }
 }

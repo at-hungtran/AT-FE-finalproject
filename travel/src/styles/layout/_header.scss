@@ -6,6 +6,7 @@
   right: 0;
   z-index: 1000;
   transition: top 0.2s ease-in-out;
+  @include box-shadow(0 2px 5px 0 rgba(0,0,0,.3));
   background: $w-color;
   .wrap-header {
     float: left;

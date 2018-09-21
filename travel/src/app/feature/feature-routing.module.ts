@@ -33,6 +33,14 @@ const routes: Routes = [
       {
         path: 'register',
         loadChildren: './register/register.module#RegisterModule'
+      },
+      {
+        path: 'forgot',
+        loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
+      },
+      {
+        path: 'reset/:token',
+        loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
       }
     ]
   }

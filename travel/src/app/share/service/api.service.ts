@@ -21,6 +21,7 @@ export class APIService {
 
   post(endpoint: string[], body): Observable<any> {
     const url = this.query(endpoint);
+    console.log(url);
     return this.http.post(url, body);
   }
 

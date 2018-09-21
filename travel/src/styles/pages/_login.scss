@@ -1,7 +1,7 @@
 .page-login {
   padding: 100px 0 0;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 140px);
   float: left;
   background: url('assets/images/bg-login.jpg') no-repeat;
   background-size: cover;
@@ -13,6 +13,17 @@
     box-sizing: border-box;
     background: $bg-color-3;
     border-radius: 4px;
+    position: relative;
+    &::before {
+      content: '';
+      width: 100%;
+      height: 2px;
+      display: block;
+      background: $primary-color;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
   .title {
     text-align: center;
@@ -29,14 +40,6 @@
     border-radius: 3px;
     border-color: $border-color-3;
     background: $w-color;
-  }
-  .error-message {
-    font-size: 13px;
-    color: #0a0a0a;
-    background-color: #eae8e8;
-    border-left: solid 5px #ef0202;
-    padding: 10px;
-    display: none;
   }
   .btn-medium {
     width: 40%;
@@ -55,9 +58,6 @@
     &:hover {
       color: yellowgreen;
     }
-  }
-  .input.ng-invalid.ng-dirty + .error-message {
-    display: block;
   }
   .server-message {
     margin: 20px 0 0;
