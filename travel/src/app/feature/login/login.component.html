@@ -1,10 +1,13 @@
 <div class="page-login">
   <div class="login-border">
     <h2 class="title">Login</h2>
-    <form class="form-login" action="">
-      <input class="input input-login" type="text" name="userName" placeholder="User Name">
-      <input class="input input-login" type="password" name="password" placeholder="Password">
-      <button class="btn btn-medium btn-green">login</button>      
+    <form class="form-login" [formGroup]="formLogin" (ngSubmit)="login(formLogin)">
+      <input class="input input-login" type="text" placeholder="User Name" formControlName="userName">
+      <p class="error-message display-none">{{userNameValidate()}}</p>
+      <input class="input input-login" type="password" placeholder="Password" formControlName="password">
+      <p class="error-message display-none">{{passwordValidate()}}</p>
+      <button class="btn btn-medium btn-green" type="submit" [disabled]="!formLogin.valid">login</button>
+      <a routerLink="/forgot" class="forgot-password">forgot password</a>
     </form>
   </div>
 </div>

@@ -7,8 +7,11 @@
   outline: none;
   font-size: $font-size-1;
   box-sizing: border-box;
+  &::placeholder {
+    color: $txt-color-2;
+  }
 }
 
 .input-login {
-  border: solid 1px $txt-color-2;;
+  border: solid 1px $txt-color-4;
 }

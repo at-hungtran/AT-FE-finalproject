@@ -17,3 +17,31 @@
 .right-side {
   float: right;
 }
+
+.success {
+  background: yellowgreen;
+}
+
+.error {
+  background: #dc3545;
+}
+
+.block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.error-message {
+  font-size: 13px;
+  color: #0a0a0a;
+  background-color: #eae8e8;
+  border-left: solid 5px #ef0202;
+  padding: 10px;
+}
+
+.input.ng-invalid.ng-dirty + .error-message {
+  display: block;
+}

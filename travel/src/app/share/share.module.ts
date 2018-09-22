@@ -15,6 +15,7 @@ import { BackgroundHeaderComponent } from './component/background-header/backgro
 import { CommentComponent } from './component/comment/comment.component';
 import { ScrollDirective } from './directive/scroll-directive';
 import { NavigateComponent } from './component/header/navigate/navigate.component';
+import { NotifiComponent } from './component/notifi/notifi.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
     DetailComponent,
     BackgroundHeaderComponent,
     CommentComponent,
+    NotifiComponent,
     ScrollDirective,
     NavigateComponent
   ],
@@ -50,7 +52,8 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
     BackgroundHeaderComponent,
     CommentComponent,
     ScrollDirective,
-    NavigateComponent
+    NavigateComponent,
+    NotifiComponent
   ]
 })
 
