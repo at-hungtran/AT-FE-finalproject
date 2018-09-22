@@ -24,7 +24,6 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ng2-carouselamos": "^3.2.0",
-    "ngx-bootstrap": "^3.0.1",
     "ngx-slider": "0.0.5",
     "node-sass": "^4.9.3",
     "rxjs": "~6.2.0",

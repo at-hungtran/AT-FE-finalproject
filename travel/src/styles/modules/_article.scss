@@ -28,11 +28,16 @@
     background-color: $bg-color-3;
   }
   .article-row-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 15px;
+    line-height: 18px;
+    white-space: nowrap;
   }
   .article-button {
+    margin-top: 30px;
     position: absolute;
-    bottom: 16px;
-    right: 46px;
+    bottom: 22px;
+    left: 15px;
   }
 }
