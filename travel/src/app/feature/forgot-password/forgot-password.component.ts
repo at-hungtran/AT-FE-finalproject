@@ -13,8 +13,11 @@ import { DialogService } from '../../share/service/dialog.service';
 export class ForgotPasswodComponent implements OnInit {
   formForgot: FormGroup;
   errorMessage: string;
+  successMessage: string;
   isEmailValid = true;
+  isSuccess = false;
   email: string;
+  loader = false;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
@@ -34,16 +37,21 @@ export class ForgotPasswodComponent implements OnInit {
   }
 
   send() {
-    this.emailValidate();
-    const body = {
-      email: this.email
-    };
-    this.apiService.post([END_POINT.auth, END_POINT.forgot], body).subscribe(res => {
-      this.dialogService.openDialog(res.message, 'login-success');
-    }, (err) => {
-      console.log(err);
-      this.dialogService.openDialog(err.error.message, 'login-error');
-    });
+    if (this.emailValidate()) {
+      this.loader = true;
+      const body = {
+        email: this.email
+      };
+      this.apiService.post([END_POINT.auth, END_POINT.forgot], body).subscribe(res => {
+        this.dialogService.openDialog(res.message, 'login-success');
+        this.loader = false;
+        this.isSuccess = true;
+        this.successMessage = 'please check your mail';
+      }, (err) => {
+        this.dialogService.openDialog(err.error.message, 'login-error');
+        this.loader = false;
+      });
+    }
   }
 
   emailValidate() {
@@ -52,11 +60,16 @@ export class ForgotPasswodComponent implements OnInit {
     if (!this.email) {
       this.errorMessage = 'Email is required';
       this.isEmailValid = false;
+      this.isSuccess = false;
+      return false;
     } else if (isValid) {
       this.errorMessage = 'Email invalid';
       this.isEmailValid = false;
+      this.isSuccess = false;
+      return false;
     } else {
       this.isEmailValid = true;
     }
+    return true;
   }
 }
