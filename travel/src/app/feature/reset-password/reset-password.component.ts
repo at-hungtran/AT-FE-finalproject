@@ -20,6 +20,7 @@ export class ResetComponent implements OnInit {
   password: string;
   confirmPassword: string;
   token: string;
+  loader = false;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
@@ -32,7 +33,12 @@ export class ResetComponent implements OnInit {
 
   createForm() {
     this.formReset = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(MAX_LENGTH_USERNAME), Validators.maxLength(MIN_LENGTH_USERNAME)]],
+      password: ['', [
+                      Validators.required,
+                      Validators.minLength(MAX_LENGTH_USERNAME),
+                      Validators.maxLength(MIN_LENGTH_USERNAME)
+                    ]
+                ],
       confirmPassword: ['', [Validators.required]],
     });
   }
@@ -64,6 +70,7 @@ export class ResetComponent implements OnInit {
 
   reset() {
     if (this.checkconfirmPassword()) {
+      this.loader = true;
       this.token = this.route.snapshot.params['token'];
       const body = {
         newPassword: this.password,
@@ -71,11 +78,14 @@ export class ResetComponent implements OnInit {
       };
       this.apiService.post([END_POINT.auth, END_POINT.reset, this.token], body).subscribe(res => {
         this.dialogService.openDialog('Password was change', 'login-success');
+        this.loader = false;
       }, err => {
         this.dialogService.openDialog(err.error.message, 'login-error');
+        this.loader = false;
       });
     } else {
       this.dialogService.openDialog('Password not match', 'login-error');
+      this.loader = false;
     }
   }
 }

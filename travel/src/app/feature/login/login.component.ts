@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   error = [];
   show = false;
+  loader = false;
 
   get stateName() {
     return this.show ? 'show' : 'hide';
@@ -74,6 +75,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.loader = true;
     const body = {
       userName: this.formLogin.controls.userName.value,
       password: this.formLogin.controls.password.value
@@ -82,11 +84,13 @@ export class LoginComponent implements OnInit {
       this.storageService.set('token', res.token);
       this.dialogService.openDialog('login success', 'login-success');
       this.checkUserService.isUserLogin(true);
+      this.loader = false;
       setTimeout(() => {
         this.router.navigate(['/home']);
       }, 1000);
     }, err => {
       this.dialogService.openDialog(err.error.error, 'login-error');
+      this.loader = false;
     });
   }
 }
