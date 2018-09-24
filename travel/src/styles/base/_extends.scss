@@ -11,8 +11,14 @@
   font-size: $font-size-1;
   letter-spacing: 2px;
   text-align: center;
-  text-transform: uppercase;
   outline: none;
   border: 0;
   cursor: pointer;
+}
+
+%message {
+  font-size: 13px;
+  color: #0a0a0a;
+  background-color: #eae8e8;
+  padding: 10px;
 }

@@ -1,4 +1,5 @@
 .page-footer {
+  font-family: fa5-proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color: $bg-color-1;
   color: $w-color;
   border-top: 1px solid #f1f1f1;
@@ -15,8 +16,8 @@
       width: 10%;
       padding: 10px 10px 0 0;
     }
-    .footer-icon {
-      width: 55%;
+    .fab {
+      font-size: 20px;
     }
   }
   .footer-list-item {
@@ -31,14 +32,25 @@
     font-weight: 300;
   }
   .footer-description {
-    font-size: $font-size-0;
+    font-size: $font-size-1;
     display: block;
     padding: 10px 0;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    color: $txt-color-1;
+    color: $txt-color-2;
+  }
+  .footer-phone {
+    font-size: 13px;
+    padding: 8px 0 0;
+    display: block;
   }
   .copyright {
     font-size: $font-size-0;
   }
+  .btn-medium {
+    height: 40px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  
 }

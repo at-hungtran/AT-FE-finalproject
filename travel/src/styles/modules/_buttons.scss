@@ -30,6 +30,14 @@
   }
 }
 
+.btn-blue {
+  background-color: $color-4;
+  @include hover-transition(all 300ms ease-in-out);
+  &:hover {
+    background-color: $color-5;
+  }
+}
+
 .btn-1 {
   @extend %btn;
   padding: 5px;

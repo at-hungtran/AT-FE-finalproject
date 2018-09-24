@@ -1,15 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger,
+         state,
+         style,
+         animate,
+         transition } from '@angular/animations';
+
 import { DialogService } from '../../service/dialog.service';
 
 @Component({
   selector: 'app-notifi',
-  templateUrl: './notifi.component.html'
+  templateUrl: './notifi.component.html',
+  animations: [
+    trigger('popOverState', [
+      state('show', style({
+        transform: 'translate(0,0)',
+        opacity: 1
+      })),
+      state('hide', style({
+        transform: 'translate(0,100px)',
+        opacity: 0
+      })),
+      transition('show => hide', animate('200ms ease-in-out')),
+      transition('hide => show', animate('200ms ease-in'))
+    ])
+  ]
 })
 
 export class NotifiComponent implements OnInit {
   isVisibleSuccess = false;
   isVisibleError = false;
   message = '';
+  successShow = false;
+  errorShow = false;
 
   constructor(private dialogService: DialogService) {}
 
@@ -17,16 +39,24 @@ export class NotifiComponent implements OnInit {
     this.onpenDialog();
   }
 
+  get success() {
+    return this.successShow ? 'show' : 'hide';
+  }
+
+  get error() {
+    return this.errorShow ? 'show' : 'hide';
+  }
+
   onpenDialog() {
     this.dialogService.newModalName.subscribe(name => {
       this.setMessage();
       if (name === 'login-success') {
-        this.isVisibleSuccess = true;
-        this.isVisibleError = false;
+        this.errorShow = false;
+        this.successShow = true;
         this.closeDialog('login-success');
       } else if (name === 'login-error') {
-        this.isVisibleError = true;
-        this.isVisibleSuccess = false;
+        this.successShow = false;
+        this.errorShow = true;
         this.closeDialog('login-error');
       }
     });
@@ -46,9 +76,9 @@ export class NotifiComponent implements OnInit {
 
   close(dialogName: string) {
     if (dialogName === 'login-success') {
-      this.isVisibleSuccess = false;
+      this.successShow = false;
     } else if (dialogName === 'login-error') {
-      this.isVisibleError = false;
+      this.errorShow = false;
     }
   }
 }
