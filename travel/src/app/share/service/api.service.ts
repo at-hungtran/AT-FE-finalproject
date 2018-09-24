@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Response } from '@angular/http';
 
 import { environment } from '../../../environments/environment';
 
@@ -11,7 +12,7 @@ const API_ROOT = environment.api_url;
 })
 
 export class APIService {
-  constructor (private http: HttpClient) { console.log('get'); }
+  constructor (private http: HttpClient) {}
 
   get(endpoint: string[], prams?: object): Observable<any> {
     const pram = this.query(endpoint, prams);
@@ -19,8 +20,15 @@ export class APIService {
   }
 
   post(endpoint: string[], body): Observable<any> {
-    return this.http.post(this.query(endpoint), body)
-    .pipe(map((res: Response) => this.extractData(res)));
+    const url = this.query(endpoint);
+    console.log(url);
+    return this.http.post(url, body);
+  }
+
+  handleError(error?: any): Promise<any> {
+    if (!error) {
+      return Promise.reject({});
+    }
   }
 
   put(endpoint: string[], body): Observable<any> {
