@@ -123,16 +123,23 @@
 
 @media only screen and (max-width: 1024px) {
   .nav-bar {
-    height: auto;
+    height: 130px;
     background: $w-color;
     .menu {
-      padding: 30px 0;
+      padding: 30px 0 0;
       float: left;
       width: 100%;
       font-size: $font-size-1;
     }
+    .menu-list-right {
+      padding: 10px 0;
+    }
     .menu-item::after {
         margin: 0px 20px;
+    }
+    .wrap-dropdown {
+      top: 130px;
+      right: 18px;
     }
   }
 }
