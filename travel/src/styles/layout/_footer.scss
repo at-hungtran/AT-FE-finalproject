@@ -1,5 +1,5 @@
 .page-footer {
-  font-family: fa5-proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color: $bg-color-1;
   color: $w-color;
   border-top: 1px solid #f1f1f1;
@@ -13,7 +13,7 @@
   .footer-social {
     .footer-social-item {
       float: left;
-      width: 10%;
+      width: 42px;
       padding: 10px 10px 0 0;
     }
     .fab {
@@ -51,6 +51,23 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  
+@media only screen and (max-width: 1070px) {
+  .page-footer {
+    .footer-list-item:nth-child(3) {
+      padding: 20px 0;
+      width: 100%;
+    }
+    .input {
+      width: 45%;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .page-footer {
+    .footer-list-item {
+      padding: 20px 0;
+      width: 100%;
+    }
+  }
 }
