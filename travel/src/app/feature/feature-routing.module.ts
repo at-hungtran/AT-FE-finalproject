@@ -41,6 +41,10 @@ const routes: Routes = [
       {
         path: 'reset/:token',
         loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+      },
+      {
+        path: 'user',
+        loadChildren: './user/user.module#UserModule'
       }
     ]
   }

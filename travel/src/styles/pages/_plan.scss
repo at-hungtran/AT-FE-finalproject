@@ -1,0 +1,168 @@
+.section-plan-page {
+  .plan-top {
+    height: 280px;
+    width: 100%;
+    position: relative;
+    color: $w-color;
+    @include background-size(cover);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    .plan-top-top {
+      width: 100%;
+      position: absolute;
+      left: 15px;
+      bottom: 20px;
+    }
+    .plan-name {
+      width: 50%;
+      font-size: $font-size-5;
+      text-transform: capitalize;
+      float: left;
+    }
+    .plan-change-bg {
+      bottom: 0;
+      float: right;
+      right: 17px;
+      position: absolute;
+      font-size: $font-size-3;
+      text-transform: capitalize;
+    }
+  }
+  .plan-bottom {
+    padding: 15px 0;
+    .plan-date {
+      box-sizing: border-box;
+      float: left;
+      width: 30%;
+      .trip-date-list {
+        border-left: 2px solid black;
+        border-top: 2px solid $border-color-4;
+        border-bottom: 2px solid $border-color-4;
+        border-right: 0;
+        padding: 10px
+      }
+      .date-list {
+        padding: 10px 0 0 15px;
+      }
+      .date-item {
+        text-transform: capitalize;
+      }
+      .date-month {
+        font-size: $font-size-1;
+        font-weight: 200;
+        padding-bottom: 20px;
+      }
+      .day {
+        font-size: $font-size-3;
+        font-weight: 600;
+        padding-bottom: 20px;
+      }
+      .trip-days-action {
+        padding: 15px 0;
+        .add-day {
+          outline: none;
+          cursor: pointer;
+          box-sizing: border-box;
+          color: $primary-color;
+          font-size: $font-size-3;
+          text-transform: capitalize;
+          display: block;
+          background-color: none;
+          width: 80%;
+          height: 32px;
+          margin: 0 auto;
+          background-color: $w-color;
+          border: 1px solid $primary-color-o;
+          border-radius: 5px;
+        }
+      }
+    }
+    .plan-main {
+      border-left: 2px solid $border-color-2;
+      width: 70%;
+      float: left;
+      box-sizing: border-box;
+      padding-left: 20px;
+      .plan-main-head {
+        width: 100%;
+        .main-head {
+
+        }
+        .head-date {
+          text-transform: uppercase;
+          float: left;
+          width: 5%;
+        }
+        .head-date-month {
+          font-size: $font-size-0;
+          padding-bottom: 5px;
+        }
+        .head-date-day {
+          font-size: $font-size-3;
+        }
+        .head-day {
+          float: left;
+          width: 65%;
+        }
+        .head-day-day {
+          margin: 0 auto;
+          text-transform: capitalize;
+          font-size: $font-size-4;
+          padding-left: 10px;
+        }
+        .head-button {
+          float: left;
+          width: 30%;
+          .btn-add-envent {
+            border: 1px solid $primary-color;
+            border-radius: 5px;
+            text-transform: capitalize;
+            float: right;
+            width: 50%;
+            color: white;
+            background-color: $primary-color;
+            line-height: 30px;
+            height: 30px;
+            width: 50%;
+            outline: none;
+            cursor: pointer;
+          }
+        }
+      }
+      .plan-main-inner {
+        .main-list {
+          .main-item {
+            
+          }
+          .icon-activity {
+
+          }
+          .main-time {
+
+          }
+          .main-time-time {
+
+          }
+          .main-activity {
+
+          }
+          .main-content {
+
+          }
+          .main-title {
+
+          }
+          .link-des {
+
+          }
+          .link-des-name {
+
+          }
+          .link-des-des {
+            
+          }
+        }
+      }
+    }
+  }
+}

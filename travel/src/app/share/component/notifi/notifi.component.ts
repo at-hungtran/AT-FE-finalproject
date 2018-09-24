@@ -40,7 +40,7 @@ export class NotifiComponent implements OnInit {
 
   closeDialog(dialogName: string) {
     setTimeout(() => {
-     this.close(dialogName);
+      this.close(dialogName);
     }, 3000);
   }
 
