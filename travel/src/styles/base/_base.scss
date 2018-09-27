@@ -15,7 +15,7 @@ body {
 }
 
 .main-page {
-  padding: 40px 0;
+  padding: 40px 0 0;
 }
 
 .clearfix {
@@ -35,11 +35,16 @@ body {
 }
 
 .title-small {
-  font-size: $font-size-1;
+  font-size: $font-size-2;
   color: $border-color-1;
   text-align: center;
-  text-transform: uppercase;
   font-weight: 300;
+}
+
+.background {
+  @include background-size(cover);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 a {

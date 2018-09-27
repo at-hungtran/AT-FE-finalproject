@@ -2,10 +2,59 @@
   top: -100px;
 }
 
+@media only screen and (max-width: 1024px) {
+  .hide-nav {
+    top: -400px;
+  }
+}
+
 .show-nav {
   top: 0;
 }
 
 .active {
   color: $primary-color;
+}
+
+.left-side {
+  float: left;
+}
+
+.right-side {
+  float: right;
+}
+
+.success {
+  background: $success-color;
+}
+
+.error {
+  background: #dc3545;
+}
+
+.block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.error-message {
+ @extend %message;
+  border-left: solid 5px #ef0202;
+}
+
+.success-message {
+  @extend %message;
+  border-left: solid 5px $primary-color;
+}
+
+.info-message {
+  @extend %message;
+  border-left: solid 5px $third-color;
+}
+
+.input.ng-invalid.ng-dirty + .error-message {
+  display: block;
 }

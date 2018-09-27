@@ -3,6 +3,7 @@
   .article-img {
     float: left;
     width: 30%;
+    cursor: pointer;
   }
   .article-img-inner {
     width: 100%;
@@ -10,6 +11,10 @@
     @include background-size(cover);
     background-position: 50% 50%;
     background-repeat: no-repeat;
+  }
+  .wrap-title {
+    background-color: $bg-color-3;
+    height: 50px;
   }
   .article-row-content {
     width: 70%;
@@ -21,11 +26,10 @@
     height: 170px;
   }
   .article-row-title {
-    padding: 15px;
-    font-size: $font-size-3;
-    text-transform: uppercase;
+    padding: 5px 10px;
+    font-size: 16px;
     padding-bottom: 20px;
-    background-color: $bg-color-3;
+    line-height: 20px;
   }
   .article-row-description {
     padding: 15px;
@@ -33,6 +37,18 @@
   .article-button {
     position: absolute;
     bottom: 16px;
-    right: 46px;
+    right: 12px;
+    cursor: pointer;
+  }
+  .fa-chevron-circle-right {
+    color: $primary-color;
+    font-size: 15px;
+  }
+  .title {
+    padding: 4px 10px 0;
+    display: inline-block;
+  }
+  .img {
+
   }
 }

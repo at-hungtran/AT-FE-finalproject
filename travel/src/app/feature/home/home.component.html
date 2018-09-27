@@ -3,7 +3,9 @@
     <div class="wrap-slider">
       <app-slider [listImg]="listBackground"></app-slider>
       <div class="wrap-search">
-        <app-search class="wrap-search"></app-search>
+        <app-search *ngIf="listSiteForSearch && listDestinations"
+                    [listDestinations]=listDestinations
+                    [listSites]="listSiteForSearch" class="wrap-search"></app-search>
       </div>
     </div>
   </section>
@@ -38,27 +40,13 @@
       <h3 class="title-center">Most Article</h3>
       <p class="title-small">best article available</p>
       <ul class="list-article">
-        <li class="article-item">
+        <li class="article-item" *ngFor="let article of listArticle">
           <div class="card-boder">
-            <app-article></app-article>
-          </div>
-        </li>
-        <li class="article-item">
-          <div class="card-boder">
-            <app-article></app-article>
-          </div>
-        </li>
-        <li class="article-item">
-          <div class="card-boder">
-            <app-article></app-article>
-          </div>
-        </li>
-        <li class="article-item">
-          <div class="card-boder">
-            <app-article></app-article>
+            <app-article [article]="article"></app-article>
           </div>
         </li>
       </ul>
     </div>
   </section>
 </div>
+<app-footer></app-footer>

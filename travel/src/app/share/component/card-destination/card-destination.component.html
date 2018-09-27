@@ -4,16 +4,18 @@
     [ngStyle]="{'background-image': 'url(' + imgafetchUrl + ')'}"></div>
   </div>
   <div class="card-bottom">
-    <h3 class="des-name"><a class="des-name-a" href="javascript:void(0)">name</a></h3>
-    <div class="left-side wrap-info">
-      <span class="site-name">site</span>
+    <h3 class="des-name"><a class="des-name-a" 
+    routerLink="/destinations/{{destination._id}}">{{destination.name}}</a></h3>
+    <div class="left-side wrap-info" [ngStyle]="{'background-color': getColor()}">
+      <span *ngIf="parentSite" class="site-name">{{parentSite.name}}</span>
     </div>
-    <div class="right-side wrap-info while-alpha">
-      <span class="category-name">category</span>
+    <div class="right-side wrap-info while-alpha" [ngStyle]="{'background-color': getColor()}">
+      <span class="category-name">{{destination.categorys[0].name}}</span>
     </div>
   </div>
   <div class="card-content">
-    <p class="content"></p>
-    <button class="btn-medium btn-detail">Details</button>
+    <p class="content">{{destination.description | truncate : 150}}</p>
+    <button class="btn-medium btn-detail" 
+    routerLink="/destinations/{{destination._id}}">Details</button>
   </div>
 </div>

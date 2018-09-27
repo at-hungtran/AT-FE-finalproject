@@ -23,8 +23,28 @@ const routes: Routes = [
         loadChildren: './search/search.module#PageSearchModule'
       },
       {
-        path: 'article',
+        path: 'article/:id',
         loadChildren: './article/article.module#ArticlePageModule'
+      },
+      {
+        path: 'login',
+        loadChildren: './login/login.module#LoginModule'
+      },
+      {
+        path: 'register',
+        loadChildren: './register/register.module#RegisterModule'
+      },
+      {
+        path: 'forgot',
+        loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
+      },
+      {
+        path: 'reset/:token',
+        loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+      },
+      {
+        path: 'destinations/:id',
+        loadChildren: './destinations-detail/destiantions-detail.module#DestinationsDetailModule'
       }
     ]
   }

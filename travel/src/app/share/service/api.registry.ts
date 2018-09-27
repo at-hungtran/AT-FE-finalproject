@@ -6,6 +6,10 @@ export const END_POINT = {
   'destinations': 'destinations',
   'pictures': 'pictures',
   'plans': 'plans',
-  'sites': 'sites'
+  'sites': 'sites',
+  'login': 'login',
+  'auth': 'auth',
+  'forgot': 'forgot',
+  'reset': 'reset',
 };
 export class APIRegistry { }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SliderModule } from 'ngx-slider';
+import { TruncateModule } from 'ng2-truncate';
 
 import { HeaderComponent } from './component/header/header.component';
 import { CardComponent } from './component/card-destination/card-destination.component';
@@ -15,8 +16,8 @@ import { BackgroundHeaderComponent } from './component/background-header/backgro
 import { CommentComponent } from './component/comment/comment.component';
 import { ScrollDirective } from './directive/scroll-directive';
 import { NavigateComponent } from './component/header/navigate/navigate.component';
-import { PipeModule } from './pipe/pipe.module';
-
+import { NotifiComponent } from './component/notifi/notifi.component';
+import { CloseSearchDirestive } from './directive/click-close-search-directive';
 
 @NgModule({
   declarations: [
@@ -30,15 +31,17 @@ import { PipeModule } from './pipe/pipe.module';
     DetailComponent,
     BackgroundHeaderComponent,
     CommentComponent,
+    NotifiComponent,
     ScrollDirective,
-    NavigateComponent
+    NavigateComponent,
+    CloseSearchDirestive
   ],
   imports: [
     CommonModule,
     RouterModule,
     SliderModule,
     SwiperModule,
-    PipeModule
+    TruncateModule,
   ],
   exports: [
     HeaderComponent,
@@ -52,8 +55,9 @@ import { PipeModule } from './pipe/pipe.module';
     BackgroundHeaderComponent,
     CommentComponent,
     ScrollDirective,
+    CloseSearchDirestive,
     NavigateComponent,
-    PipeModule
+    NotifiComponent
   ]
 })
 

@@ -6,4 +6,12 @@ export class Site {
   backgroundImg: String;
   parentId: String;
   rating: Number;
+  listArticle: [
+    {
+      title: String;
+      siteId: String;
+      userId: String;
+      descriptions: String;
+    }
+  ];
 }

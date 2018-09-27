@@ -7,7 +7,7 @@ import { Site } from '../../model/site';
 })
 
 export class BackgroundHeaderComponent implements OnInit, OnChanges {
-  @Input() site: Site;
+  @Input() site;
   url = 'http://localhost:3000/uploads/';
 
   ngOnInit() {}
@@ -17,8 +17,10 @@ export class BackgroundHeaderComponent implements OnInit, OnChanges {
   }
 
   fetchUrl() {
-    if (this.site) {
-      return  this.url + this.site.backgroundImg;
+    if (this.site.backgroundImg) {
+      return this.url + this.site.backgroundImg;
+    } else {
+      return '../../../assets/images/bg-article.jpg';
     }
   }
 }

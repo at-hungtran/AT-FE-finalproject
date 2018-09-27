@@ -1,5 +1,7 @@
 <main class="detail-article">
   <div class="detail-content">
-    <p class="detail-content-main">{{article}}</p>
+    <p class="detail-content-main"
+    *ngIf="articleHTML"
+    [innerHTML]="articleHTML"></p>
   </div>
 </main>

@@ -1,0 +1,12 @@
+<div [@popOverState]="success" class="notifi">
+  <div class="box-message success">
+    <span class="message left-side">{{message}}</span>
+    <img (click)="close('login-success')" class="icon-disable right-side" src="../../../../assets/icon/close-button.png" alt="icon-disable">
+  </div>
+</div>
+<div [@popOverState]="error"  class="notifi">
+  <div class="box-message error">
+    <span class="message left-side">{{message}}</span>
+    <img (click)="close('login-error')" class="icon-disable right-side" src="../../../../assets/icon/close-button.png" alt="icon-disable">
+  </div>
+</div>
