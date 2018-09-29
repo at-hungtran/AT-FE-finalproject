@@ -15,3 +15,17 @@
 .input-login {
   border: solid 1px $txt-color-4;
 }
+
+.input-plan {
+  border: solid 1px $txt-color-4;
+  //appearance: none;
+  color: #95a5a6;
+  font-family: "Helvetica", arial, sans-serif;
+  font-size: 15px;
+  padding:5px;
+  border: solid 1px $border-color-1;
+  &:disabled {
+    background: $bg-color-6;
+    cursor: no-drop;
+  }
+}

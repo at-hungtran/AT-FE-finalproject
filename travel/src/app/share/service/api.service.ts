@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Response } from '@angular/http';
 
 import { environment } from '../../../environments/environment';
 
@@ -21,8 +21,14 @@ export class APIService {
 
   post(endpoint: string[], body): Observable<any> {
     const url = this.query(endpoint);
-    console.log(url);
     return this.http.post(url, body);
+  }
+
+  getWithToken(endpoint: string[], token): Observable<any> {
+    const url = this.query(endpoint);
+    //const headers = new RequestOptions({ headers: token });
+    const headers = new HttpHeaders().set('x-access-token', token);
+    return this.http.get(url, {headers});
   }
 
   handleError(error?: any): Promise<any> {

@@ -6,7 +6,7 @@
 
 // import { User } from '../model/user';
 
-// export const TOKEN_NAME = 'user_token';
+// export const TOKEN_NAME = 'token';
 
 // export const ANONYMOUS_USER: User = {
 //   id: undefined,
@@ -36,9 +36,9 @@
 //       .pipe(shareReplay(), tap(user => this.subject.next(user)));
 //   }
 
-//   login(username:string, password:string ) {
+//   login(username: string, password: string ) {
 //     return this.http.post<User>('/api/login', {username, password})
-//       .pipe(shareReplay(),tap(user => this.subject.next(user)));
+//       .pipe(shareReplay(), tap(user => this.subject.next(user)));
 //   }
 
 //   loginAsUser(username: string) {

@@ -1,0 +1,100 @@
+.plan {
+  background: $w-color;
+  width: 100%;
+  float: left;
+  padding-bottom: 40px;
+  .wrap-message {
+    text-align: center;
+    padding: 50px 0;
+  }
+  .message {
+    padding-bottom: 20px;
+    font-size: $font-size-4;
+    color: $txt-color-3;
+    border-radius: 4px;
+    font-weight: 400;
+  }
+  .btn-medium {
+    border-radius: 3px;
+  }
+  .wrap-form {
+    padding: 10px 30px 20px;
+    text-align: center;
+  }
+  .fa-calendar-alt {
+    font-size: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: $bg-color-1;
+  }
+  .to {
+    padding: 6px 10px;
+    box-sizing: border-box;
+    border-left: 0;
+    border-right: 0;
+    font-size: $font-size-1;
+    font-weight: bold;
+    color: $txt-color-2;
+  }
+  .wrap-create-plan {
+    width: 100%;
+    float: left;
+  }
+  .wrap-menu-date {
+    padding: 20px 0;
+    width: 20%;
+    box-sizing: border-box;
+    float: left;
+  }
+  .date-item {
+    padding: 25px;
+    border-left: solid 2px;
+    background: $bg-color-3;
+    cursor: pointer;
+    a {
+      font-weight: bold;
+    }
+    &:hover {
+      background: $bg-color-hover !important;
+    }
+  }
+
+  .wrap-form-plan {
+    width: 100%;
+    float: left;
+  }
+  .wrap-content {
+    width: 80%;
+    padding: 20px 40px;
+    float: left;
+    box-sizing: border-box;
+  }
+  .wrap-input-time {
+    width: 100%;
+    float: left;
+  }
+  .wrap-input-des {
+    margin-top: 20px;
+    width: 100%;
+    float: left;
+  }
+  .input-time {
+    float: left;
+    margin-right: 20px;
+    width: 90px;
+  }
+  .input-des {
+    float: left;
+    //margin-right: 20px;
+    width: 80%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  .form-plan {
+    .btn-medium {
+      background: #087a63;
+      float: left;
+      margin-right: 5px;
+    }
+  }
+}

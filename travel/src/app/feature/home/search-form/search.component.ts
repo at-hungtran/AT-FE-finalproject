@@ -40,6 +40,7 @@ export class SearchComponent implements OnInit {
   listResultSearch;
   listResultDisplay;
   parentId;
+  listSitesNoParent;
   successShow = false;
   isShowMessage = false;
 
@@ -51,6 +52,7 @@ export class SearchComponent implements OnInit {
     this.bindToListCategory();
     this.createForm();
     this.suggestionsSearch();
+    this.bindToListSiteNoParent();
     this.closeSearchService.newIsClose.subscribe(value => {
       this.successShow = value;
     });
@@ -138,6 +140,12 @@ export class SearchComponent implements OnInit {
           this.parentId = siteId;
         }
       }
+    });
+  }
+
+  bindToListSiteNoParent() {
+    this.listSitesNoParent = this.listSites.filter(site => {
+      return !site.parentId;
     });
   }
 

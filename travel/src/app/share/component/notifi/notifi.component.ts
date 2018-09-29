@@ -17,7 +17,7 @@ import { DialogService } from '../../service/dialog.service';
         opacity: 1
       })),
       state('hide', style({
-        transform: 'translate(0,100px)',
+        transform: 'translate(0,200px)',
         opacity: 0
       })),
       transition('show => hide', animate('200ms ease-in-out')),

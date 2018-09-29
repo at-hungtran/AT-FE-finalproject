@@ -1,0 +1,34 @@
+<div [hidden]="!active">
+  <div class="wrap-content">
+    <div class="wrap-form-plan">
+      <form class="form-plan" [formGroup]="myForm">
+        <div class="wrap-input-time">
+          <input class="input input-plan input-time" type="text" placeholder="start">
+          <input class="input input-plan input-time" type="text" placeholder="end">
+        </div>
+        <div class="wrap-input-des">
+          <select class="input input-plan input-des" name="" id="">
+            <option value="">select</option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+          <select class="input input-plan input-des" name="" id="">
+            <option value="">select</option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+          <select class="input input-plan input-des" name="" id="">
+            <option value="">select</option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+          <input class="input input-plan input-des" type="text">
+        </div>
+        <button type="submit" class="btn btn-medium">save</button>
+      </form>
+      <button class="btn btn-medium btn-green">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </div>
+</div>

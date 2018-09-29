@@ -8,9 +8,10 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.authGuardService.getToken()) {
-      return true;
+      console.log(this.authGuardService.getToken());
+      this.router.navigate(['/home']);
+      return false;
     }
-    this.router.navigate(['/home']);
-    return false;
+    return true;
   }
 }

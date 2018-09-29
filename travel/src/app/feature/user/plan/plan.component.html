@@ -1,0 +1,27 @@
+<div class="plan">
+  <div class="wrap-plan">
+    <div class="wrap-message">
+      <p class="message">Can not found</p>
+      <button class="btn btn-medium btn-green" 
+      (click)="openForm()">Create your plan</button>
+    </div>
+  </div>
+  <div class="wrap-form" [@popOverState]="success">
+    <form class="date-form" [formGroup]="formDate">
+      <i class="far fa-calendar-alt"></i>
+      <input class="input-plan"
+      type="date"
+      formControlName="start">
+      <span class="to">to</span>
+      <input class="input-plan"
+      type="date"
+      formControlName="end">
+    </form>
+  </div>
+  <div *ngIf="listDate.length" class="wrap-create-plan">
+    <app-tabs>
+      <app-tab *ngFor="let tab of listDate" [tabtitle]="tab">
+      </app-tab>
+    </app-tabs>
+  </div>
+</div>

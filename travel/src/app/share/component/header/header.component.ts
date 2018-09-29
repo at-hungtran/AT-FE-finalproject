@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Directive,
          HostListener,
          ElementRef,
@@ -10,6 +10,8 @@ import { trigger,
          transition } from '@angular/animations';
 import { CheckUserService } from '../../service/check-user.service';
 import { StorageService } from '../../service/storage.service';
+import { APIService } from '../../service/api.service';
+import { END_POINT } from '../../service/api.registry';
 
 const KEY = 'token';
 @Component({
@@ -32,12 +34,17 @@ const KEY = 'token';
   ]
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
   isLogin = false;
   className: string;
   isOpen = false;
+  token;
+  user;
+  url = 'http://localhost:3000/uploads/';
+  avatarDefault = '../../../../assets/images/default-avt.jpg';
 
   constructor(private checkLoginService: CheckUserService,
+              private apiService: APIService,
               private storageService: StorageService,
               private el: ElementRef,
               private renderer: Renderer2) {}
@@ -58,22 +65,48 @@ export class HeaderComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.setToken();
     this.checkLogin();
+  }
+
+  ngOnChanges() {
+    this.setUser();
   }
 
   checkLogin() {
     this.checkLoginService.isLogin.subscribe(value => {
       this.isLogin = value;
+      this.setUser();
     });
   }
 
   logout() {
     this.storageService.remove(KEY);
     this.isLogin = false;
+    this.apiService.getWithToken([END_POINT.auth, END_POINT.logout], this.token)
+    .subscribe();
+  }
+
+  setToken() {
+    this.token = this.storageService.get(KEY);
+  }
+
+  setUser() {
+    if (this.token) {
+      this.apiService.getWithToken([END_POINT.auth, END_POINT.me], this.token)
+      .subscribe(user => this.user = user);
+    }
   }
 
   get open() {
     return this.isOpen ? 'show' : 'hide';
+  }
+
+  fetchUrl() {
+    if (this.user.avatar) {
+      return this.url + this.user.avatar;
+    }
+    return this.avatarDefault;
   }
 
   @HostListener('click', ['$event'])

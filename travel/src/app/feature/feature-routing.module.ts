@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatureComponent } from './feature.component';
+import { AuthGuard } from '../auth-guard/auth-guard';
 
 const routes: Routes = [
   { path: '',
@@ -28,7 +29,8 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        loadChildren: './login/login.module#LoginModule'
+        loadChildren: './login/login.module#LoginModule',
+        canActivate: [AuthGuard]
       },
       {
         path: 'register',
@@ -45,6 +47,10 @@ const routes: Routes = [
       {
         path: 'destinations/:id',
         loadChildren: './destinations-detail/destiantions-detail.module#DestinationsDetailModule'
+      },
+      {
+        path: 'user',
+        loadChildren: './user/user.module#UserModule'
       }
     ]
   }
@@ -53,7 +59,7 @@ const routes: Routes = [
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ],
-  providers: []
+  providers: [ AuthGuard ]
 })
 
 export class FeatureRoutingModule {}

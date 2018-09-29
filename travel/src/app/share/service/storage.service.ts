@@ -12,7 +12,7 @@ export class StorageService {
   constructor() {}
 
   get(key: string): any {
-    return JSON.parse(localStorage.getItem(key));
+    return localStorage.getItem(key);
   }
 
   remove(key: string) {

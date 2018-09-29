@@ -17,7 +17,7 @@
                   class="option"
                   value="allSite"
                   selected>All Sites</option>
-          <option *ngFor="let site of listSites"
+          <option *ngFor="let site of listSitesNoParent"
                   name="site.name"
                   id="site.name"
                   [value]="site._id"
