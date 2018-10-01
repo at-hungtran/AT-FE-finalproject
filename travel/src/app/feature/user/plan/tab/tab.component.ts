@@ -49,7 +49,7 @@ export class TabComponent implements OnInit {
 
   @Input() listSite;
   @Input() listCategory;
-  @Input() tabtitle: string;
+  @Input() tabtitle;
   url = 'http://localhost:3000/uploads/';
 
   constructor(private tabs: TabsComponent,
@@ -59,7 +59,7 @@ export class TabComponent implements OnInit {
   data = {
     plans: [
       {
-        destianton: [''],
+        destination: [''],
         startTime: [''],
         endTime: [''],
         site1: [''],
@@ -121,7 +121,7 @@ export class TabComponent implements OnInit {
     const control = <FormArray>this.myForm.controls.plans;
     this.data.plans.forEach(plan => {
       control.push(this.fb.group({
-        destianton: plan.destianton,
+        destination: plan.destination,
         startTime: plan.startTime,
         endTime: plan.endTime,
         site1: plan.site1,
@@ -152,13 +152,13 @@ export class TabComponent implements OnInit {
     const control = <FormArray>this.myForm.controls.plans;
     control.push(
       this.fb.group({
-        destianton: [''],
+        destination: [''],
         startTime: [''],
         endTime: [''],
         site1: [''],
         site2: [''],
         caterogyId: [''],
-        destiantonId: [''],
+        destinationId: [''],
       })
     );
   }
@@ -189,7 +189,7 @@ export class TabComponent implements OnInit {
   subscribeDestinationsChange() {
     this.myForm.controls.plans.valueChanges
     .subscribe(value => {
-      this.term[this.indexInput] = value[this.indexInput].destianton;
+      this.term[this.indexInput] = value[this.indexInput].destination;
       if (this.term[this.indexInput]) {
         this.bindToListResultSearch(value, this.indexInput);
       }
@@ -231,7 +231,7 @@ export class TabComponent implements OnInit {
     } else {
       this.hideResult(indexInput);
     }
-    if (value[this.indexInput].destianton) {
+    if (value[this.indexInput].destination) {
       this.showResult(indexInput);
     } else {
       this.hideResult(indexInput);
@@ -285,8 +285,8 @@ export class TabComponent implements OnInit {
     this.successShow[index] = false;
   }
   choice(index, idDes, nameDes) {
-    this.myForm.controls.plans.value[index].destianton = nameDes;
-    this.myForm.controls.plans.value[index].destiantonId = idDes;
+    this.myForm.controls.plans.value[index].destination = nameDes;
+    this.myForm.controls.plans.value[index].destinationId = idDes;
     this.valueDes[index] = nameDes;
     this.valueDesId[index] = idDes;
   }
