@@ -1,7 +1,7 @@
 <div [hidden]="!active">
   <div class="wrap-content">
     <div class="wrap-form-plan">
-      <form class="form-plan" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+      <form *ngIf="isFromVisible" class="form-plan" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
         <input type="hidden"
         formControlName="date">
         <div formArrayName="plans">
@@ -108,10 +108,22 @@
         </div>
         <button type="submit" class="btn btn-green btn-medium">Add</button>
       </form>
-      <button class="btn btn-medium btn-border-green"
+      <button *ngIf="isFromVisible" class="btn btn-medium btn-border-green"
       (click)="addNewPlan()">
         <i class="fas fa-plus"></i>
       </button>
+      <div *ngIf="!isFromVisible" class="wrap-plans-input">
+        <div class="wrap-content">
+          <ul class="list-info">
+            <li class="info-item" *ngFor="let plan of listPlans">
+              <p class="info-item">Start: {{plan.startTime}}</p>
+              <p class="info-item">End:  {{plan.endTime}}</p>
+              <p class="info-item">Destination: {{plan.destination}}</p>
+              <p class="info-item">Address:</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

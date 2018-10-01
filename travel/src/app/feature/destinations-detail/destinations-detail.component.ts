@@ -53,7 +53,6 @@ export class DestinationsDetailComponent implements OnInit {
   bindToListParent() {
     this.listParent.push(this.destination.siteId);
     this.findParent(this.destination.siteId);
-    console.log(this.listParent);
   }
 
   findParent(siteId) {

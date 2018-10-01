@@ -9,6 +9,7 @@ import { TabsComponent } from '../tabs/tabs.component';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { APIService } from '../../../../share/service/api.service';
 import { END_POINT } from '../../../../share/service/api.registry';
+import { PlansService } from '../../../../share/service/plans.service';
 
 @Component({
   selector: 'app-tab',
@@ -46,6 +47,9 @@ export class TabComponent implements OnInit {
   term = [];
   valueDes = [''];
   valueDesId = [''];
+  isFromVisible = true;
+  listPlans = [];
+  listParent = [];
 
   @Input() listSite;
   @Input() listCategory;
@@ -54,7 +58,8 @@ export class TabComponent implements OnInit {
 
   constructor(private tabs: TabsComponent,
               private fb: FormBuilder,
-              private apiService: APIService) {}
+              private apiService: APIService,
+              private plansService: PlansService) {}
 
   data = {
     plans: [
@@ -163,8 +168,20 @@ export class TabComponent implements OnInit {
     );
   }
 
-  submit() {
-    console.log(this.myForm.value);
+  submit(myForm) {
+    this.isFromVisible = false;
+    this.plansService.bindToPlans(myForm.value);
+    this.setListPlans();
+  }
+
+  setListPlans() {
+    this.listPlans = this.plansService.getPlans()
+    .filter(item => {
+      if (item.date === this.tabtitle) {
+        return item.plans;
+      }
+    });
+    this.listPlans = this.listPlans[0].plans;
   }
 
   changeVanityId() {}
@@ -176,7 +193,8 @@ export class TabComponent implements OnInit {
   }
 
   bindToListDestinations() {
-    this.apiService.get([END_POINT.destinations]).subscribe(des => {
+    this.apiService.get([END_POINT.destinations])
+    .subscribe(des => {
       this.listDestinations = des;
     });
   }
@@ -284,10 +302,36 @@ export class TabComponent implements OnInit {
   hideResult(index) {
     this.successShow[index] = false;
   }
+
+  destination;
   choice(index, idDes, nameDes) {
+    this.listParent = [];
     this.myForm.controls.plans.value[index].destination = nameDes;
     this.myForm.controls.plans.value[index].destinationId = idDes;
     this.valueDes[index] = nameDes;
     this.valueDesId[index] = idDes;
+
+    this.destination = this.listDestinations.filter(item => {
+      return item._id === idDes;
+    });
+
+    this.findParentList(this.destination[0].siteId);
+  }
+  count = 0;
+  findParentList(siteId) {
+    this.listSite.map((item, index) => {
+      if (this.count === 0) {
+        this.listParent.push(siteId);
+        this.count++;
+      }
+      if (siteId === item._id) {
+        if (item.parentId) {
+          this.listParent.push(item.parentId);
+          this.findParentList(item.parentId);
+        } else {
+          return 0;
+        }
+      }
+    });
   }
 }
