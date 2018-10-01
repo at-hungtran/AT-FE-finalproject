@@ -1,32 +1,102 @@
 <div [hidden]="!active">
   <div class="wrap-content">
     <div class="wrap-form-plan">
-      <form class="form-plan" [formGroup]="myForm">
-        <div class="wrap-input-time">
-          <input class="input input-plan input-time" type="text" placeholder="start">
-          <input class="input input-plan input-time" type="text" placeholder="end">
+      <form class="form-plan" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+        <input type="hidden"
+        formControlName="date">
+        <div formArrayName="plans">
+          <div *ngFor="let comp of myForm.get('plans').controls; let i = index">
+            <div class="wrap-item-form" [formGroupName]="i">
+              <div class="wrap-input-time">
+                <input placeholder="Time:"
+                  class="input input-plan input-time"
+                  formControlName="startTime"
+                  [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
+                <owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
+                <input placeholder="Time:"
+                  class="input input-plan input-time"
+                  formControlName="endTime"
+                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
+                <owl-date-time [pickerType]="'timer'" #dt1></owl-date-time>
+                <button class="btn btn-border-green btn-divi"
+                  (click)="deletePlan(i)">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <div class="wrap-input-des">
+                <select class="input input-plan input-des"
+                formControlName="site1"
+                (change)="SelectSiteOnChange($event.target.value, i)">
+                  <option name="allSite"
+                    id="allSite"
+                    class="option"
+                    value=""
+                    [selected]="true">All Sites</option>
+                  <option *ngFor="let site of listSitesNoParent"
+                    name="site.name"
+                    id="site.name"
+                    [value]="site._id"
+                    class="option">{{site.name}}</option>
+                </select>
+                <select *ngIf="listSite2.length" class="input input-plan input-des"
+                (change)="SelectSite2OnChange($event.target.value, i)"
+                formControlName="site2">
+                  <option name="allSite"
+                    id="allSite"
+                    class="option"
+                    value=""
+                    [selected]="true">All Site</option>
+                  <option *ngFor="let site of listSite2"
+                    class="option"
+                    id="site.name" 
+                    [value]="site._id">{{site.name}}</option>
+                </select>
+                <select class="input input-plan input-des"
+                formControlName="caterogyId"
+                (change)="SelectCategoryOnChange($event.target.value, i)">
+                  <option name="category"
+                    id="allCategory"
+                    class="option"
+                    value=""
+                    [selected]="true">All Category</option>
+                  <option *ngFor="let category of listCategory"
+                    name="category.name"
+                    id="category.name" 
+                    [value]="category._id"
+                    class="option">{{category.name}}</option>
+                </select>
+                <input (click)="getIndex(i)" class="input input-plan input-des"
+                  type="text"
+                  formControlName="destianton">
+                <div [@popOverState]="success(i)" class="wrap-suggest">
+                  <ul class="list-result">
+                    <ng-container *ngFor="let result of listResultDisplay[i] | filter:term[i]; let i = index">
+                      <li class="result-item">
+                        <a routerLink="/destinations/{{result.destinationId}}">
+                          <div class="wrap-item-result">
+                            <div class="border-image">
+                              <div class="img-des"
+                              [ngStyle]="{'background-image': 'url(' + result.image + ')'}">
+                              </div>
+                            </div>
+                            <div class="wrap-content">
+                              <p class="content">{{result.name}}</p>
+                              <strong class="address">{{result.address}}, {{result.site}}</strong>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="wrap-input-des">
-          <select class="input input-plan input-des" name="" id="">
-            <option value="">select</option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-          <select class="input input-plan input-des" name="" id="">
-            <option value="">select</option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-          <select class="input input-plan input-des" name="" id="">
-            <option value="">select</option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
-          <input class="input input-plan input-des" type="text">
-        </div>
-        <button type="submit" class="btn btn-medium">save</button>
+        <button type="submit" class="btn btn-green btn-medium">Add</button>
       </form>
-      <button class="btn btn-medium btn-green">
+      <button class="btn btn-medium btn-border-green"
+      (click)="addNewPlan()">
         <i class="fas fa-plus"></i>
       </button>
     </div>

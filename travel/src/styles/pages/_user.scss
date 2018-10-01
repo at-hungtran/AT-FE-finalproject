@@ -50,7 +50,7 @@
   }
   .label {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 13px;
   }
   .list {
     float: left;
@@ -72,14 +72,16 @@
     border-top: solid 1px $bg-color-7;
   }
   .list-menu {
-    width: 170px;
+    width: 200px;
     margin: 0 auto;
     overflow: auto;
   }
   .menu-item {
     float: left;
-    padding: 15px 20px;
     font-size: 17px;
     font-weight: bold;
+  }
+  .wrap-tab-name {
+    padding: 15px 20px;
   }
 }

@@ -9,9 +9,9 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      {path: '', redirectTo: 'plan'},
-      {path: 'plan', component: PlanComponent},
-      {path: 'pictures', component: PictureUserComponent},
+      { path: '', redirectTo: 'plans' },
+      { path: 'plans', component: PlanComponent },
+      { path: 'pictures', component: PictureUserComponent },
     ]
   },
 ];

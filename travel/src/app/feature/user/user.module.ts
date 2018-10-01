@@ -10,6 +10,9 @@ import { PlanComponent } from './plan/plan.component';
 import { PictureUserComponent } from './picture-user/picture-user.component';
 import { TabComponent } from './plan/tab/tab.component';
 import { TabsComponent } from './plan/tabs/tabs.component';
+import { NavigateUserComponent } from './navigate-user/navigate.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { TabsComponent } from './plan/tabs/tabs.component';
     PlanComponent,
     PictureUserComponent,
     TabComponent,
-    TabsComponent
+    TabsComponent,
+    NavigateUserComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,10 @@ import { TabsComponent } from './plan/tabs/tabs.component';
     ShareModule,
     UserRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    Ng2SearchPipeModule
   ],
   exports: [],
 })

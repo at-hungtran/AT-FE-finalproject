@@ -1,7 +1,7 @@
 <div class="plan">
   <div class="wrap-plan">
     <div class="wrap-message">
-      <p class="message">Can not found</p>
+      <p class="message">Can Not Found</p>
       <button class="btn btn-medium btn-green" 
       (click)="openForm()">Create your plan</button>
     </div>
@@ -9,18 +9,25 @@
   <div class="wrap-form" [@popOverState]="success">
     <form class="date-form" [formGroup]="formDate">
       <i class="far fa-calendar-alt"></i>
-      <input class="input-plan"
-      type="date"
-      formControlName="start">
+      <input placeholder="Date:"
+        class="input-plan"
+        formControlName="start"
+        [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
+      <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
       <span class="to">to</span>
-      <input class="input-plan"
-      type="date"
-      formControlName="end">
+      <input placeholder="Date:"
+        class="input-plan"
+        formControlName="end"
+        [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
+      <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
     </form>
   </div>
   <div *ngIf="listDate.length" class="wrap-create-plan">
     <app-tabs>
-      <app-tab *ngFor="let tab of listDate" [tabtitle]="tab">
+      <app-tab *ngFor="let tab of listDate" 
+        [tabtitle]="tab"
+        [listSite]="listSite"
+        [listCategory]="listCategory">
       </app-tab>
     </app-tabs>
   </div>

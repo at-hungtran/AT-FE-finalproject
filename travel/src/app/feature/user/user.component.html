@@ -3,33 +3,33 @@
     <section class="section-info">
       <div class="wrap-info">
         <div class="wrap-avatar">
-          <div class="avatar"
-          style="background-image: url('../../../../assets/images/default-avt.jpg')">
+          <div *ngIf="user" class="avatar"
+          [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
           </div>
         </div>
         <div class="info">
-          <ul class="list-info">
+          <ul *ngIf="user" class="list-info">
             <li class="info-item">
-              <h4 class="user-name">user name</h4>
+              <h4 class="user-name">{{user.userName}}</h4>
             </li>
             <li class="info-item">
-              <p class="email">email@gmail.com</p>
+              <p class="email">{{user.email}}</p>
             </li>
             <li class="info-item">
               <ul class="list">
                 <li class="item">
                   <span class="label">Name:</span>
-                  <span class="name"> name</span>
+                  <span class="name"> {{user.name}}</span>
                 </li>
                 <li class="item">
                   <span class="label">Age:</span>
-                  <span class="age"> 18</span>
+                  <span class="age"> {{user.age}}</span>
                 </li>
               </ul>
             </li>
             <li class="info-item">
-              <span class="label">hobby:</span>
-              <span class="hobby"> slepp, eat</span>
+              <span class="label">Hobbies:</span>
+              <span class="hobby"> {{user.hobbies}}</span>
             </li>
           </ul>
         </div>
@@ -38,11 +38,12 @@
     <section class="section-tab">
       <div class="wrap-tab-menu">
         <ul class="list-menu">
-          <li class="menu-item">
-            <a routerLink="pictures">Picture</a>
-          </li>
-          <li class="menu-item">
-            <a routerLink="plan">Plan</a>
+          <li class="menu-item" *ngFor="let item of navigateList">
+            <app-navigate-user
+            [routerLink]="item.routerLink"
+            [name]="item.name"
+            routerLinkActive>
+            </app-navigate-user>
           </li>
         </ul>
       </div>

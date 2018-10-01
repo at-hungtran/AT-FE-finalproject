@@ -37,8 +37,10 @@
                 <ul *ngIf="isLogin" class="dropdown-list">
                   <li class="dropdown-item">
                     <div class="wrap-item">
-                      <img class="icon-logout left-side" src="../assets//icon/user.png" alt="icon-logout">
-                      <span *ngIf="user" class="text">{{user.userName}}</span>
+                      <a *ngIf="user" [routerLink]="[ '/user', user._id ]">
+                        <img class="icon-logout left-side" src="../assets//icon/user.png" alt="icon-logout">
+                        <span class="text">{{user.userName}}</span>
+                      </a>
                     </div>
                   </li>
                   <li class="dropdown-item" (click)="logout()">

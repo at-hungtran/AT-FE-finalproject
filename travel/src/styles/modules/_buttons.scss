@@ -38,6 +38,27 @@
   }
 }
 
+.btn-border-green {
+  background-color: $w-color;
+  color: $primary-color;
+  border: solid 1px;
+  border-color: $primary-color;
+  box-sizing: border-box;
+  // @include hover-transition(all 300ms ease-in-out);
+  // &:hover {
+  //   background-color: $primary-color;
+  //   color: $w-color;
+  // }
+}
+
+.btn-yellow {
+  background-color: $second-color;
+  @include hover-transition(all 300ms ease-in-out);
+  &:hover {
+    background-color: $color-5;
+  }
+}
+
 .btn-1 {
   @extend %btn;
   padding: 5px;

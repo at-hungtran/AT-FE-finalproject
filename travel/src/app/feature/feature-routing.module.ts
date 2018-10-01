@@ -49,7 +49,7 @@ const routes: Routes = [
         loadChildren: './destinations-detail/destiantions-detail.module#DestinationsDetailModule'
       },
       {
-        path: 'user',
+        path: 'user/:id',
         loadChildren: './user/user.module#UserModule'
       }
     ]

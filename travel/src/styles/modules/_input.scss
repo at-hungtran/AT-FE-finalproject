@@ -17,6 +17,7 @@
 }
 
 .input-plan {
+  height: 35px;
   border: solid 1px $txt-color-4;
   //appearance: none;
   color: #95a5a6;
@@ -24,8 +25,13 @@
   font-size: 15px;
   padding:5px;
   border: solid 1px $border-color-1;
+  border-radius: 3px;
   &:disabled {
     background: $bg-color-6;
     cursor: no-drop;
   }
+}
+
+.input-plan[type="date"] {
+  height: 23px;
 }

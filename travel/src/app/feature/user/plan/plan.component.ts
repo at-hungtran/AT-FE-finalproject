@@ -8,6 +8,8 @@ import { FormBuilder,
   Validators,
   FormGroup,
   FormControl } from '@angular/forms';
+import { APIService } from '../../../share/service/api.service';
+import { END_POINT } from '../../../share/service/api.registry';
 
 @Component({
   selector: 'app-plan',
@@ -32,12 +34,17 @@ export class PlanComponent implements OnInit {
   startDate;
   endDate;
   listDate = [];
+  listCategory;
+  listSite;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+              private apiService: APIService) {}
 
   ngOnInit() {
     this.createForm();
     this.checkDate();
+    this.bindToListCategory();
+    this.bindToListSite();
   }
 
   openForm() {
@@ -54,10 +61,11 @@ export class PlanComponent implements OnInit {
       end: [{value: '', disabled : true}]
     });
   }
+
   checkDate() {
     this.formDate.controls.start.valueChanges
     .subscribe(startDate => {
-      this.startDate = startDate;
+      this.startDate = new Date(startDate);
       this.formDate.controls['end'].enable();
     });
 
@@ -65,10 +73,9 @@ export class PlanComponent implements OnInit {
     .subscribe(endDate => {
       this.endDate = endDate;
       this.listDate = [];
-      const listNumberDateStart = this.startDate.split('-');
-      const listNumberDateEnd = this.endDate.split('-');
-      const _endDate = new Date(listNumberDateEnd);
-      let _startDate = new Date(listNumberDateStart);
+      console.log(this.startDate.getDate());
+      const _endDate = new Date(this.endDate);
+      let _startDate = new Date(this.startDate);
       let count = 0;
       while (_startDate < _endDate) {
         if (count === 0) {
@@ -80,6 +87,18 @@ export class PlanComponent implements OnInit {
         this.listDate.push(date);
         count = 1;
       }
+    });
+  }
+
+  bindToListCategory() {
+    this.apiService.get([END_POINT.categorys]).subscribe(category => {
+      this.listCategory = category;
+    });
+  }
+
+  bindToListSite() {
+    this.apiService.get([END_POINT.sites]).subscribe(sites => {
+      this.listSite = sites;
     });
   }
 }

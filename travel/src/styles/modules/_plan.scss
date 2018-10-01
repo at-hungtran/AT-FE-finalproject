@@ -9,7 +9,7 @@
   }
   .message {
     padding-bottom: 20px;
-    font-size: $font-size-4;
+    font-size: 19px;
     color: $txt-color-3;
     border-radius: 4px;
     font-weight: 400;
@@ -78,6 +78,13 @@
     width: 100%;
     float: left;
   }
+  .btn-divi {
+    padding: 7px 34px;
+    border-radius: 3px;
+  }
+  .fa-minus {
+    padding: 0 10px;
+  }
   .input-time {
     float: left;
     margin-right: 20px;
@@ -85,16 +92,22 @@
   }
   .input-des {
     float: left;
-    //margin-right: 20px;
     width: 80%;
     margin-bottom: 10px;
     box-sizing: border-box;
   }
   .form-plan {
     .btn-medium {
-      background: #087a63;
       float: left;
       margin-right: 5px;
+      border: solid 1px;
     }
+  }
+  .wrap-item-form {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    float: left;
+    border-bottom: solid 1px #d8d8d8;
   }
 }

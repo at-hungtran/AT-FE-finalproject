@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Site } from '../../../share/model/site';
 import { trigger,
   state,
   style,
@@ -37,12 +36,13 @@ export class SearchComponent implements OnInit {
   formSearch: FormGroup;
   categoryId;
   siteId;
-  listResultSearch;
-  listResultDisplay;
+  listResultSearch = [];
+  listResultDisplay = [];
   parentId;
   listSitesNoParent;
   successShow = false;
   isShowMessage = false;
+  term;
 
   constructor(private apiService: APIService,
               private fb: FormBuilder,
@@ -56,6 +56,7 @@ export class SearchComponent implements OnInit {
     this.closeSearchService.newIsClose.subscribe(value => {
       this.successShow = value;
     });
+    this.setTerm();
   }
 
   get success() {
@@ -86,7 +87,11 @@ export class SearchComponent implements OnInit {
     .subscribe((value = '') => {
       this.siteId = this.formSearch.controls.site.value;
       this.categoryId = this.formSearch.controls.category.value;
-      this.bindToListResultSearch();
+      if (value) {
+        this.bindToListResultSearch();
+      } else {
+        this.listResultSearch.length = 0;
+      }
 
       if (this.listResultSearch.length) {
         this.showResult();
@@ -106,11 +111,11 @@ export class SearchComponent implements OnInit {
     this.listResultSearch = this.listDestinations
     .filter(item => {
       this.findParent(item.siteId);
-      if (this.categoryId === 'allCategory' && this.siteId === 'allSite') {
+      if (this.categoryId === '' && this.siteId === '') {
         return item;
-      } else if (this.categoryId === 'allCategory' && this.siteId !== 'allSite') {
+      } else if (this.categoryId === '' && this.siteId !== '') {
         return (this.parentId === this.siteId);
-      } else if (this.categoryId !== 'allCategory' && this.siteId === 'allSite') {
+      } else if (this.categoryId !== '' && this.siteId === '') {
         return (item.categoryId === this.categoryId);
       } else {
         return (item.categoryId === this.categoryId) && (this.parentId === this.siteId);
@@ -146,6 +151,12 @@ export class SearchComponent implements OnInit {
   bindToListSiteNoParent() {
     this.listSitesNoParent = this.listSites.filter(site => {
       return !site.parentId;
+    });
+  }
+
+  setTerm() {
+    this.formSearch.controls.destination.valueChanges.subscribe(des => {
+      this.term = des;
     });
   }
 
