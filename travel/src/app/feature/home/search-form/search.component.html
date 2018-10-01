@@ -26,15 +26,15 @@
       <div class="wrap-input" *ngIf="listCategorys">
         <select formControlName="category" class="input category">
           <option name="category"
-          id="allCategory"
-          class="option"
-          value="allCategory"
-          [selected]="true">All Category</option>
+            id="allCategory"
+            class="option"
+            value="allCategory"
+            [selected]="true">All Categories</option>
           <option *ngFor="let category of listCategorys"
-          name="category.name"
-          id="category.name" 
-          [value]="category._id"
-          class="option">{{category.name}}</option>
+            name="category.name"
+            id="category.name" 
+            [value]="category._id"
+            class="option">{{category.name}}</option>
         </select>
       </div>
       <div class="wrap-input">

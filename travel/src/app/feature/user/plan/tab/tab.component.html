@@ -58,7 +58,7 @@
                     id="allCategory"
                     class="option"
                     value=""
-                    [selected]="true">All Category</option>
+                    [selected]="true">All Categories</option>
                   <option *ngFor="let category of listCategory"
                     name="category.name"
                     id="category.name" 
@@ -67,24 +67,37 @@
                 </select>
                 <input (click)="getIndex(i)" class="input input-plan input-des"
                   type="text"
+                  [value]=[(valueDes[i])]
                   formControlName="destianton">
-                <div [@popOverState]="success(i)" class="wrap-suggest">
+                <input class="input input-plan input-des"
+                  type="hidden"
+                  [value]=[(valueDesId[i])]
+                  formControlName="destinationId">
+                <div [@popOverState]="success(i)"
+                    *ngIf="listResultDisplay[i]"
+                    class="wrap-suggest">
                   <ul class="list-result">
-                    <ng-container *ngFor="let result of listResultDisplay[i] | filter:term[i]; let i = index">
+                    <ng-container *ngFor="let result of listResultDisplay[i] | filter:term[i]; let index = index">
                       <li class="result-item">
-                        <a routerLink="/destinations/{{result.destinationId}}">
-                          <div class="wrap-item-result">
-                            <div class="border-image">
-                              <div class="img-des"
-                              [ngStyle]="{'background-image': 'url(' + result.image + ')'}">
-                              </div>
-                            </div>
-                            <div class="wrap-content">
-                              <p class="content">{{result.name}}</p>
-                              <strong class="address">{{result.address}}, {{result.site}}</strong>
+                        <div class="wrap-item-result">
+                          <div class="border-image">
+                            <div class="img-des"
+                            [ngStyle]="{'background-image': 'url(' + result.image + ')'}">
                             </div>
                           </div>
-                        </a>
+                          <div class="wrap-content">
+                            <p class="content">{{result.name}}</p>
+                            <strong class="address">{{result.address}}, {{result.site}}</strong>
+                            <div class="action">
+                              <p class="read-more">
+                                <a routerLink="/destinations/{{result.destinationId}}">read more</a>
+                              </p>
+                              <p (click)="choice(i, result.destinationId, result.name)" class="choice">
+                                <a>choice</a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </li>
                     </ng-container>
                   </ul>

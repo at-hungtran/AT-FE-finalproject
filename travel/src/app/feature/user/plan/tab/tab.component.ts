@@ -41,9 +41,11 @@ export class TabComponent implements OnInit {
   siteIds2 = [''];
   categoryIds = [''];
   indexInput;
-  listResultDisplay = [''];
+  listResultDisplay = [];
   successShow = [];
   term = [];
+  valueDes = [''];
+  valueDesId = [''];
 
   @Input() listSite;
   @Input() listCategory;
@@ -62,7 +64,8 @@ export class TabComponent implements OnInit {
         endTime: [''],
         site1: [''],
         site2: [''],
-        caterogyId: ['']
+        caterogyId: [''],
+        destinationId: ['']
       }
     ]
   };
@@ -73,7 +76,6 @@ export class TabComponent implements OnInit {
     this.createForm();
     this.bindToListSiteNoParent();
     this.bindToListDestinations();
-    //this.subscribeDestinationsChange();
   }
 
   SelectSiteOnChange(value, i) {
@@ -124,7 +126,8 @@ export class TabComponent implements OnInit {
         endTime: plan.endTime,
         site1: plan.site1,
         site2: plan.site2,
-        caterogyId: plan.caterogyId
+        caterogyId: plan.caterogyId,
+        destinationId: plan.destinationId
       }));
     });
   }
@@ -144,6 +147,8 @@ export class TabComponent implements OnInit {
     this.categoryIds.push('');
     this.listResultSearch.push('');
     this.listResultDisplay.push('');
+    this.valueDes.push('');
+    this.valueDesId.push('');
     const control = <FormArray>this.myForm.controls.plans;
     control.push(
       this.fb.group({
@@ -152,7 +157,8 @@ export class TabComponent implements OnInit {
         endTime: [''],
         site1: [''],
         site2: [''],
-        caterogyId: ['']
+        caterogyId: [''],
+        destiantonId: [''],
       })
     );
   }
@@ -184,10 +190,8 @@ export class TabComponent implements OnInit {
     this.myForm.controls.plans.valueChanges
     .subscribe(value => {
       this.term[this.indexInput] = value[this.indexInput].destianton;
-      if (this.term) {
+      if (this.term[this.indexInput]) {
         this.bindToListResultSearch(value, this.indexInput);
-      } else {
-        this.listResultSearch[this.indexInput].length = 0;
       }
     });
   }
@@ -222,7 +226,6 @@ export class TabComponent implements OnInit {
         return (item.categoryId === this.categoryIds[indexInput]);
       }
     });
-    console.log('result', this.listResultSearch);
     if (this.listResultSearch.length) {
       this.showResult(indexInput);
     } else {
@@ -237,6 +240,7 @@ export class TabComponent implements OnInit {
   }
 
   bindToListResultDisplay() {
+    this.listResultDisplay[this.indexInput] = [];
     this.listResultSearch.map((item, index) => {
       if (item.length) {
         this.listResultDisplay[index] = item.map(des => {
@@ -251,7 +255,6 @@ export class TabComponent implements OnInit {
         });
       }
     });
-    console.log('display', this.listResultDisplay);
   }
 
   fetchUrl(imageName) {
@@ -280,5 +283,11 @@ export class TabComponent implements OnInit {
 
   hideResult(index) {
     this.successShow[index] = false;
+  }
+  choice(index, idDes, nameDes) {
+    this.myForm.controls.plans.value[index].destianton = nameDes;
+    this.myForm.controls.plans.value[index].destiantonId = idDes;
+    this.valueDes[index] = nameDes;
+    this.valueDesId[index] = idDes;
   }
 }
