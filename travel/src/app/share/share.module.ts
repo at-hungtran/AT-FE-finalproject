@@ -18,6 +18,7 @@ import { ScrollDirective } from './directive/scroll-directive';
 import { NavigateComponent } from './component/header/navigate/navigate.component';
 import { NotifiComponent } from './component/notifi/notifi.component';
 import { CloseSearchDirestive } from './directive/click-close-search-directive';
+import { TimeLine } from './component/timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CloseSearchDirestive } from './directive/click-close-search-directive';
     NotifiComponent,
     ScrollDirective,
     NavigateComponent,
-    CloseSearchDirestive
+    CloseSearchDirestive,
+    TimeLine
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { CloseSearchDirestive } from './directive/click-close-search-directive';
     ScrollDirective,
     CloseSearchDirestive,
     NavigateComponent,
-    NotifiComponent
+    NotifiComponent,
+    TimeLine
   ]
 })
 

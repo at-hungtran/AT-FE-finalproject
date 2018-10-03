@@ -1,3 +1,164 @@
-.timeline {
-  
+.section-timeline {
+ .timeline {
+  width: 100%;
+  margin: 50px auto;
+  padding: 40px 0;
+  position: relative;
+  float: left;
+  &::before {
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    background: $bg-color-1;
+  }
+ }
+ .timeline-item {
+   width: 50%;
+   position: relative;
+   padding: 20px 40px;
+   line-height: normal;
+   box-sizing: border-box;
+   &:nth-child(odd) {
+    float: left;
+    text-align: right;
+    clear: both;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      right: -6px;
+      width: 10px;
+      height: 10px;
+      background: $primary-color;
+      border-radius: 50%; 
+      box-shadow: 0 0 0 3px #1bbc9b6b;
+    }
+    .date {
+      position: absolute;
+      top: 12px;
+      right: -165px;
+      margin: 0;
+      padding: 8px 16px;
+    }
+    .list-date {
+      .time-start, .time-end {
+        float: right;
+      }
+    }
+    .time-item {
+      float: right;
+    }
+    .img-des {
+      float: right;
+    }
+    .image-border {
+      float: right;
+    }
+    .info-timeline {
+      float: right;
+    }
+    .category {
+      float: right;
+    }
+   }
+   &:nth-child(even) {
+    float: right;
+    text-align: left;
+    clear: both;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: -4px;
+      width: 10px;
+      height: 10px;
+      background: $primary-color;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px #1bbc9b6b;
+     }
+     .date {
+      position: absolute;
+      top: 12px;
+      left: -165px;
+      margin: 0;
+      padding: 8px 16px;
+     }
+     .list-date {
+      .time-start, .time-end {
+        float: left;
+      }
+      .time-end {
+        padding-left: 10px;
+      }
+    }
+    .time-item {
+      float: left;
+    }
+    .img-des {
+      float: left;
+    }
+    .image-border {
+      float: left;
+    }
+    .category {
+      float: left;
+    }
+   }
+  }
+ .time-item {
+  width: 80%;
+  padding: 13px;
+  margin-bottom: 10px;
+  background: $bg-color-6;
+  font-size: 14px;
+  border-radius: 5px;
+ }
+ .time {
+   font-size: 12px;
+ }
+ .destinations {
+   font-weight: bold;
+   font-size: 13px;
+ }
+ .addess {
+   color: $txt-color-1;
+   font-size: 12px;
+ }
+ .sites {
+  color: $txt-color-1;
+  font-size: 12px;
+ }
+ .date {
+  color: $w-color;
+  background: $primary-color;
+  border-radius: 5px;
+  font-size: 13px;
+ }
+ .image-border {
+   width: 30%;
+   box-sizing: border-box;
+ }
+ .info-timeline {
+   width: 70%;
+   padding: 5px 10px;
+   box-sizing: border-box;
+ }
+ .img-des {
+  width: 70px;
+  height: 70px;
+  @include background-size(cover);
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  }
+  .category {
+    background: $third-color;
+    color: $w-color;
+    font-size: 11px;
+    padding: 2px 5px;
+    border-radius: 2px;
+  }
 }

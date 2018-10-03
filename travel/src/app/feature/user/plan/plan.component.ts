@@ -39,6 +39,7 @@ export class PlanComponent implements OnInit {
   listCategory;
   listSite;
   isSaveAllVisible;
+  test = false;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
