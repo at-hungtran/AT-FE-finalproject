@@ -11,11 +11,13 @@
                 <input placeholder="Time:"
                   class="input input-plan input-time"
                   formControlName="startTime"
+                  (click)="getIndex(i)"
                   [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
                 <owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
                 <input placeholder="Time:"
                   class="input input-plan input-time"
                   formControlName="endTime"
+                  (click)="getIndex(i)"
                   [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
                 <owl-date-time [pickerType]="'timer'" #dt1></owl-date-time>
                 <button class="btn btn-border-green btn-divi"
@@ -68,11 +70,19 @@
                 <input (click)="getIndex(i)" class="input input-plan input-des"
                   type="text"
                   [value]=[(valueDes[i])]
+                  formControlName="destinationSubget">
+                <input class="input input-plan input-des"
+                  type="hidden"
+                  [value]=[(valueDes[i])]
                   formControlName="destination">
                 <input class="input input-plan input-des"
                   type="hidden"
                   [value]=[(valueDesId[i])]
                   formControlName="destinationId">
+                  <input class="input input-plan input-des"
+                  type="hidden"
+                  [value]=[(valueDesAddress[i])]
+                  formControlName="destiantionsAddress">
                 <div [@popOverState]="success(i)"
                     *ngIf="listResultDisplay[i]"
                     class="wrap-suggest">
@@ -92,7 +102,7 @@
                               <p class="read-more">
                                 <a routerLink="/destinations/{{result.destinationId}}">read more</a>
                               </p>
-                              <p (click)="choice(i, result.destinationId, result.name)" class="choice">
+                              <p (click)="choice(i, result.destinationId, result.name, result.address)" class="choice">
                                 <a>choice</a>
                               </p>
                             </div>
@@ -106,20 +116,37 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-green btn-medium">Add</button>
+        <button type="submit" [disabled]="!myForm.valid" class="btn btn-green btn-medium">Add</button>
       </form>
       <button *ngIf="isFromVisible" class="btn btn-medium btn-border-green"
       (click)="addNewPlan()">
         <i class="fas fa-plus"></i>
       </button>
       <div *ngIf="!isFromVisible" class="wrap-plans-input">
-        <div class="wrap-content">
+        <div class="wrap-content-result">
           <ul class="list-info">
             <li class="info-item" *ngFor="let plan of listPlans">
-              <p class="info-item">Start: {{plan.startTime}}</p>
-              <p class="info-item">End:  {{plan.endTime}}</p>
-              <p class="info-item">Destination: {{plan.destination}}</p>
-              <p class="info-item">Address:</p>
+              <div class="wrap-time">
+                <p class="info-plan time start">
+                  <span class="label">Start:</span>
+                  <span class="content"> {{plan.startTime | date:'shortTime' }}</span>
+                </p>
+                <p class="info-plan time end">
+                  <span class="label">End:</span>
+                  <span class="content"> {{plan.endTime | date:'shortTime'}}</span>
+                </p>
+              </div>
+              <div class="wrap-des-info">
+                <p class="info-plan">
+                  <span class="label">Destiantion:</span>
+                  <span class="content"> {{plan.destination}}</span>
+                </p>
+                <p class="info-plan">
+                  <span class="label">Address:</span> 
+                  <span class="content"> {{plan.destiantionsAddress}}</span>
+                  <span class="content" *ngFor="let address of listAddress">, {{address}}</span>
+                </p>
+              </div>
             </li>
           </ul>
         </div>

@@ -9,6 +9,10 @@ import { TabComponent } from '../tab/tab.component';
 export class TabsComponent implements OnInit {
   tabs: TabComponent[] = [];
 
+  constructor() {}
+
+  ngOnInit() {}
+
   addTab(tab: TabComponent) {
     if (this.tabs.length === 0) {
       tab.active = true;
@@ -20,10 +24,6 @@ export class TabsComponent implements OnInit {
     }
     this.tabs.push(tab);
   }
-
-  constructor() {}
-
-  ngOnInit() {}
 
   selectTab(tab) {
     this.tabs.forEach((item) => {

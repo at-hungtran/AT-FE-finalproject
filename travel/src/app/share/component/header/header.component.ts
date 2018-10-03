@@ -94,7 +94,10 @@ export class HeaderComponent implements OnInit, OnChanges {
   setUser() {
     if (this.token) {
       this.apiService.getWithToken([END_POINT.auth, END_POINT.me], this.token)
-      .subscribe(user => this.user = user);
+      .subscribe(user => {
+        this.user = user;
+        this.checkLoginService.setUserInfo(this.user);
+      });
     }
   }
 

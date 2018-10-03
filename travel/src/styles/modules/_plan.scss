@@ -166,4 +166,40 @@
       float: left;
     }
   }
+
+  .wrap-content-result {
+    float: left;
+    width: 70%;
+    .content {
+      font-size: 15px;
+
+    }
+    .time {
+      float: left;
+    }
+    .end {
+      padding-left: 10px;
+    }
+    .wrap-des-info {
+      float: left;
+      width: 100%;
+    }
+    .info-item {
+      margin-bottom: 15px;
+      line-height: 25px;
+      padding: 10px;
+      width: 100%;
+      border: solid 2px;
+      border-radius: 3px;
+      border-color: $primary-color;
+      background: #f9f9f9;
+    }
+  }
+  .wrap-btn-save {
+    float: left;
+  }
+  .btn-save-all {
+    padding: 20px 15px;
+    font-size: 13px;
+  }
 }

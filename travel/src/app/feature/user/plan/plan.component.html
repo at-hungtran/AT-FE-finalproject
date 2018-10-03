@@ -22,6 +22,12 @@
       <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
     </form>
   </div>
+  <div *ngIf="isSaveAllVisible" class="wrap-btn-save">
+    <button (click)="sendToServer()" class="btn btn-green btn-save-all">
+      <i class="fas fa-check"></i>
+      Save All
+    </button>
+  </div>
   <div *ngIf="listDate.length" class="wrap-create-plan">
     <app-tabs>
       <app-tab *ngFor="let tab of listDate" 

@@ -10,6 +10,8 @@ import { FormBuilder,
   FormControl } from '@angular/forms';
 import { APIService } from '../../../share/service/api.service';
 import { END_POINT } from '../../../share/service/api.registry';
+import { PlansService } from '../../../share/service/plans.service';
+import { CheckUserService } from '../../../share/service/check-user.service';
 
 @Component({
   selector: 'app-plan',
@@ -36,15 +38,20 @@ export class PlanComponent implements OnInit {
   listDate = [];
   listCategory;
   listSite;
+  isSaveAllVisible;
 
   constructor(private fb: FormBuilder,
-              private apiService: APIService) {}
+              private apiService: APIService,
+              private plansService: PlansService,
+              private checkUserService: CheckUserService) {}
 
   ngOnInit() {
     this.createForm();
     this.checkDate();
     this.bindToListCategory();
     this.bindToListSite();
+    this.plansService.isSaveAllVisibleChange
+    .subscribe(value => this.isSaveAllVisible = value);
   }
 
   openForm() {
@@ -57,7 +64,7 @@ export class PlanComponent implements OnInit {
 
   createForm() {
     this.formDate = this.fb.group({
-      start: ['',  [Validators.required]],
+      start: ['', [Validators.required]],
       end: [{value: '', disabled : true}]
     });
   }
@@ -73,7 +80,6 @@ export class PlanComponent implements OnInit {
     .subscribe(endDate => {
       this.endDate = endDate;
       this.listDate = [];
-      console.log(this.startDate.getDate());
       const _endDate = new Date(this.endDate);
       let _startDate = new Date(this.startDate);
       let count = 0;
@@ -100,5 +106,17 @@ export class PlanComponent implements OnInit {
     this.apiService.get([END_POINT.sites]).subscribe(sites => {
       this.listSite = sites;
     });
+  }
+
+  sendToServer() {
+    const user = this.checkUserService.getUserInfo();
+    const body = {
+      userId: user._id,
+      plans: this.plansService.getPlans()
+    };
+    this.apiService.post([END_POINT.plans], body)
+    .subscribe(message =>
+      console.log(message)
+    );
   }
 }
