@@ -51,6 +51,10 @@ const routes: Routes = [
       {
         path: 'user/:id',
         loadChildren: './user/user.module#UserModule'
+      },
+      {
+        path: 'site',
+        loadChildren: './home/home.module#HomeModule'
       }
     ]
   }

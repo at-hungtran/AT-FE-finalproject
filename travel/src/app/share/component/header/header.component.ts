@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit, OnChanges {
     },
     {
       name: 'Site',
-      routerLink: '/nothing'
+      routerLink: '/site'
     },
     {
       name: 'Destination',
