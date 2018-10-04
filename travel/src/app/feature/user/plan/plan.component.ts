@@ -12,7 +12,9 @@ import { APIService } from '../../../share/service/api.service';
 import { END_POINT } from '../../../share/service/api.registry';
 import { PlansService } from '../../../share/service/plans.service';
 import { CheckUserService } from '../../../share/service/check-user.service';
+import { StorageService } from '../../../share/service/storage.service';
 
+const KEY = 'token';
 @Component({
   selector: 'app-plan',
   templateUrl: './plan.component.html',
@@ -39,20 +41,31 @@ export class PlanComponent implements OnInit {
   listCategory;
   listSite;
   isSaveAllVisible;
-  test = false;
+  Listplans;
+  user;
+  token;
+  isPlansVisible = false;
+  isOpenForm = false;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
               private plansService: PlansService,
-              private checkUserService: CheckUserService) {}
+              private checkUserService: CheckUserService,
+              private storageService: StorageService) {}
 
   ngOnInit() {
     this.createForm();
     this.checkDate();
     this.bindToListCategory();
     this.bindToListSite();
+    this.setToken();
+    this.setUser();
     this.plansService.isSaveAllVisibleChange
     .subscribe(value => this.isSaveAllVisible = value);
+    this.plansService.isFormOpen.subscribe(value => {
+      this.isOpenForm = value;
+      this.openForm();
+    });
   }
 
   openForm() {
@@ -116,8 +129,27 @@ export class PlanComponent implements OnInit {
       plans: this.plansService.getPlans()
     };
     this.apiService.post([END_POINT.plans], body)
-    .subscribe(message =>
-      console.log(message)
-    );
+    .subscribe(message => {
+      console.log(message);
+      this.plansService.updateListPlans(true);
+    });
+  }
+
+  setUser() {
+    this.apiService.getWithToken([END_POINT.auth, END_POINT.me], this.token)
+    .subscribe(user => {
+      this.user = user;
+      this.bindToListPlans();
+    });
+  }
+
+  setToken() {
+    this.token = this.storageService.get(KEY);
+  }
+
+  bindToListPlans() {
+    this.apiService.get([END_POINT.plans], this.user._id).subscribe(plans => {
+      this.Listplans = plans;
+    });
   }
 }

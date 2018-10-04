@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input } from '@angular/core';
 import { Article } from '../../model/article';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-article',
@@ -9,13 +10,12 @@ import { Article } from '../../model/article';
 export class ArticleComponent implements OnChanges {
   @Input() article: Article;
   imgafetchUrl;
-  url = 'http://localhost:3000/uploads/';
 
   ngOnChanges() {
     this.fetchUrl();
   }
 
   fetchUrl() {
-    this.imgafetchUrl = this.url + this.article.listPictures[0].name;
+    this.imgafetchUrl = environment.img_url + this.article.listPictures[0].name;
   }
 }

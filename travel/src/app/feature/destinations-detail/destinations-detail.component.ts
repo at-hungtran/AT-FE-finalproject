@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APIService } from '../../share/service/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { END_POINT } from '../../share/service/api.registry';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-destinations-detail',
@@ -15,8 +16,6 @@ export class DestinationsDetailComponent implements OnInit {
   listPicture;
   listSite;
   listParent = [];
-
-  url = 'http://localhost:3000/uploads/';
 
   constructor(private apiService: APIService,
               private route: ActivatedRoute) {}
@@ -40,7 +39,7 @@ export class DestinationsDetailComponent implements OnInit {
   }
 
   fetchUrl(picName) {
-    return this.imgafetchUrl = this.url + picName;
+    return this.imgafetchUrl = environment.img_url + picName;
   }
 
   bindToListSite() {

@@ -9,6 +9,10 @@ export class PlansService {
   plans = [];
   isSaveAllVisible = false;
   isSaveAllVisibleChange = new BehaviorSubject(this.isSaveAllVisible);
+  isFormOpenDf = false;
+  isFormOpen = new BehaviorSubject(this.isFormOpenDf);
+  isListPlansUpdateDf = false;
+  isListPlansUpdate = new BehaviorSubject(this.isListPlansUpdateDf);
 
   constructor() {}
 
@@ -22,5 +26,13 @@ export class PlansService {
 
   saveAllSuccess(isVisible) {
     this.isSaveAllVisibleChange.next(isVisible);
+  }
+
+  openForm(isFormOpen) {
+    this.isFormOpen.next(isFormOpen);
+  }
+
+  updateListPlans(isListPlansUpdate) {
+    this.isListPlansUpdate.next(isListPlansUpdate);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter, SimpleChanges  } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-slider',
@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class SliderComponent implements OnInit, OnChanges {
   @Input() listImg;
-  url = 'http://localhost:3000/uploads/';
+
   listImgAfterFetch = [];
 
   config: SwiperOptions = {
@@ -35,7 +35,7 @@ export class SliderComponent implements OnInit, OnChanges {
       return this.listImgAfterFetch = this.listImg.map(item => {
         return {
           name: item.name,
-          backgroundImg: this.url + item.backgroundImg
+          backgroundImg: environment.img_url + item.backgroundImg
         };
       });
     }
