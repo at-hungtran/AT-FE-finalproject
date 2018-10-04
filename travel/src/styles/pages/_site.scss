@@ -59,3 +59,29 @@
     }
   }
 }
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  .site-page .site-list-inner .site-list-destination .site-list-destination-item {
+    width: 50%;
+  }
+  .site-page {
+    .wrap-content-site {
+      width: 100%;
+    }
+    .wrap-sidebar {
+      width: 100%;
+      float: none;
+      padding-top: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .site-page .site-list-inner .site-list-destination .site-list-destination-item {
+    width: 100%;
+  }
+}

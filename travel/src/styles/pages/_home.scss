@@ -77,5 +77,52 @@
       font-size: $font-size-4;
       padding: 10px 0 50px;
     }
+    .card-content {
+      height: 170px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home-page .section-most-destination .destination-item  {
+    width: 50%;
+  }
+  .home-page .section-site .site-item {
+    width: 50%;
+  }
+  .home-page .section-article .article-item {
+    width: 100%;
+  }
+  .article-row {
+    .article-row-description {
+      line-height: 25px;
+    }
+    .article-row-title {
+      font-size: $font-size-1;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .home-page .section-most-destination .destination-item {
+    width: 100%;
+  }
+  .home-page .section-site .site-item {
+    width: 100%;
+  }
+  .article-row {
+    .article-row-title {
+      font-size: 10px;
+    }
+    .article-row-description {
+      line-height: 20px;
+      font-size: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  body {
+    font-size: 10px;
   }
 }
