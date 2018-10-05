@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: './home/home.module#HomeModule',
       },
       {
+        path: 'site',
+        loadChildren: './allsite/allsite.module#AllSiteModule'
+      },
+      {
         path: 'site/:id',
         loadChildren: './site/site.module#SiteModule'
       },
@@ -45,16 +49,16 @@ const routes: Routes = [
         loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
       },
       {
+        path: 'destinations',
+        loadChildren: './alldestination/alldes.module#AllDesModule'
+      },
+      {
         path: 'destinations/:id',
         loadChildren: './destinations-detail/destiantions-detail.module#DestinationsDetailModule'
       },
       {
         path: 'user/:id',
         loadChildren: './user/user.module#UserModule'
-      },
-      {
-        path: 'site',
-        loadChildren: './home/home.module#HomeModule'
       }
     ]
   }

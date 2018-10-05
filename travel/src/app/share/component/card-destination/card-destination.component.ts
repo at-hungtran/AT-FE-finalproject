@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Destination } from '../../model/destination';
 import { APIService } from '../../service/api.service';
 import { END_POINT } from '../../service/api.registry';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-card-destination',
@@ -21,7 +22,6 @@ export class CardComponent implements OnChanges, OnInit {
   siteId;
   listSiteId = [];
   parentSite;
-  url = 'http://localhost:3000/uploads/';
 
   ngOnChanges() {
     this.siteId = this.destination.siteId;
@@ -34,7 +34,7 @@ export class CardComponent implements OnChanges, OnInit {
   }
 
   fetchUrl() {
-    this.imgafetchUrl = this.url + this.destination.listPictures[0].name;
+    this.imgafetchUrl = environment.img_url + this.destination.listPictures[0].name;
   }
 
   randomColor() {

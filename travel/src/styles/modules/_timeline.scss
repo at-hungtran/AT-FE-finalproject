@@ -1,19 +1,66 @@
 .section-timeline {
- .timeline {
-  width: 100%;
-  margin: 50px auto;
-  padding: 40px 0;
-  position: relative;
-  float: left;
-  &::before {
-    content: '';
-    width: 2px;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    background: $bg-color-1;
+  .user {
+    width: 100%;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+    .user-avatar {
+      width: 60px;
+      height: 60px;
+      float: left;
+      @include background-size(cover);
+      position: relative;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+    }
+    .user-text {
+      float: left;
+      padding: 15px;
+    }
+    .time-create {
+      padding-top: 5px;
+      font-size: 13px
+    }
+    .action {
+      float: right;
+    }
+    .btn-edit {
+      margin-left: 10px;
+      padding: 5px 12px;
+      border: solid 1px;
+      border-color: $primary-color;
+      border-radius: 4px;
+      background: white;
+      color: $primary-color;
+      font-size: 13px;
+    }
   }
- }
+  .timeline {
+    width: 100%;
+    float: left;
+    padding: 10px 0;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 15px 0;
+    background: $w-color;
+  
+  }
+  .timeline-list {
+    width: 100%;
+    float: left;
+    padding-top: 20px;
+    position: relative;
+    &::before {
+      content: '';
+      width: 2px;
+      height: 90%;
+      position: absolute;
+      left: 50%;
+      background: $bg-color-8;
+    }
+  }
  .timeline-item {
    width: 50%;
    position: relative;
@@ -62,6 +109,9 @@
     .category {
       float: right;
     }
+    .time-end {
+      padding-right: 5px;
+    }
    }
    &:nth-child(even) {
     float: right;
@@ -89,9 +139,9 @@
       .time-start, .time-end {
         float: left;
       }
-      .time-end {
-        padding-left: 10px;
-      }
+    }
+    .info-timeline {
+      float: left;
     }
     .time-item {
       float: left;
@@ -105,10 +155,16 @@
     .category {
       float: left;
     }
+    .time-start {
+      padding-left: 5px;
+    }
+    .time-end {
+      padding-left: 0;
+    }
    }
   }
  .time-item {
-  width: 80%;
+  width: 90%;
   padding: 13px;
   margin-bottom: 10px;
   background: $bg-color-6;
@@ -120,7 +176,7 @@
  }
  .destinations {
    font-weight: bold;
-   font-size: 13px;
+   font-size: 12px;
  }
  .addess {
    color: $txt-color-1;
@@ -142,7 +198,7 @@
  }
  .info-timeline {
    width: 70%;
-   padding: 5px 10px;
+   padding: 5px 0;
    box-sizing: border-box;
  }
  .img-des {

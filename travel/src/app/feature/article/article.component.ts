@@ -32,9 +32,10 @@ export class ArticlePageComponent implements OnInit {
   }
 
   setArticle() {
-    this.apiService.get([END_POINT.articles], this.articleId)
-    .subscribe(item => {
+    this.apiService.get([END_POINT.articles], this.articleId).subscribe(item => {
       this.article = item;
+      console.log(item);
     });
+    
   }
 }

@@ -9,6 +9,7 @@ import { APIService } from '../../../share/service/api.service';
 import { END_POINT } from '../../../share/service/api.registry';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CloseSearchService } from '../../../share/service/close-search.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-search',
@@ -31,7 +32,6 @@ export class SearchComponent implements OnInit {
   @Input() listSites;
   @Input() listDestinations;
 
-  url = 'http://localhost:3000/uploads/';
   listCategorys;
   formSearch: FormGroup;
   categoryId;
@@ -80,6 +80,7 @@ export class SearchComponent implements OnInit {
   search() {
     this.categoryId = this.formSearch.controls.category.value;
     this.siteId = this.formSearch.controls.site.value;
+    console.log(this.categoryId, this.siteId);
   }
 
   suggestionsSearch() {
@@ -161,7 +162,7 @@ export class SearchComponent implements OnInit {
   }
 
   fetchUrl(imageName) {
-    return this.url + imageName;
+    return environment.img_url + imageName;
   }
 
   showResult() {

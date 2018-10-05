@@ -1,17 +1,19 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Directive,
-         HostListener,
-         ElementRef,
-         Renderer2 } from '@angular/core';
+        HostListener,
+        ElementRef,
+        Renderer2 } from '@angular/core';
 import { trigger,
-         state,
-         style,
-         animate,
-         transition } from '@angular/animations';
+        state,
+        style,
+        animate,
+        transition } from '@angular/animations';
+
 import { CheckUserService } from '../../service/check-user.service';
 import { StorageService } from '../../service/storage.service';
 import { APIService } from '../../service/api.service';
 import { END_POINT } from '../../service/api.registry';
+import { environment } from '../../../../environments/environment';
 
 const KEY = 'token';
 @Component({
@@ -40,7 +42,6 @@ export class HeaderComponent implements OnInit, OnChanges {
   isOpen = false;
   token;
   user;
-  url = 'http://localhost:3000/uploads/';
   avatarDefault = '../../../../assets/images/default-avt.jpg';
 
   constructor(private checkLoginService: CheckUserService,
@@ -60,7 +61,7 @@ export class HeaderComponent implements OnInit, OnChanges {
     },
     {
       name: 'Destination',
-      routerLink: '/nothing2'
+      routerLink: '/destinations'
     }
   ];
 
@@ -107,7 +108,7 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   fetchUrl() {
     if (this.user.avatar) {
-      return this.url + this.user.avatar;
+      return environment.img_url + this.user.avatar;
     }
     return this.avatarDefault;
   }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://172.17.19.67:3000'
+  api_url: 'http://172.17.19.68:3000',
+  img_url: 'http://172.17.19.68:3000/uploads/'
 };
 
 /*

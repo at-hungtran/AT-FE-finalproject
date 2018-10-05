@@ -1,0 +1,44 @@
+<div class="main-page">
+  <div class="search-allsite clearfix">
+    <form class="form-search"
+    [formGroup]="formSearch"
+    (ngSubmit)="search(formSearch)">
+      <div class="wrap-input">
+        <input formControlName="site"
+        type="text"
+        class="input"
+        placeholder="Insert keyword">
+      </div>
+      <div class="wrap-input">
+        <button class="btn btn-green btn-medium btn-search" type="submit"><i class="fas fa-search"></i>Search</button>
+      </div>
+    </form>
+    <div [@popOverState]="success" class="wrap-suggest" *ngIf="state">
+        <ul class="list-result">
+          <ng-container>
+              <li class="result-item" *ngFor="let item of listeSiteSearch | filter:term; let i = index">
+                  <a routerLink="/site/{{item._id}}">
+                  <div class="wrap-item-result">
+                    <div class="wrap-content">
+                      <p class="content">{{item.name}}</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+          </ng-container>
+          <li class="result-item" *ngIf="( listeSiteSearch | filter:term ).length === 0">No matching elements</li>
+        </ul>
+    </div>
+  </div>
+  <div class="allsite-page">
+    <div class="container">
+      <ul class="list-site clearfix">
+        <li class="site-item" *ngFor="let site of listSites">
+          <div class="card-border">
+            <app-card-site [site]="site"></app-card-site>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
