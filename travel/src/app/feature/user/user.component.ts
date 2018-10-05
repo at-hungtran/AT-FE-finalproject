@@ -30,7 +30,6 @@ export class UserComponent implements OnInit {
               private apiService: APIService,
               private route: ActivatedRoute) {}
 
-
   ngOnInit() {
     this.userId = this.route.snapshot.params['id'];
     this.setUser();

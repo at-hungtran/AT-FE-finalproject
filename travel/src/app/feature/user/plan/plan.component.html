@@ -1,7 +1,7 @@
-<div class="plan">
+<div *ngIf="isShowPlan" class="plan">
   <div class="wrap-plan">
     <div class="wrap-plan">
-      <div *ngIf="!Listplans" class="wrap-message">
+      <div *ngIf="Listplans.length === 0" class="wrap-message">
         <p class="message">Can Not Found</p>
         <button class="btn btn-medium btn-green" 
         (click)="openForm()">Create your plan</button>
@@ -14,12 +14,14 @@
           <input placeholder="Date:"
             class="input-plan"
             formControlName="start"
+            readonly
             [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
           <span class="to">to</span>
           <input placeholder="Date:"
             class="input-plan"
             formControlName="end"
+            readonly
             [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
           <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
         </form>

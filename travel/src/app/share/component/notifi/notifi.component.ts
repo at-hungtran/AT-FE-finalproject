@@ -17,7 +17,7 @@ import { DialogService } from '../../service/dialog.service';
         opacity: 1
       })),
       state('hide', style({
-        transform: 'translate(0,200px)',
+        transform: 'translate(0,100vh)',
         opacity: 0
       })),
       transition('show => hide', animate('200ms ease-in-out')),
@@ -32,6 +32,7 @@ export class NotifiComponent implements OnInit {
   message = '';
   successShow = false;
   errorShow = false;
+  infoShow = false;
 
   constructor(private dialogService: DialogService) {}
 
@@ -47,17 +48,28 @@ export class NotifiComponent implements OnInit {
     return this.errorShow ? 'show' : 'hide';
   }
 
+  get info() {
+    return this.infoShow ? 'show' : 'hide';
+  }
+
   onpenDialog() {
     this.dialogService.newModalName.subscribe(name => {
       this.setMessage();
       if (name === 'login-success') {
         this.errorShow = false;
+        this.infoShow = false;
         this.successShow = true;
         this.closeDialog('login-success');
       } else if (name === 'login-error') {
         this.successShow = false;
+        this.infoShow = false;
         this.errorShow = true;
         this.closeDialog('login-error');
+      } else if (name === 'notifi-info') {
+        this.successShow = false;
+        this.errorShow = false;
+        this.infoShow = true;
+        this.closeDialog('notifi-info');
       }
     });
   }
@@ -79,6 +91,8 @@ export class NotifiComponent implements OnInit {
       this.successShow = false;
     } else if (dialogName === 'login-error') {
       this.errorShow = false;
+    } else if (dialogName === 'notifi-info') {
+      this.infoShow = false;
     }
   }
 }
