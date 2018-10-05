@@ -16,6 +16,10 @@
   color: $primary-color;
 }
 
+.active-tab-user {
+  border-top: solid 2px;
+}
+
 .left-side {
   float: left;
 }
@@ -30,6 +34,10 @@
 
 .error {
   background: #dc3545;
+}
+
+.notifi-info {
+  background: $third-color;
 }
 
 .block {

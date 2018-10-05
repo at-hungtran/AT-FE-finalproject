@@ -29,10 +29,6 @@ export class LoginComponent implements OnInit {
   show = false;
   loader = false;
 
-  get stateName() {
-    return this.show ? 'show' : 'hide';
-  }
-
   constructor(private fb: FormBuilder,
               private apiService: APIService,
               private storageService: StorageService,
@@ -42,6 +38,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+  }
+
+  get stateName() {
+    return this.show ? 'show' : 'hide';
   }
 
   createForm() {
@@ -85,9 +85,7 @@ export class LoginComponent implements OnInit {
       this.dialogService.openDialog('login success', 'login-success');
       this.checkUserService.isUserLogin(true);
       this.loader = false;
-      setTimeout(() => {
-        this.router.navigate(['/home']);
-      }, 1000);
+      this.router.navigate(['/home']);
     }, err => {
       this.dialogService.openDialog(err.error.error, 'login-error');
       this.loader = false;

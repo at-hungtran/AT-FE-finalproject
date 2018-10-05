@@ -1,48 +1,40 @@
 <div class="wrap-background-header">
-  <app-header-background></app-header-background>
+  <app-header-background *ngIf="site" [site]="site"></app-header-background>
 </div>
 <div class="site-page clearfix">
   <div class="container">
-    <app-title></app-title>
+    <app-title *ngIf="site" [site]="site"></app-title>
   </div>
   <section class="section-site">
     <div class="container">
       <div class="clearfix">
       <div class="wrap-content-site">
-        <div class="wrap-detail">
-          <app-card-detail></app-card-detail>
+        <div class="wrap-detail" *ngIf="site">
+          <p class="article-site">{{site.articleSite}}</p>
         </div>
         <h2 class="site-title">view the photos</h2>
         <div class="wrap-slider">
-          <app-slider></app-slider>
+          <app-slider *ngIf="site" [listImg]="listBackground"></app-slider>
         </div>
       </div>
       <div class="wrap-sidebar">
-        <h3 class="site-title">best promotions</h3>
+        <h3 class="site-title">article related</h3>
         <div class="wrap-detail">
-          <app-article></app-article>
-        </div>
-        <div class="wrap-destination">
-          <app-card-site></app-card-site>
+          <ul class="list-card-article">
+            <li class="card-item"
+            *ngFor="let article of listArticle; let i = index">
+              <app-article *ngIf="i<3" [article]="article"></app-article>
+            </li>
+          </ul>
         </div>
       </div>
       </div>
       <div class="site-list-inner">
         <h2 class="site-title">you may also like</h2>
         <ul class="site-list-destination clearfix">
-          <li class="site-list-destination-item">
+          <li class="site-list-destination-item" *ngFor="let destination of listDestinationsChil">
             <div class="site-list-card-border">
-              <app-card-destination></app-card-destination>
-            </div>
-          </li>
-          <li class="site-list-destination-item">
-            <div class="site-list-card-border">
-              <app-card-destination></app-card-destination>
-            </div>
-          </li>
-          <li class="site-list-destination-item">
-            <div class="site-list-card-border">
-              <app-card-destination></app-card-destination>
+              <app-card-destination [destination]="destination"></app-card-destination>
             </div>
           </li>
         </ul>

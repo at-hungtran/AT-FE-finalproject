@@ -2,6 +2,10 @@
   <div class="login-border">
     <div class="head"></div>
     <div *ngIf="loader" class="loader"></div>
+    <div class="logo-border">
+      <a><img class="logo" src="../../../../assets/images/logo.png" alt="logo"></a>
+    </div>
+    <p class="text">Travel is the best</p>
     <h2 class="title">Login</h2>
     <form class="form-login" [formGroup]="formLogin" (ngSubmit)="login(formLogin)">
       <input class="input input-login" type="text" placeholder="User Name" formControlName="userName">

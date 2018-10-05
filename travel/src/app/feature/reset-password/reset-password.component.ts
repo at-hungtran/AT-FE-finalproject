@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { APIService } from '../../share/service/api.service';
 import { DialogService } from '../../share/service/dialog.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { END_POINT } from '../../share/service/api.registry';
+import { StorageService } from '../../share/service/storage.service';
+import { CheckUserService } from '../../share/service/check-user.service';
 
 const MAX_LENGTH_USERNAME = 5;
 const MIN_LENGTH_USERNAME = 20;
 const MAX_LENGTH_PASSWORD = 5;
 
+const KEY = 'token';
 @Component({
   selector: 'app-reset-password-page',
   templateUrl: './reset-password.component.html'
@@ -25,7 +28,8 @@ export class ResetComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private apiService: APIService,
               private dialogService: DialogService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
     this.createForm();
@@ -79,6 +83,7 @@ export class ResetComponent implements OnInit {
       this.apiService.post([END_POINT.auth, END_POINT.reset, this.token], body).subscribe(res => {
         this.dialogService.openDialog('Password was change', 'login-success');
         this.loader = false;
+        this.router.navigate(['/login']);
       }, err => {
         this.dialogService.openDialog(err.error.message, 'login-error');
         this.loader = false;

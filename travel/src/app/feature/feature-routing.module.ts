@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatureComponent } from './feature.component';
+import { AuthGuard } from '../auth-guard/auth-guard';
 
 const routes: Routes = [
   { path: '',
@@ -15,7 +16,7 @@ const routes: Routes = [
         loadChildren: './home/home.module#HomeModule',
       },
       {
-        path: 'site',
+        path: 'site/:id',
         loadChildren: './site/site.module#SiteModule'
       },
       {
@@ -23,12 +24,13 @@ const routes: Routes = [
         loadChildren: './search/search.module#PageSearchModule'
       },
       {
-        path: 'articles',
+        path: 'article/:id',
         loadChildren: './article/article.module#ArticlePageModule'
       },
       {
         path: 'login',
-        loadChildren: './login/login.module#LoginModule'
+        loadChildren: './login/login.module#LoginModule',
+        canActivate: [AuthGuard]
       },
       {
         path: 'register',
@@ -41,6 +43,14 @@ const routes: Routes = [
       {
         path: 'reset/:token',
         loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+      },
+      {
+        path: 'destinations/:id',
+        loadChildren: './destinations-detail/destiantions-detail.module#DestinationsDetailModule'
+      },
+      {
+        path: 'user/:id',
+        loadChildren: './user/user.module#UserModule'
       }
     ]
   }
@@ -49,7 +59,7 @@ const routes: Routes = [
 @NgModule({
   imports: [ RouterModule.forChild(routes) ],
   exports: [ RouterModule ],
-  providers: []
+  providers: [ AuthGuard ]
 })
 
 export class FeatureRoutingModule {}

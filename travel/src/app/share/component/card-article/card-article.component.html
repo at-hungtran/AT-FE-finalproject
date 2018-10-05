@@ -1,15 +1,19 @@
 <article class="article-row clearfix">
-  <div class="article-img">
+  <div class="article-img" *ngIf="article" routerLink="/article/{{article._id}}">
     <div class="article-img-inner"
-    style="background-image: url('http://www.nicdarkthemes.com/themes/travel/wp/demo/travel/wp-content/uploads/sites/2/2018/03/package-berlin.jpg')"
-    >
+    [ngStyle]="{'background-image': 'url(' + imgafetchUrl + ')'}">
     </div>
   </div>
   <div class="article-row-content">
-    <h2 class="article-row-title"><a href="#">rome</a></h2>
-    <p class="article-row-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut efficitur ante. Donec dapibus dictum scelerisque.</p>
-    <div class="article-button">
-      <button class="btn btn-small btn-blue">details</button>
+    <div class="wrap-title">
+      <h2 class="article-row-title">
+        <a routerLink="/article/{{article._id}}">{{article.title}}</a>
+      </h2>
+    </div>
+    <p class="article-row-description">{{article.descriptions | truncate : 100}}</p>
+    <div class="article-button" routerLink="/article/{{article._id}}">
+      <span class="title">readmore</span>
+      <i class="fas fa-chevron-circle-right"></i>
     </div>
   </div>
 </article>

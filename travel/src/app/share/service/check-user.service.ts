@@ -7,6 +7,8 @@ import { AuthGuardService } from './auth-guard.service';
 })
 
 export class CheckUserService {
+  user;
+
   constructor(private authGuardService: AuthGuardService) {}
 
   curranceIsLogin = this.authGuardService.getToken() ? true : false;
@@ -14,5 +16,13 @@ export class CheckUserService {
 
   isUserLogin(isLogin: boolean) {
     this.isLogin.next(isLogin);
+  }
+
+  setUserInfo(user) {
+    this.user = user;
+  }
+
+  getUserInfo() {
+    return this.user;
   }
 }

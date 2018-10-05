@@ -1,0 +1,11 @@
+<div class="wrap-menu-date">
+  <ul class="list-date left-side">
+    <li class="date-item"
+    *ngFor="let tab of tabs"
+    [ngStyle]="{'border-left-color': tab.color }"
+    (click)="selectTab(tab)">
+      <a>{{tab.tabtitle}}</a>
+    </li>
+  </ul>
+</div>
+<ng-content></ng-content>

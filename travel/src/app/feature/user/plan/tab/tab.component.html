@@ -1,0 +1,165 @@
+<div [hidden]="!active">
+  <div class="wrap-content">
+    <div class="wrap-form-plan">
+      <form *ngIf="isFromVisible"
+        class="form-plan"
+        [formGroup]="myForm"
+        (ngSubmit)="submit(myForm)">
+        <input type="hidden"
+          formControlName="date">
+        <div formArrayName="plans">
+          <div *ngFor="let comp of myForm.get('plans').controls; let i = index">
+            <div class="wrap-item-form" [formGroupName]="i">
+              <div class="wrap-input-time">
+                <input placeholder="Time:"
+                  class="input input-plan input-time"
+                  formControlName="startTime"
+                  (click)="getIndex(i)"
+                  readonly
+                  [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
+                <owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
+                <input placeholder="Time:"
+                  class="input input-plan input-time"
+                  formControlName="endTime"
+                  readonly
+                  (click)="getIndex(i)"
+                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
+                <owl-date-time [pickerType]="'timer'" #dt1></owl-date-time>
+                <button class="btn btn-border-green btn-divi"
+                  type="button"
+                  (click)="deletePlan(i)">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+              <div class="wrap-input-des">
+                <select class="input input-plan input-des"
+                formControlName="site1"
+                (change)="SelectSiteOnChange($event.target.value, i)">
+                  <option name="allSite"
+                    id="allSite"
+                    class="option"
+                    value=""
+                    [selected]="true">All Sites</option>
+                  <option *ngFor="let site of listSitesNoParent"
+                    name="site.name"
+                    id="site.name"
+                    [value]="site._id"
+                    class="option">{{site.name}}</option>
+                </select>
+                <select *ngIf="listSite2.length" class="input input-plan input-des"
+                (change)="SelectSite2OnChange($event.target.value, i)"
+                formControlName="site2">
+                  <option name="allSite"
+                    id="allSite"
+                    class="option"
+                    value=""
+                    [selected]="true">All Site</option>
+                  <option *ngFor="let site of listSite2"
+                    class="option"
+                    id="site.name" 
+                    [value]="site._id">{{site.name}}</option>
+                </select>
+                <select class="input input-plan input-des"
+                formControlName="caterogyId"
+                (change)="SelectCategoryOnChange($event.target.value, i)">
+                  <option name="category"
+                    id="allCategory"
+                    class="option"
+                    value=""
+                    [selected]="true">All Categories</option>
+                  <option *ngFor="let category of listCategory"
+                    name="category.name"
+                    id="category.name" 
+                    [value]="category._id"
+                    class="option">{{category.name}}</option>
+                </select>
+                <input (click)="getIndex(i)" class="input input-plan input-des"
+                  type="text"
+                  [value]=[(valueDes[i])]
+                  formControlName="destinationSubget">
+                <input class="input input-plan input-des"
+                  type="hidden"
+                  [value]=[(valueDes[i])]
+                  formControlName="destination">
+                <input class="input input-plan input-des"
+                  type="hidden"
+                  [value]=[(valueDesId[i])]
+                  formControlName="destinationId">
+                <input class="input input-plan input-des"
+                  type="hidden"
+                  [value]=[(valueDesAddress[i])]
+                  formControlName="destiantionsAddress">
+                <div [@popOverState]="success(i)"
+                    *ngIf="listResultDisplay[i]"
+                    class="wrap-suggest">
+                  <ul class="list-result">
+                    <ng-container *ngFor="let result of listResultDisplay[i] | filter:term[i]; let index = index">
+                      <li class="result-item">
+                        <div class="wrap-item-result">
+                          <div class="border-image">
+                            <div class="img-des"
+                            [ngStyle]="{'background-image': 'url(' + result.image + ')'}">
+                            </div>
+                          </div>
+                          <div class="wrap-content">
+                            <p class="content">{{result.name}}</p>
+                            <strong class="address">{{result.address}}, {{result.site}}</strong>
+                            <div class="action">
+                              <p class="read-more">
+                                <a routerLink="/destinations/{{result.destinationId}}">read more</a>
+                              </p>
+                              <p (click)="choice(i, result.destinationId, result.name, result.address)" class="choice">
+                                <a>choice</a>
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit"
+          [disabled]="!myForm.valid"
+          class="btn btn-green btn-medium">Add</button>
+      </form>
+      <button *ngIf="isFromVisible" class="btn btn-medium btn-border-green"
+      (click)="addNewPlan()">
+        <i class="fas fa-plus"></i>
+      </button>
+      <div *ngIf="!isFromVisible" class="wrap-plans-input">
+        <div class="wrap-content-result">
+          <ul class="list-info">
+            <li class="info-item" *ngFor="let plan of listPlans">
+              <div class="wrap-time">
+                <p class="info-plan time start">
+                  <span class="label">Start:</span>
+                  <span class="content"> {{plan.startTime | date:'shortTime' }}</span>
+                </p>
+                <p class="info-plan time end">
+                  <span class="label">End:</span>
+                  <span class="content"> {{plan.endTime | date:'shortTime'}}</span>
+                </p>
+              </div>
+              <div class="wrap-des-info">
+                <p class="info-plan">
+                  <span class="label">Destiantion:</span>
+                  <span class="content"> {{plan.destination}}</span>
+                </p>
+                <p class="info-plan">
+                  <span class="label">Address:</span> 
+                  <span class="content"> {{plan.destiantionsAddress}}</span>
+                  <span class="content" *ngFor="let address of listAddress">, {{address}}</span>
+                </p>
+              </div>
+            </li>
+          </ul>
+          <button (click)="edit()" class="btn btn-edit-result">edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

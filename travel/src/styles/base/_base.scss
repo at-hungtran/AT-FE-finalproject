@@ -3,6 +3,22 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $w-color; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: $bg-color-7; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $bg-color-1; 
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -39,6 +55,12 @@ body {
   color: $border-color-1;
   text-align: center;
   font-weight: 300;
+}
+
+.background {
+  @include background-size(cover);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }
 
 a {

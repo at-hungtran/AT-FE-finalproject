@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SliderModule } from 'ngx-slider';
+import { TruncateModule } from 'ng2-truncate';
 
 import { HeaderComponent } from './component/header/header.component';
 import { CardComponent } from './component/card-destination/card-destination.component';
@@ -16,7 +17,9 @@ import { CommentComponent } from './component/comment/comment.component';
 import { ScrollDirective } from './directive/scroll-directive';
 import { NavigateComponent } from './component/header/navigate/navigate.component';
 import { NotifiComponent } from './component/notifi/notifi.component';
-
+import { CloseSearchDirestive } from './directive/click-close-search-directive';
+import { TimeLine } from './component/timeline/timeline.component';
+import { DiaLogService } from './component/dislog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,17 @@ import { NotifiComponent } from './component/notifi/notifi.component';
     CommentComponent,
     NotifiComponent,
     ScrollDirective,
-    NavigateComponent
+    NavigateComponent,
+    CloseSearchDirestive,
+    TimeLine,
+    DiaLogService
   ],
   imports: [
     CommonModule,
     RouterModule,
     SliderModule,
-    SwiperModule
+    SwiperModule,
+    TruncateModule,
   ],
   exports: [
     HeaderComponent,
@@ -52,8 +59,11 @@ import { NotifiComponent } from './component/notifi/notifi.component';
     BackgroundHeaderComponent,
     CommentComponent,
     ScrollDirective,
+    CloseSearchDirestive,
     NavigateComponent,
-    NotifiComponent
+    NotifiComponent,
+    TimeLine,
+    DiaLogService
   ]
 })
 

@@ -49,6 +49,13 @@
     float: right;
     padding: 0 0 28px 20px;
   }
+  .avatar {
+    width: 30px;
+    height: 30px;
+    @include background-size(cover);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
   .sign-up {
     color: $txt-color-1;
   }

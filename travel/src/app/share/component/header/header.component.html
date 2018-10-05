@@ -1,5 +1,5 @@
 <header>
-  <nav class="nav-bar" appScroll>
+  <nav class="nav-bar" appScroll clickClose>
     <div class="container">
       <div class="wrap-header">
         <div class="wrap-icon-menu">
@@ -8,7 +8,9 @@
           </a>
         </div>
         <div class="logo-border">
-          <a routerLink="/home"><img class="logo" src="../../../../assets/images/logo.png" alt="logo"></a>
+          <a routerLink="/home">
+            <img class="logo" src="../../../../assets/images/logo.png" alt="logo">
+          </a>
         </div>
         <div class="menu">
           <ul class="list-menu">
@@ -24,7 +26,9 @@
             <li class="menu-right-item">
               <a *ngIf="!isLogin" routerLink="/register" class="sign-up">Sign Up</a>
               <a class="avatar" *ngIf="isLogin" href="javascript:void(0)">
-                <img class="avatar-user" src="https://lh3.googleusercontent.com/-3gjg1TSDx8A/AAAAAAAAAAI/AAAAAAAAAAA/APUIFaNcn2YZ-YFZVxZxqMnAutzciPtcZA/s32-c-mo/photo.jpg" alt="avatar">
+                <div *ngIf="user" class="avatar"
+                [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
+                </div>
               </a>
               <a class="text-user" *ngIf="isLogin" href="javascript:void(0)">
                 <p class="user-name">user name</p>
@@ -33,8 +37,10 @@
                 <ul *ngIf="isLogin" class="dropdown-list">
                   <li class="dropdown-item">
                     <div class="wrap-item">
-                      <img class="icon-logout left-side" src="../assets//icon/user.png" alt="icon-logout">
-                      <span class="text">user name</span>
+                      <a *ngIf="user" [routerLink]="[ '/user', user._id ]">
+                        <img class="icon-logout left-side" src="../assets//icon/user.png" alt="icon-logout">
+                        <span class="text">{{user.userName}}</span>
+                      </a>
                     </div>
                   </li>
                   <li class="dropdown-item" (click)="logout()">
@@ -74,7 +80,7 @@
           <a routerLink="/register" class="a-item" href="#">Sign up</a>
         </li>
         <li class="menu-768-item" *ngIf="isLogin">
-          <a class="a-item" ref="#">User Name</a>
+          <a *ngIf="user" class="a-item" >{{user.userName}}</a>
         </li>
         <li class="menu-768-item">
           <a class="a-item" href="#">Notifi</a>
