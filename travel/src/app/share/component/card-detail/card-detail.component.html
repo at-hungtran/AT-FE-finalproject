@@ -1,9 +1,7 @@
 <main class="detail-article">
   <div class="detail-content">
-    <p class="detail-content-main">
-      Lorem commodo lectus at sollicitudin elementum. Sed dolor turpis, condimentum sit amet maximus sit amet, rhoncus non turpis. Aenean convallis ac lorem et sodales. Sed dictum vel orci nec rhoncus. Donec quis porttir arcu. Nulla ut justo quis augue commodo mattis nec vel ante orem commodo lectus at sollicitudin elemenum.
-Lorem commodo lectus at sollicitudin elementum. Sed dolor turpis, condimentum sit amet maximus sit amet, rhoncus non turpis. Aenean convallis ac lorem et sodales. Sed dictum vel orci nec rhoncus. Donec quis porttir arcu. Nulla ut justo quis augue commodo mattis nec vel ante orem commodo lectus at sollicitudin elemenum.
-Lorem commodo lectus at sollicitudin elementum. Sed dolor turpis, condimentum sit amet maximus sit amet, rhoncus non turpis. Aenean convallis ac lorem et sodales. Sed dictum vel orci nec rhoncus. Donec quis porttir arcu. Nulla ut justo quis augue commodo mattis nec vel ante orem commodo lectus at sollicitudin elemenum.
-    </p>
+    <p class="detail-content-main"
+    *ngIf="articleHTML"
+    [innerHTML]="articleHTML"></p>
   </div>
 </main>

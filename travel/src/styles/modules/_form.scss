@@ -11,12 +11,90 @@
   }
   .wrap-input {
     width: 25%;
-    padding: 10px;
+    padding: 0 10px;
     float: left;
     box-sizing: border-box;
   }
   .input, .btn-green {
     width: 100%;
+  }
+  .wrap-suggest {
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+    float: left;
+    background: $bg-color-6;
+    border-radius: 4px;
+    .border-image {
+      width: 100px;
+      float: left;
+    }
+    .result-item {
+      width: 100%;
+      float: left;
+      padding-bottom: 10px;
+    }
+    .result-item:nth-child(1) {
+      padding: 10px 0;
+    }
+    .img-des {
+      width: 100%;
+      height: 75px;
+      background-size: cover;
+      position: relative;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      border-radius: 3px;
+    }
+    .wrap-content {
+      float: left;
+      width: 60%;
+      padding: 20px;
+      line-height: 20px;
+      @include hover-transition(all 100ms ease-in-out);
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+  .wrap-suggest {
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+    float: left;
+    background: $bg-color-6;
+    border-radius: 4px;
+    .border-image {
+      width: 100px;
+      float: left;
+    }
+    .result-item {
+      width: 100%;
+      float: left;
+      padding-bottom: 10px;
+    }
+    .result-item:nth-child(1) {
+      padding: 10px 0;
+    }
+    .img-des {
+      width: 100%;
+      height: 75px;
+      background-size: cover;
+      position: relative;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      border-radius: 3px;
+    }
+    .wrap-content {
+      float: left;
+      width: 60%;
+      padding: 20px;
+      line-height: 20px;
+      @include hover-transition(all 100ms ease-in-out);
+      &:hover {
+        color: $primary-color;
+      }
+    }
   }
 }
 

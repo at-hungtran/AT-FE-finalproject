@@ -1,0 +1,56 @@
+<div class="page-user">
+  <div class="container">
+    <section class="section-info">
+      <div class="wrap-info">
+        <div class="wrap-avatar">
+          <div *ngIf="user" class="avatar"
+          [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
+          </div>
+        </div>
+        <div class="info">
+          <ul *ngIf="user" class="list-info">
+            <li class="info-item">
+              <h4 class="user-name">{{user.userName}}</h4>
+            </li>
+            <li class="info-item">
+              <p class="email">{{user.email}}</p>
+            </li>
+            <li class="info-item">
+              <ul class="list">
+                <li class="item">
+                  <span class="label">Name:</span>
+                  <span class="name"> {{user.name}}</span>
+                </li>
+                <li class="item">
+                  <span class="label">Age:</span>
+                  <span class="age"> {{user.age}}</span>
+                </li>
+              </ul>
+            </li>
+            <li class="info-item">
+              <span class="label">Hobbies:</span>
+              <span class="hobby"> {{user.hobbies}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="section-tab">
+      <div class="wrap-tab-menu">
+        <ul class="list-menu">
+          <li class="menu-item" *ngFor="let item of navigateList">
+            <app-navigate-user
+            [routerLink]="item.routerLink"
+            [name]="item.name"
+            routerLinkActive>
+            </app-navigate-user>
+          </li>
+        </ul>
+      </div>
+      <div class="wrap-content">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </div>
+</div>
+<app-footer></app-footer>

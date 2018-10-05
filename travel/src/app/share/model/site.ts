@@ -1,6 +1,17 @@
 export class Site {
-  id: String;
+  _id: String;
   name: String;
-  description: String;
-  picture: Array<String>;
+  articleSite: String;
+  listPicture: Array<String>;
+  backgroundImg: String;
+  parentId: String;
+  rating: Number;
+  listArticle: [
+    {
+      title: String;
+      siteId: String;
+      userId: String;
+      descriptions: String;
+    }
+  ];
 }

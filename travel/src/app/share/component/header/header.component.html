@@ -1,29 +1,102 @@
 <header>
-  <nav class="nav-bar" appScroll>
+  <nav class="nav-bar" appScroll clickClose>
     <div class="container">
-      <div class="logo-border">
-        <a routerLink="/home"><img class="logo" src="../../../../assets/images/logo.png" alt="logo"></a>
+      <div class="wrap-header">
+        <div class="wrap-icon-menu">
+          <a href="javasctipt:void(0)">
+            <i class="fas fa-bars"></i>
+          </a>
+        </div>
+        <div class="logo-border">
+          <a routerLink="/home">
+            <img class="logo" src="../../../../assets/images/logo.png" alt="logo">
+          </a>
+        </div>
+        <div class="menu">
+          <ul class="list-menu">
+            <li class="menu-item" *ngFor="let item of navigateList">
+              <app-navigate style="outline: none; cursor: pointer"
+              [name]="item.name"
+              [routerLink]="item.routerLink"
+              routerLinkActive>
+              </app-navigate>
+            </li>
+          </ul>
+          <ul class="menu-list-right">
+            <li class="menu-right-item">
+              <a *ngIf="!isLogin" routerLink="/register" class="sign-up">Sign Up</a>
+              <a class="avatar" *ngIf="isLogin" href="javascript:void(0)">
+                <div *ngIf="user" class="avatar"
+                [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
+                </div>
+              </a>
+              <a class="text-user" *ngIf="isLogin" href="javascript:void(0)">
+                <p class="user-name">user name</p>
+              </a>
+              <div class="wrap-dropdown">
+                <ul *ngIf="isLogin" class="dropdown-list">
+                  <li class="dropdown-item">
+                    <div class="wrap-item">
+                      <a *ngIf="user" [routerLink]="[ '/user', user._id ]">
+                        <img class="icon-logout left-side" src="../assets//icon/user.png" alt="icon-logout">
+                        <span class="text">{{user.userName}}</span>
+                      </a>
+                    </div>
+                  </li>
+                  <li class="dropdown-item" (click)="logout()">
+                    <div class="wrap-item">
+                      <img class="icon-logout left-side" src="../assets//icon/logout.png" alt="icon-logout">
+                      <span class="text">log out</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="menu-right-item">
+              <a *ngIf="!isLogin" routerLink="/login" class="btn btn-green btn-medium sign-in">Sign In</a>
+              <div *ngIf="isLogin" class="wrap-icon-notifi">
+                <a href="javascript:void(0)">
+                  <img class="icon-notifi" src="../assets//icon/notification.png" alt="icon-notifi">
+                </a>
+                <!-- <p class="counter">1</p> -->
+              </div>
+              <div *ngIf="isLogin" class="wrap-tex-notifi">
+                <a href="javascript:void(0)">
+                  <p>notifi</p>
+                </a>
+                <!-- <p class="counter">1</p> -->
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <ul class="list-menu">
-        <li class="menu-item" *ngFor="let item of navigateList">
+    </div>
+    <div class="menu-768">
+      <ul class="list-menu-768" [@popOverState]="open">
+        <li class="menu-768-item singin" *ngIf="!isLogin">
+          <a routerLink="/login" class="a-item" href="#">Sign In</a>
+        </li>
+        <li class="menu-768-item" *ngIf="!isLogin">
+          <a routerLink="/register" class="a-item" href="#">Sign up</a>
+        </li>
+        <li class="menu-768-item" *ngIf="isLogin">
+          <a *ngIf="user" class="a-item" >{{user.userName}}</a>
+        </li>
+        <li class="menu-768-item">
+          <a class="a-item" href="#">Notifi</a>
+        </li>
+        <li class="menu-768-item" *ngFor="let item of navigateList">
           <app-navigate style="outline: none; cursor: pointer"
           [name]="item.name"
           [routerLink]="item.routerLink"
           routerLinkActive>
           </app-navigate>
         </li>
-      </ul>
-      <ul class="menu-list-right">
-        <li class="menu-right-item">
-          <a routerLink="/register" class="sign-up">Sign Up</a>
-          <!-- <a href="javascript:void(0)"><img class="avatar-user" src="https://lh3.googleusercontent.com/-3gjg1TSDx8A/AAAAAAAAAAI/AAAAAAAAAAA/APUIFaNcn2YZ-YFZVxZxqMnAutzciPtcZA/s32-c-mo/photo.jpg" alt="avatar"></a> -->
-        </li>
-        <li class="menu-right-item">
-          <a routerLink="/login" class="btn btn-green btn-medium sign-in">Sign In</a>
-          <!-- <div class="wrap-icon-notifi">
-            <a href="javascript:void(0)"><img class="icon-notifi" src="../assets//images/notification.png" alt="icon-notifi"></a>
-            <p class="counter">1</p>
-          </div> -->
+        <li class="menu-768-item logout" (click)="logout()" *ngIf="isLogin">
+          <a href="#" class="a-item">
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
+          </a>
         </li>
       </ul>
     </div>

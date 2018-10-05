@@ -1,0 +1,69 @@
+<section class="section-timeline">
+  <div class="wrap-timeline">
+    <ul *ngIf="Listplans" class="list-plans">
+      <li *ngFor="let plan of Listplans" class="plan-item">
+        <div class="timeline">
+          <div class="user">
+            <div class="avatar-border">
+              <div class="user-avatar"
+              [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
+              </div>
+            </div>
+            <div class="user-text">
+              <h4 class="name">{{user.name}}</h4>
+              <p class="time-create">{{plan.datetime | date:'medium'}}</p>
+            </div>
+            <div class="action">
+              <button (click)="openForm()" class="btn btn-edit">new</button>
+              <button (click)="editTimeLine(plan._id)" class="btn btn-edit">edit</button>
+              <button (click)="deletePlan(plan._id)" class="btn btn-delete">delete</button>
+            </div>
+          </div>
+            <ul class="timeline-list">
+              <li *ngFor="let timeline of plan.timeline; let i = index" class="timeline-item">
+                <div class="content">
+                  <ul class="list-date" *ngIf="timeline.plans">
+                    <li *ngFor="let action of timeline.plans" class="time-item clearfix">
+                      <div class="image-border">
+                      <div class="img-des" *ngIf="listDestinations"
+                      [ngStyle]="{'background-image': 'url(' + findPictureByDesId(action.destinationId) + ')'}"></div>
+                      </div>
+                      <div class="info-timeline">
+                      <div class="wrap-date-time clearfix">
+                        <p class="category">{{findCategoryById(action.destinationId)}}</p>
+                        <ng-container *ngIf="i%2 === 0">
+                          <p class="time-end">
+                            <span class="time">{{action.endTime | date:'shortTime'}}</span>
+                          </p>
+                          <p class="time-start">
+                            <span class="time">{{action.startTime | date:'shortTime'}}~</span>
+                          </p>
+                        </ng-container>
+                        <ng-container *ngIf="i%2 !== 0">
+                          <p class="time-start">
+                            <span class="time">{{action.startTime | date:'shortTime'}}~</span>
+                          </p>
+                          <p class="time-end">
+                            <span class="time">{{action.endTime | date:'shortTime'}}</span>
+                          </p>
+                        </ng-container>
+                      </div>
+                      <div class="destination-info">
+                        <p class="destinations">{{action.destination}}</p>
+                        <p class="addess">{{action.destiantionsAddress}}</p>
+                        <p class="sites" *ngIf="listDestinations && listSites">{{getFullAddressBySiteId(action.destinationId)}}</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="wrap-date">
+                <h4 class="date">{{timeline.date}}</h4>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>

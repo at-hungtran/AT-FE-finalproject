@@ -1,5 +1,5 @@
 <div class="wrap-background-header">
-  <app-header-background></app-header-background>
+  <app-header-background [site]="backgroundHeader"></app-header-background>
   <div class="destination-title">
     <ul class="destination-title-inner clearfix">
       <li class="des-title-item">
@@ -11,13 +11,13 @@
       <li class="des-title-item">
         <p class="wrap-des-title">
           <img src="../../../assets/icon/calendar (2).png" alt="icon_date">
-          <span class="content-top">author</span>
+          <span class="content-top">time</span>
         </p>
       </li>
       <li class="des-title-item">
         <p class="wrap-des-title">
           <img src="../../../assets/icon/chat (2).png" alt="icon-comment">
-          <span class="content-top">author</span>
+          <span class="content-top">like</span>
         </p>
       </li>
     </ul>
@@ -26,7 +26,7 @@
 <section class="section-wrap">
   <div class="container">
     <div class="wrap-detail">
-      <app-card-detail></app-card-detail>
+      <app-card-detail *ngIf="article" [article]="article"></app-card-detail>
     </div>
     <div class="wrap-comment">
       <app-comment></app-comment>

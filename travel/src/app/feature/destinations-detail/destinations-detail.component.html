@@ -1,0 +1,55 @@
+<div class="page-destimation">
+  <div class="container">
+    <section class="sections-decription clearfix">
+      <div class="wrap-image">
+        <div *ngIf="listPicture" class="background-img background"
+        [ngStyle]="{'background-image': 'url(' + fetchUrl(listPicture[0]) + ')'}">
+        </div>
+      </div>
+      <div class="wrap-content">
+        <div class="wrap-des">
+          <div class="left-side">
+            <ul class="list-des-info">
+              <li class="info-item">
+                <h4 *ngIf="destination" class="title-des">{{destination.name}}</h4>
+              </li>
+              <li class="info-item">
+                <p *ngIf="destination" class="category">{{destination.categorys[0].name}}</p>
+              </li>
+              <li class="info-item">
+                <p *ngIf="destination" class="address">
+                  <i class="fas fa-map-marked-alt"></i>
+                   {{destination.address}}
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="right-side">
+            <p *ngIf="destination" class="rating"> {{destination.rating}}</p>
+            <p class="propose">Propose</p>
+          </div>
+        </div>
+        <div class="decription">
+          <p *ngIf="destination" class="content">
+            {{destination.description}}
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section-image">
+      <h4 class="title">Images</h4>
+      <ul class="list-image">
+        <li class="image-item" *ngFor="let pic of listPicture">
+          <div class="wrap-image">
+            <div class="background-img background"
+            [ngStyle]="{'background-image': 'url(' + fetchUrl(pic) + ')'}">
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section class="section-another-destinations">
+
+    </section>
+  </div>
+</div>

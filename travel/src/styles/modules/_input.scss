@@ -7,8 +7,31 @@
   outline: none;
   font-size: $font-size-1;
   box-sizing: border-box;
+  &::placeholder {
+    color: $txt-color-2;
+  }
 }
 
 .input-login {
-  border: solid 1px $txt-color-2;
+  border: solid 1px $txt-color-4;
+}
+
+.input-plan {
+  height: 35px;
+  border: solid 1px $txt-color-4;
+  //appearance: none;
+  color: #95a5a6;
+  font-family: "Helvetica", arial, sans-serif;
+  font-size: 15px;
+  padding:5px;
+  border: solid 1px $border-color-1;
+  border-radius: 3px;
+  &:disabled {
+    background: $bg-color-6;
+    cursor: no-drop;
+  }
+}
+
+.input-plan[type="date"] {
+  height: 23px;
 }

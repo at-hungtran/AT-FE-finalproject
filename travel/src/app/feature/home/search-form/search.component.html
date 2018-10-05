@@ -1,28 +1,67 @@
 <div class="search">
   <div class="wrap-form">
-    <form class="form-search">
+    <form class="form-search"
+    [formGroup]="formSearch"
+    (ngSubmit)="search(formSearch)">
       <div class="wrap-input">
-        <input type="text" class="input" placeholder="Inser keyword">
+        <input formControlName="destination"
+        type="text"
+        class="input"
+        placeholder="Insert keyword">
       </div>
       <div class="wrap-input">
-        <select class="input site" value="">
-          <option name="" id="" class="option" selected="selected">all site</option>
-          <option name="" id="" class="option">1</option>
-          <option name="" id="" class="option">2</option>
-          <option name="" id="" class="option">3</option>
+        <select formControlName="site" class="input site">
+          <option name="allSite"
+          id="allSite"
+          class="option"
+          value="allSite"
+          [selected]="true">All Sites</option>
+          <option *ngFor="let site of listSitesNoParent"
+          name="site.name"
+          id="site.name"
+          [value]="site._id"
+          class="option">{{site.name}}</option>
+        </select>
+      </div>
+      <div class="wrap-input" *ngIf="listCategorys">
+        <select formControlName="category" class="input category">
+          <option name="category"
+            id="allCategory"
+            class="option"
+            value="allCategory"
+            [selected]="true">All Categories</option>
+          <option *ngFor="let category of listCategorys"
+            name="category.name"
+            id="category.name" 
+            [value]="category._id"
+            class="option">{{category.name}}</option>
         </select>
       </div>
       <div class="wrap-input">
-        <select class="input category" value="">
-          <option name="" id="" class="option" selected="selected">all destination</option>
-          <option name="" id="" class="option">1</option>
-          <option name="" id="" class="option">2</option>
-          <option name="" id="" class="option">3</option>
-        </select>
-      </div>
-      <div class="wrap-input">
-        <button class="btn btn-green btn-medium">Search</button>
+        <button class="btn btn-green btn-medium" type="submit">Search</button>
       </div>
     </form>
+    <div [@popOverState]="success" class="wrap-suggest">
+      <ul class="list-result">
+        <ng-container *ngFor="let result of listResultDisplay | filter:term; let i = index">
+            <li class="result-item">
+              <a routerLink="/destinations/{{result.destinationId}}">
+                <div class="wrap-item-result">
+                  <div class="border-image">
+                    <div class="img-des"
+                    [ngStyle]="{'background-image': 'url(' + result.image + ')'}">
+                    </div>
+                  </div>
+                  <div class="wrap-content">
+                    <p class="content">{{result.name}}</p>
+                    <strong class="address">{{result.address}}, {{result.site}}</strong>
+                  </div>
+                </div>
+              </a>
+            </li>
+        </ng-container>
+        <li class="result-item" *ngIf="(listResultDisplay | filter: term).length === 0">No matching elements</li>
+      </ul>
+    </div>
   </div>
 </div>

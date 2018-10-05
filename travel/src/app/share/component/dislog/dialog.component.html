@@ -1,0 +1,17 @@
+<div *ngIf="visible" class="dialog-wrap">
+  <div class="dialog">
+    <div class="dialog-head">
+      <h4 class="dialog-title">Confirm</h4>
+    </div>
+    <div class="dialog-body">
+      <div class="dialog-content">
+        <p class="message">Are you sure you want delete this plan?</p>
+      </div>
+      <div class="action">
+        <button (click)="closeDialog()" class="btn btn-cancel">No</button>
+        <button (click)="deletePlan()" class="btn btn-confirm">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="visible" class="overlay" (click)="closeDialog()"></div>
