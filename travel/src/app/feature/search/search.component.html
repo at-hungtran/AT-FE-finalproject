@@ -1,36 +1,13 @@
 <main class="page-search">
-  <div class="wrap-background">
-    <app-header-background></app-header-background>
-  </div>
   <div class="container">
     <div class="search-main clearfix">
-      <div class="wrap-sidebar">
-        <div class="sidebar-top">
-          <h3 class="sidebar-title">Select your destination</h3>
-          <div class="sidebar-option">
-            <select name="des" class="input">
-              <option class="option" value="" selected="selected">all destination</option>
-              <option class="option" value="1">1</option>
-              <option class="option" value="1">1</option>
-              <option class="option" value="1">1</option>
-            </select>
-          </div>
-        </div>
-      </div>
       <section class="wrap-destination">
         <ul class="wrap-des-list clearfix">
-          <li class="wrap-des-item">
-            <app-card-destination></app-card-destination>
-          </li>
-          <li class="wrap-des-item">
-            <app-card-destination></app-card-destination>
-          </li>
-          <li class="wrap-des-item">
-            <app-card-destination></app-card-destination>
-          </li>
-          <li class="wrap-des-item">
-            <app-card-destination></app-card-destination>
-          </li>
+            <li class="wrap-des-item" *ngFor="let destinations of listDestinations">
+              <div class="card-border">
+                <app-card-destination [destination]=destinations></app-card-destination>
+              </div>
+            </li>
         </ul>
       </section>
     </div>

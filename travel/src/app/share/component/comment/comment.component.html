@@ -10,11 +10,13 @@
       To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
       Commenter avatars come from Gravatar.
     </p>
-    <button class="btn-1 btn-green">reply</button>
+    <button type="button" class="btn-1 btn-green">reply</button>
   </div>
   <div class="reply">
     <h2 class="reply-comment">leave a reply</h2>
-    <textarea class="rep-area" name="reply-area" cols="50" rows="10"></textarea>
-    <button class="btn-small btn-1 btn-green" type="submit">post comment</button>
+    <form class="form-comment" [formGroup]="formComment" (ngSubmit)="comment(formComment)">
+      <textarea class="rep-area" name="reply-area" cols="50" rows="10" formControlName="comment"></textarea>
+      <button class="btn-small btn-1 btn-green" type="submit">post comment</button>
+    </form>
   </div>
 </section>
