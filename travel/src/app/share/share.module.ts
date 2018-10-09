@@ -19,7 +19,13 @@ import { NavigateComponent } from './component/header/navigate/navigate.componen
 import { NotifiComponent } from './component/notifi/notifi.component';
 import { CloseSearchDirestive } from './directive/click-close-search-directive';
 import { TimeLine } from './component/timeline/timeline.component';
-import { DiaLogService } from './component/dislog/dialog.component';
+import { DiaLogComponent } from './component/dialog/dialog.component';
+import { NotfoundComponent } from './component/notfound/notfound.component';
+import { DiaLogEditPlanComponent } from './component/dialog-edit-plan/dialog-edit-plan.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DiaLogChoiceComponent } from './component/dialog-choice-date/dialog-choice-plan.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { DiaLogService } from './component/dislog/dialog.component';
     NavigateComponent,
     CloseSearchDirestive,
     TimeLine,
-    DiaLogService
+    DiaLogComponent,
+    NotfoundComponent,
+    DiaLogEditPlanComponent,
+    DiaLogChoiceComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +55,11 @@ import { DiaLogService } from './component/dislog/dialog.component';
     SliderModule,
     SwiperModule,
     TruncateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    OwlNativeDateTimeModule,
+    OwlDateTimeModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     HeaderComponent,
@@ -63,7 +77,10 @@ import { DiaLogService } from './component/dislog/dialog.component';
     NavigateComponent,
     NotifiComponent,
     TimeLine,
-    DiaLogService
+    DiaLogComponent,
+    NotfoundComponent,
+    DiaLogEditPlanComponent,
+    DiaLogChoiceComponent
   ]
 })
 

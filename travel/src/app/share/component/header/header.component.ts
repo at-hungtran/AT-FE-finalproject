@@ -1,13 +1,13 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Directive,
-         HostListener,
-         ElementRef,
-         Renderer2 } from '@angular/core';
+        HostListener,
+        ElementRef,
+        Renderer2 } from '@angular/core';
 import { trigger,
-         state,
-         style,
-         animate,
-         transition } from '@angular/animations';
+        state,
+        style,
+        animate,
+        transition } from '@angular/animations';
 
 import { CheckUserService } from '../../service/check-user.service';
 import { StorageService } from '../../service/storage.service';
@@ -57,11 +57,11 @@ export class HeaderComponent implements OnInit, OnChanges {
     },
     {
       name: 'Site',
-      routerLink: '/nothing'
+      routerLink: '/site'
     },
     {
       name: 'Destination',
-      routerLink: '/nothing2'
+      routerLink: '/destinations'
     }
   ];
 

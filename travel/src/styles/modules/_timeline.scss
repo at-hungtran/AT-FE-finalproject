@@ -81,6 +81,7 @@
       background: $primary-color;
       border-radius: 50%; 
       box-shadow: 0 0 0 3px #1bbc9b6b;
+      animation: dotgreen 800ms ease-in-out 1000ms infinite;
     }
     .date {
       position: absolute;
@@ -88,6 +89,7 @@
       right: -165px;
       margin: 0;
       padding: 8px 16px;
+      background-image: linear-gradient(to right, #1bbc9b , #ade950);
     }
     .list-date {
       .time-start, .time-end {
@@ -127,6 +129,7 @@
       background: $primary-color;
       border-radius: 50%;
       box-shadow: 0 0 0 3px #1bbc9b6b;
+      animation: dotgreen 800ms ease-in-out 0s infinite;
      }
      .date {
       position: absolute;
@@ -134,6 +137,7 @@
       left: -165px;
       margin: 0;
       padding: 8px 16px;
+      background-image: linear-gradient(to right, #1bbc9b , #ade950);
      }
      .list-date {
       .time-start, .time-end {
@@ -216,5 +220,17 @@
     font-size: 11px;
     padding: 2px 5px;
     border-radius: 2px;
+  }
+
+  @keyframes dotgreen {
+    0% {
+      box-shadow: 0 0 0 0 #1bbc9b6b;
+    }
+    50% {
+      box-shadow: 0 0 0 3px #1bbc9b6b;
+    }
+    100% {
+      box-shadow: 0 0 0 5px #e6efed0f;
+    }
   }
 }

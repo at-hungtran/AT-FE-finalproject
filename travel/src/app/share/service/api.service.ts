@@ -36,24 +36,18 @@ export class APIService {
     }
   }
 
-  put(endpoint: string[], body): Observable<any> {
-    return this.http.put(this.query(endpoint), body);
-    //.pipe(map((res: Response) => this.extractData(res)));
+  put(endpoint: string[], param, body): Observable<any> {
+    const url = this.query(endpoint, param);
+    return this.http.put(url, body);
   }
 
   delete(endpoint: string[], prams?: object): Observable<any> {
-    const pram = this.query(endpoint, prams);
-    return this.http.delete<any>(pram);
-    //.pipe(map((res: Response) => this.extractData(res)));
+    const param = this.query(endpoint, prams);
+    return this.http.delete<any>(param);
   }
 
   query(endpoint: string[], prams?: object): string {
     const url = [API_ROOT, endpoint.join('/'), prams].join('/');
     return url;
-  }
-
-  extractData(res: Response) {
-    const body = res.json();
-    return body;
   }
 }

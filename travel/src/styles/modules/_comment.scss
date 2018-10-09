@@ -13,6 +13,7 @@
     img {
       width: 32px;
       height: 32px;
+      border-radius: 50%;
     }
     &::after {
       content: 'says';
@@ -29,6 +30,7 @@
     .comment-content {
       padding: 15px 15px 15px 0;
       color: $txt-color-1;
+      line-height: 22px;
     }
   }
   .reply {

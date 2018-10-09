@@ -1,0 +1,41 @@
+.alldes-page {
+  .list-des {
+    margin-left: 15px;
+    .des-item {
+      float: left;
+      width: calc(100% / 3);
+      padding: 15px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  .card-destiantion .des-name{
+    font-size: $font-size-1;
+  }
+  .card-destiantion .card-content .content {
+    font-size: 14px;
+  }
+  .alldes-page {
+    .list-des {
+      .des-item {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .alldes-page {
+    .list-des {
+      .des-item {
+        width: 100%;
+      }
+    }
+  }
+}

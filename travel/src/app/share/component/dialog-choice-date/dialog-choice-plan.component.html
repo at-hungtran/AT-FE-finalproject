@@ -1,0 +1,13 @@
+<div *ngIf="isVisible" class="dialog-wrap">
+  <div class="dialog-choice-date">
+    <div class="dialog">
+      <ul *ngIf="timeline" class="list-date">
+        <ng-container *ngFor="let plan of timeline">
+          <li (click)="openEditModel(plan.date)" class="date-item">
+            <a>{{plan.date}}</a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>

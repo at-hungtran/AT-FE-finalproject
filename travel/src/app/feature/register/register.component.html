@@ -9,17 +9,46 @@
       <p class="text">Travel is the best</p>
     </div>
     <h2 class="title">Register</h2>
-    <form class="form-register">
+    <form class="form-register" [formGroup]="formRegister" (ngSubmit)="singIn(formRegister)">
       <div class="left-side">
-        <input class="input input-login" name="name" type="text" placeholder="Your Name">
-        <input class="input input-login" name="age" type="number" placeholder="Your Age">
-        <input class="input input-login" name="email" type="text" placeholder="Your Email">
-        <input class="input input-login" name="hobbies" type="text" placeholder="Your Hobbies">
+        <input class="input input-login"
+          name="name"
+          type="text"
+          placeholder="Your Name"
+          formControlName="name">
+        <input class="input input-login"
+          name="age"
+          type="number"
+          placeholder="Your Age"
+          formControlName="age">
+        <input class="input input-login"
+          name="email"
+          type="text"
+          placeholder="Your Email"
+          formControlName="email">
+        <p class="error-message display-none">{{emailValidate()}}</p>
+        <input class="input input-login"
+          name="hobbies"
+          type="text"
+          placeholder="Your Hobbies"
+          formControlName="hobbies">
       </div>
       <div class="right-side">
-        <input class="input input-login" name="userName" type="text" placeholder="User Name">
-        <input class="input input-login" name="password" type="password" placeholder="Password">
-        <button class="btn btn-medium btn-green">register</button>
+        <input class="input input-login"
+          name="userName"
+          type="text"
+          placeholder="User Name"
+          formControlName="userName">
+        <p class="error-message display-none">{{userNameValidate()}}</p>
+        <input class="input input-login"
+          name="password"
+          type="password"
+          placeholder="Password"
+          formControlName="password">
+          <p class="error-message display-none">{{passwordValidate()}}</p>
+        <button type="submit"
+                [disabled]="!formRegister.valid"
+                class="btn btn-medium btn-green">register</button>
       </div>
     </form>
   </div>

@@ -1,6 +1,6 @@
 <div *ngIf="isShowPlan" class="plan">
   <div class="wrap-plan">
-    <div class="wrap-plan">
+    <div class="wrap-plan-not-fount">
       <div *ngIf="Listplans.length === 0" class="wrap-message">
         <p class="message">Can Not Found</p>
         <button class="btn btn-medium btn-green" 
@@ -9,6 +9,9 @@
     </div>
     <ng-container *ngIf="isOpenForm">
       <div class="wrap-form" [@popOverState]="success">
+        <div (click)="closeCreatePlan()" class="wrap-icon-close">
+          <i class="fas fa-times"></i>
+        </div>
         <form class="date-form" [formGroup]="formDate">
           <i class="far fa-calendar-alt"></i>
           <input placeholder="Date:"
@@ -34,7 +37,7 @@
       </div>
       <div *ngIf="listDate.length" class="wrap-create-plan">
         <app-tabs>
-          <app-tab *ngFor="let tab of listDate" 
+          <app-tab *ngFor="let tab of listDate"
             [tabtitle]="tab"
             [listSite]="listSite"
             [listCategory]="listCategory">

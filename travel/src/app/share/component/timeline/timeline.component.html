@@ -14,9 +14,16 @@
               <p class="time-create">{{plan.datetime | date:'medium'}}</p>
             </div>
             <div class="action">
-              <button (click)="openForm()" class="btn btn-edit">new</button>
-              <button (click)="editTimeLine(plan._id)" class="btn btn-edit">edit</button>
-              <button (click)="deletePlan(plan._id)" class="btn btn-delete">delete</button>
+              <button (click)="openForm()" class="btn btn-edit">
+                <i class="fas fa-plus"></i>
+                new</button>
+              <button (click)="editTimeLine(plan._id)" class="btn btn-edit">
+                <i class="fas fa-pen-square"></i>
+                edit</button>
+              <button (click)="deletePlan(plan._id)" class="btn btn-delete">
+                <i class="fas fa-folder-minus"></i>
+                  delete
+              </button>
             </div>
           </div>
             <ul class="timeline-list">
@@ -67,3 +74,10 @@
     </ul>
   </div>
 </section>
+<app-dialog-edit-plan
+  *ngIf="listSites"
+  [listPlans]="Listplans"
+  [listSites]="listSites"
+  [listDestinations]="listDestinations">
+</app-dialog-edit-plan>
+<app-dialog-choice *ngIf="Listplans" [listPlans]="Listplans"></app-dialog-choice>

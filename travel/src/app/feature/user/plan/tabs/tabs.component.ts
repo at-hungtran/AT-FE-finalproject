@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 
 @Component({
@@ -6,12 +6,14 @@ import { TabComponent } from '../tab/tab.component';
   templateUrl: './tabs.component.html',
 })
 
-export class TabsComponent implements OnInit {
+export class TabsComponent implements OnInit, OnDestroy {
   tabs: TabComponent[] = [];
 
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnDestroy() {}
 
   addTab(tab: TabComponent) {
     if (this.tabs.length === 0) {
@@ -23,6 +25,10 @@ export class TabsComponent implements OnInit {
       tab.colorTitle = '#5e6d81';
     }
     this.tabs.push(tab);
+  }
+
+  removeTab() {
+    this.tabs.pop();
   }
 
   selectTab(tab) {

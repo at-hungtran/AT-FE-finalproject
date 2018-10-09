@@ -39,7 +39,9 @@
     <section class="section-image">
       <h4 class="title">Images</h4>
       <ul class="list-image">
-        <li class="image-item" *ngFor="let pic of listPicture">
+        <li class="image-item"
+          *ngFor="let pic of listPicture"
+          (click)="openDialog(pic)">
           <div class="wrap-image">
             <div class="background-img background"
             [ngStyle]="{'background-image': 'url(' + fetchUrl(pic) + ')'}">
@@ -49,7 +51,6 @@
       </ul>
     </section>
     <section class="section-another-destinations">
-
     </section>
   </div>
 </div>

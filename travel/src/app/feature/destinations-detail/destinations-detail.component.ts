@@ -3,6 +3,7 @@ import { APIService } from '../../share/service/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { END_POINT } from '../../share/service/api.registry';
 import { environment } from '../../../environments/environment';
+import { DialogService } from '../../share/service/dialog.service';
 
 @Component({
   selector: 'app-destinations-detail',
@@ -18,7 +19,8 @@ export class DestinationsDetailComponent implements OnInit {
   listParent = [];
 
   constructor(private apiService: APIService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private dialogService: DialogService) {}
 
   ngOnInit() {
     this.desId = this.route.snapshot.params['id'];
@@ -71,5 +73,10 @@ export class DestinationsDetailComponent implements OnInit {
         }
       }
     });
+  }
+
+  openDialog(picture) {
+    const dislogName = 'dialog-picture';
+    this.dialogService.openDialog('', dislogName, picture);
   }
 }

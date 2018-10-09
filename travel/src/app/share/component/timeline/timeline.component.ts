@@ -36,6 +36,10 @@ export class TimeLine implements OnInit {
     this.setUser();
     this.binToListDestinations();
     this.binToListSite();
+    this.subscribleListPlansUpdate();
+  }
+
+  subscribleListPlansUpdate() {
     this.planService.isListPlansUpdate.subscribe(value => {
       if (value) {
         this.bindToListPlans();
@@ -171,12 +175,14 @@ export class TimeLine implements OnInit {
         this.apiService.delete([END_POINT.plans], planId).subscribe(callback => {
           this.dialogService.openDialog(message, dialogName2);
           this.bindToListPlans();
+          this.planService.updateListPlans(true);
+          this.dialogService.isDeletePlans(false);
         });
       }
     });
   }
 
   editTimeLine(planId) {
-    console.log(planId);
+    this.dialogService.setIdPlan(planId);
   }
 }

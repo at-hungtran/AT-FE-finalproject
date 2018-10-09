@@ -1,5 +1,5 @@
 <div *ngIf="visible" class="dialog-wrap">
-  <div class="dialog">
+  <div class="dialog dialog-confirm" *ngIf="isDialogConfirm">
     <div class="dialog-head">
       <h4 class="dialog-title">Confirm</h4>
     </div>
@@ -12,6 +12,11 @@
         <button (click)="deletePlan()" class="btn btn-confirm">Yes</button>
       </div>
     </div>
+  </div>
+  <div class="dialog dialog-picture" *ngIf="isDialogPicture">
+    <div *ngIf="picture" class="img-destination"
+      [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
+      </div>
   </div>
 </div>
 <div *ngIf="visible" class="overlay" (click)="closeDialog()"></div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { trigger,
   state,
   style,
@@ -29,7 +29,7 @@ import { DialogService } from '../../../../share/service/dialog.service';
   ]
 })
 
-export class TabComponent implements OnInit {
+export class TabComponent implements OnInit, OnDestroy {
   active: boolean;
   color: string;
   colorTitle = '#5e6d81';
@@ -54,6 +54,7 @@ export class TabComponent implements OnInit {
   listParent = [];
   listAddress = [];
   isEdit = false;
+  suggetVisible = [false];
 
   @Input() listSite;
   @Input() listCategory;
@@ -88,6 +89,10 @@ export class TabComponent implements OnInit {
     this.createForm();
     this.bindToListSiteNoParent();
     this.bindToListDestinations();
+  }
+
+  ngOnDestroy() {
+    this.tabs.removeTab();
   }
 
   SelectSiteOnChange(value, i) {
@@ -164,6 +169,8 @@ export class TabComponent implements OnInit {
     this.valueDes.push('');
     this.valueDesId.push('');
     this.valueDesAddress.push('');
+    this.suggetVisible.push(false);
+    this.suggetVisible.map(item => item = false);
     const control = <FormArray>this.myForm.controls.plans;
     control.push(
       this.fb.group({
@@ -224,8 +231,6 @@ export class TabComponent implements OnInit {
     this.listPlans = this.listPlans[0].plans;
   }
 
-  changeVanityId() {}
-
   bindToListSiteNoParent() {
     this.listSitesNoParent = this.listSite.filter(site => {
       return !site.parentId;
@@ -245,6 +250,7 @@ export class TabComponent implements OnInit {
   }
 
   subscribeDestinationsChange() {
+    this.suggetVisible[this.indexInput] = true;
     let count = 0;
     this.myForm.controls.plans.valueChanges
     .subscribe(value => {
@@ -356,9 +362,12 @@ export class TabComponent implements OnInit {
   hideResult(index) {
     this.successShow[index] = false;
   }
+
   isFormValid = false;
   destination;
   choice(index, idDes, nameDes, addessDes) {
+    const dialogName = 'notifi-info';
+    const message = 'create success';
     this.listParent = [];
     this.myForm.controls.plans.value[index].destination = nameDes;
     this.myForm.controls.plans.value[index].destinationId = idDes;
@@ -367,10 +376,11 @@ export class TabComponent implements OnInit {
     this.valueDesId[index] = idDes;
     this.valueDesAddress[index] = addessDes;
     this.isFormValid = true;
+    this.suggetVisible[index] = false;
     this.destination = this.listDestinations.filter(item => {
       return item._id === idDes;
     });
-
+    this.dialogService.openDialog('you chose ' + nameDes, dialogName);
     this.listAddress = [];
     this.count = 0;
     this.findParentList(this.destination[0].siteId);

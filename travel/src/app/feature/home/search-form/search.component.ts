@@ -80,6 +80,7 @@ export class SearchComponent implements OnInit {
   search() {
     this.categoryId = this.formSearch.controls.category.value;
     this.siteId = this.formSearch.controls.site.value;
+    console.log(this.categoryId, this.siteId);
   }
 
   suggestionsSearch() {

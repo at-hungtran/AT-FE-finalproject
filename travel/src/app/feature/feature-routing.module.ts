@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: './home/home.module#HomeModule',
       },
       {
+        path: 'site',
+        loadChildren: './allsite/allsite.module#AllSiteModule'
+      },
+      {
         path: 'site/:id',
         loadChildren: './site/site.module#SiteModule'
       },
@@ -43,6 +47,10 @@ const routes: Routes = [
       {
         path: 'reset/:token',
         loadChildren: './reset-password/reset-password.module#ResetPasswordModule'
+      },
+      {
+        path: 'destinations',
+        loadChildren: './alldestination/alldes.module#AllDesModule'
       },
       {
         path: 'destinations/:id',

@@ -48,6 +48,7 @@ export class PlanComponent implements OnInit {
   isOpenForm = false;
   isShowPlan = false;
   isValid = false;
+  isResetForm = false;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
@@ -77,6 +78,12 @@ export class PlanComponent implements OnInit {
       this.isShowPlan = true;
       this.successShow = true;
     });
+
+    this.plansService.isListPlansUpdate.subscribe(value => {
+      if (value) {
+        this.bindToListPlans();
+      }
+    });
   }
 
   openForm() {
@@ -97,40 +104,43 @@ export class PlanComponent implements OnInit {
   checkDate() {
     this.formDate.controls.start.valueChanges
     .subscribe(startDate => {
-      this.startDate = startDate;
-      this.formDate.controls['end'].enable();
+      if (startDate) {
+        this.startDate = startDate;
+        this.formDate.controls['end'].enable();
+      }
     });
 
     this.formDate.controls.end.valueChanges
     .subscribe(endDate => {
-      this.endDate = endDate;
-      this.listDate = [];
-      this.isValid = false;
-      const _endDate = new Date(this.endDate);
-      let _startDate = new Date(this.startDate);
+      if (endDate) {
+        this.endDate = endDate;
+        this.isValid = false;
+        const _endDate = new Date(this.endDate);
+        let _startDate = new Date(this.startDate);
 
-      const startDateConver = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
-      const endDateConver = `${_endDate.getMonth() + 1}/${_endDate.getDate()}/${_endDate.getFullYear()}`;
+        const startDateConver = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
+        const endDateConver = `${_endDate.getMonth() + 1}/${_endDate.getDate()}/${_endDate.getFullYear()}`;
 
-      if (startDateConver === endDateConver) {
-        this.listDate = [];
-        _startDate = new Date(_startDate.setDate(_startDate.getDate()));
-        const date = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
-        this.listDate.push(date);
-      } else if (_startDate > _endDate) {
-        this.dialogService.openDialog('date end must greater than date start', 'notifi-info');
-      } else {
-        this.listDate = [];
-        let count = 0;
-        while (_startDate < _endDate) {
-          if (count === 0) {
-            _startDate = new Date(_startDate.setDate(_startDate.getDate()));
-          } else {
-            _startDate = new Date(_startDate.setDate(_startDate.getDate() + 1));
-          }
+        if (startDateConver === endDateConver) {
+          this.listDate = [];
+          _startDate = new Date(_startDate.setDate(_startDate.getDate()));
           const date = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
           this.listDate.push(date);
-          count = 1;
+        } else if (_startDate > _endDate) {
+          this.dialogService.openDialog('date end must greater than date start', 'notifi-info');
+        } else {
+          this.listDate = [];
+          let count = 0;
+          while (_startDate < _endDate) {
+            if (count === 0) {
+              _startDate = new Date(_startDate.setDate(_startDate.getDate()));
+            } else {
+              _startDate = new Date(_startDate.setDate(_startDate.getDate() + 1));
+            }
+            const date = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
+            this.listDate.push(date);
+            count = 1;
+          }
         }
       }
     });
@@ -149,8 +159,10 @@ export class PlanComponent implements OnInit {
   }
 
   sendToServer() {
+    const dialogName = 'login-success';
+    const message = 'create success';
     const user = this.checkUserService.getUserInfo();
-    this.isSaveAllVisible = false;
+    this.plansService.saveAllSuccess(false);
     this.formDate.reset();
     this.formDate.controls['end'].disable();
     const body = {
@@ -158,13 +170,16 @@ export class PlanComponent implements OnInit {
       plans: this.plansService.getPlans()
     };
     this.apiService.post([END_POINT.plans], body)
-    .subscribe(message => {
-      this.plansService.updateListPlans(true);
-      this.plansService.resetListPlans();
-      this.listDate = [];
-      this.endDate = '';
-      this.startDate = '';
-      this.isShowPlan = false;
+    .subscribe(res => {
+      if (res) {
+        this.dialogService.openDialog(message, dialogName);
+        this.plansService.updateListPlans(true);
+        this.plansService.resetListPlans();
+        this.listDate = [];
+        this.endDate = '';
+        this.startDate = '';
+        this.isShowPlan = false;
+      }
     });
   }
 
@@ -184,5 +199,11 @@ export class PlanComponent implements OnInit {
     this.apiService.get([END_POINT.plans], this.user._id).subscribe(plans => {
       this.Listplans = plans;
     });
+  }
+
+  closeCreatePlan() {
+    this.isOpenForm = false;
+    this.listDate.length = 0;
+    this.formDate.reset();
   }
 }
