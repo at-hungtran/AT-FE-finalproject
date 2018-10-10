@@ -34,13 +34,44 @@ export class PageSearchComponent implements OnInit {
 
   ngOnInit() {
     this.search = this.route.snapshot.params['str'];
-    this.bindToListDes();
+    let arrStr = this.search.split('&');
+
+    if(arrStr.length === 2) {
+      if(arrStr[1].indexOf('site') >= 0) {
+        let arrStr1 = arrStr[1].split('site');
+        let siteId = arrStr1[1];
+        const body = {
+          name: arrStr[0],
+          site: siteId
+        }
+        this.bindToListDes(body);
+      } else {
+        let arrStr2 = arrStr[1].split('cate');
+        let cateId = arrStr2[1];
+        const body = {
+          name: arrStr[0],
+          category: cateId
+        }
+        this.bindToListDes(body);
+      }
+    } else if (arrStr.length === 3) {
+      let arrStr1 = arrStr[1].split('site');
+      let arrStr2 = arrStr[2].split('cate');
+      const body = {
+        name: arrStr[0],
+        site: arrStr1[1],
+        category: arrStr2[1]
+      }
+      this.bindToListDes(body);
+    } else {
+      const body = {
+        name: arrStr[0]
+      }
+      this.bindToListDes(body);
+    }
   }
 
-  bindToListDes() {
-    const body = {
-      name : this.search
-    };
+  bindToListDes(body) {
     this.api.post([END_POINT.search], body).subscribe(item => {
       this.listDestinations = item;
     })

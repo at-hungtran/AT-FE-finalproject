@@ -9,6 +9,7 @@ import { trigger,
 import { APIService } from '../../share/service/api.service';
 import { END_POINT } from '../../share/service/api.registry';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DialogService } from '../../share/service/dialog.service';
 
 @Component({
   templateUrl: './alldes.component.html',
@@ -39,7 +40,8 @@ export class AllDesComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private api: APIService,
-              private router: Router
+              private router: Router,
+              private dialog: DialogService
   ) {
 
   }
@@ -76,7 +78,11 @@ export class AllDesComponent implements OnInit {
 
   search() {
     this.destination = this.formSearch.controls.destination.value;
-    const str = `search/${this.destination}`;
-    this.router.navigate([str]);
+    if(this.destination === '') {
+      this.dialog.openDialog('You must enter key word', 'login-error');
+    } else {
+      const str = `search/${this.destination}`;
+      this.router.navigate([str]);
+    }
   }
 }
