@@ -27,8 +27,8 @@ export class TabsComponent implements OnInit, OnDestroy {
     this.tabs.push(tab);
   }
 
-  removeTab() {
-    this.tabs.pop();
+  removeTab(tabTitle) {
+    this.tabs = this.tabs.filter(item => item.tabtitle !== tabTitle);
   }
 
   selectTab(tab) {

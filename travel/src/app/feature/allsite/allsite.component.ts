@@ -33,11 +33,10 @@ export class AllSiteComponent implements OnInit {
   formSearch: FormGroup;
   listeSiteSearch;
   state = false;
-  constructor(private api: APIService, private fb: FormBuilder) {
-
-  }
+  constructor(private api: APIService, private fb: FormBuilder) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.bindToListSite();
     this.createForm();
     this.suggetSearch();

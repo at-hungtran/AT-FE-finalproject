@@ -58,6 +58,7 @@ export class PlanComponent implements OnInit {
               private dialogService: DialogService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.createForm();
     this.checkDate();
     this.bindToListCategory();

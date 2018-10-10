@@ -26,6 +26,7 @@ export class SiteComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.siteId = this.route.snapshot.params['id'];
     this.bindToListDestinations();
   }
