@@ -54,6 +54,7 @@ export class DiaLogEditPlanComponent implements OnInit, OnDestroy {
   planEdit;
   datePlanEdit;
   isVisibleDialogEdit = false;
+  suggetVisible = [false];
 
   @Input() listPlans;
   @Input() listSites;
@@ -143,6 +144,8 @@ export class DiaLogEditPlanComponent implements OnInit, OnDestroy {
     this.valueDes.push('');
     this.valueDesId.push('');
     this.valueDesAddress.push('');
+    this.suggetVisible.push(false);
+    this.suggetVisible.map(item => item = false);
     const control = <FormArray>this.myForm.controls.plans;
     control.push(
       this.fb.group({
@@ -198,11 +201,11 @@ export class DiaLogEditPlanComponent implements OnInit, OnDestroy {
 
   getIndex(index) {
     this.indexInput = index;
-    console.log(this.term[index]);
     this.subscribeDestinationsChange();
   }
 
   subscribeDestinationsChange() {
+    this.suggetVisible[this.indexInput] = true;
     let count = 0;
     this.myForm.controls.plans.valueChanges
     .subscribe(value => {
@@ -331,6 +334,8 @@ export class DiaLogEditPlanComponent implements OnInit, OnDestroy {
   isFormValid = false;
   destination;
   choice(index, idDes, nameDes, addessDes) {
+    const dialogName = 'notifi-info';
+    const message = 'update success';
     this.listParent = [];
     this.myForm.controls.plans.value[index].destination = nameDes;
     this.myForm.controls.plans.value[index].destinationId = idDes;
@@ -338,11 +343,13 @@ export class DiaLogEditPlanComponent implements OnInit, OnDestroy {
     this.valueDes[index] = nameDes;
     this.valueDesId[index] = idDes;
     this.valueDesAddress[index] = addessDes;
+    this.suggetVisible[index] = false;
     this.isFormValid = true;
     this.destination = this.listDestinations.filter(item => {
       return item._id === idDes;
     });
 
+    this.dialogService.openDialog('you chose ' + nameDes, dialogName);
     this.listAddress = [];
     this.count = 0;
     this.findParentList(this.destination[0].siteId);

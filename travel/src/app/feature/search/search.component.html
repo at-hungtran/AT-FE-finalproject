@@ -2,12 +2,12 @@
   <div class="container">
     <div class="search-main clearfix">
       <section class="wrap-destination">
-        <ul class="wrap-des-list clearfix">
-            <li class="wrap-des-item" *ngFor="let destinations of listDestinations">
-              <div class="card-border">
-                <app-card-destination [destination]=destinations></app-card-destination>
-              </div>
-            </li>
+        <ul *ngIf="listDestinations" class="wrap-des-list clearfix">
+          <li class="wrap-des-item" *ngFor="let destinations of listDestinations">
+            <div class="card-border" *ngIf="destinations">
+              <app-card-destination [destination]=destinations></app-card-destination>
+            </div>
+          </li>
         </ul>
       </section>
     </div>

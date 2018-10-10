@@ -101,7 +101,8 @@
                         [ngStyle]="{'background-image': 'url(' + result.image + ')'}">
                         </div>
                       </div>
-                      <div class="wrap-content">
+                      <div class="wrap-content"
+                      (click)="choice(i, result.destinationId, result.name, result.address)">
                         <p class="content">{{result.name}}</p>
                         <strong class="address">{{result.address}}, {{result.site}}</strong>
                         <div class="action">

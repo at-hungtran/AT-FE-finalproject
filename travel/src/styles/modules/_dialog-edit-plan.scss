@@ -89,6 +89,7 @@
       width: 100%;
       float: left;
       padding-bottom: 10px;
+      cursor: pointer;
     }
     .result-item:nth-child(1) {
       padding: 10px 0;
@@ -109,6 +110,9 @@
       line-height: 20px;
       font-size: 15px;
       @include hover-transition(all 100ms ease-in-out);
+      &:hover {
+        background: #e4e4e4;
+      }
     }
     .action {
       width: 100%;

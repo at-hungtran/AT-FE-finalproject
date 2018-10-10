@@ -10,6 +10,8 @@ import { END_POINT } from '../../../share/service/api.registry';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CloseSearchService } from '../../../share/service/close-search.service';
 import { environment } from '../../../../environments/environment';
+import { DialogService } from '../../../share/service/dialog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -43,10 +45,13 @@ export class SearchComponent implements OnInit {
   successShow = false;
   isShowMessage = false;
   term;
+  destinationInput;
 
   constructor(private apiService: APIService,
               private fb: FormBuilder,
-              private closeSearchService: CloseSearchService) {}
+              private closeSearchService: CloseSearchService,
+              private dialog: DialogService,
+              private router: Router) {}
 
   ngOnInit() {
     this.bindToListCategory();
@@ -80,7 +85,27 @@ export class SearchComponent implements OnInit {
   search() {
     this.categoryId = this.formSearch.controls.category.value;
     this.siteId = this.formSearch.controls.site.value;
-    console.log(this.categoryId, this.siteId);
+    this.destinationInput = this.formSearch.controls.destination.value;
+    if (!this.destinationInput) {
+      this.dialog.openDialog('You must enter key word', 'login-error');
+    } else {
+      if (!this.siteId && !this.categoryId) {
+        const str = `search/${this.destinationInput}`;
+        this.router.navigate([str]);
+      }
+      if (this.siteId && !this.categoryId) {
+        const str = `search/${this.destinationInput}&site${this.siteId}`;
+        this.router.navigate([str]);
+      }
+      if (!this.siteId && this.categoryId) {
+        const str = `search/${this.destinationInput}&cate${this.categoryId}`;
+        this.router.navigate([str]);
+      }
+      if (this.siteId && this.categoryId) {
+        const str = `search/${this.destinationInput}&site${this.siteId}&cate${this.categoryId}`;
+        this.router.navigate([str]);
+      }
+    }
   }
 
   suggestionsSearch() {

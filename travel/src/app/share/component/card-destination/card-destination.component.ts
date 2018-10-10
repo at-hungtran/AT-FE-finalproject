@@ -24,6 +24,7 @@ export class CardComponent implements OnChanges, OnInit {
   parentSite;
 
   ngOnChanges() {
+    console.log('card des', this.destination);
     this.siteId = this.destination.siteId;
     this.fetchUrl();
     this.setListSite();
