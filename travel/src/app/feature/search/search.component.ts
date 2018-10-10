@@ -40,7 +40,7 @@ export class PageSearchComponent implements OnInit {
   bindToListDes() {
     const body = {
       name : this.search
-    }
+    };
     this.api.post([END_POINT.search], body).subscribe(item => {
       this.listDestinations = item;
     })
