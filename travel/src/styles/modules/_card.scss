@@ -5,6 +5,8 @@
   border-color: $border-color-2;
   .image-border {
     width: 100%;
+    cursor: pointer;
+    overflow: hidden;
   }
   .img-des {
     width: 100%;
@@ -13,6 +15,10 @@
     position: relative;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    @include hover-transition(all 200ms ease-in-out);
+    &:hover {
+      transform: scale(1.2);
+    }
   }
   .card-bottom {
     width: 100%;

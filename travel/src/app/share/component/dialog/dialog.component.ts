@@ -8,7 +8,7 @@ import { environment } from '../../../../environments/environment';
   templateUrl: './dialog.component.html'
 })
 
-export class DiaLogComponent implements OnInit {
+export class DiaLogComponent implements OnInit, OnDestroy {
   imageUrl: string;
   visible: boolean;
   isDialogConfirm = false;
@@ -22,6 +22,8 @@ export class DiaLogComponent implements OnInit {
   ngOnInit() {
     this.openDialog();
   }
+
+  ngOnDestroy() {}
 
   closeDialog() {
     this.visible = false;
@@ -39,7 +41,7 @@ export class DiaLogComponent implements OnInit {
         this.isDialogPicture = true;
         this.dialogService.picture.subscribe(picture => {
           this.picture = picture;
-
+          console.log(this.picture);
         });
       }
     });
@@ -51,6 +53,7 @@ export class DiaLogComponent implements OnInit {
   }
 
   fetchUrl() {
+    console.log(1);
     return environment.img_url + this.picture;
   }
 

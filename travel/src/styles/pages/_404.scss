@@ -5,5 +5,13 @@
   float: left;
   background-size: cover;
   text-align: center;
-  background: url('/assets/images/404.jpg') no-repeat;
+  background: url('/assets/images/Blog-404-01.png') no-repeat;
+  .inner {
+    a {
+      color: $primary-color;
+    }
+    .title {
+      padding: 20px;
+    }
+  }
 }

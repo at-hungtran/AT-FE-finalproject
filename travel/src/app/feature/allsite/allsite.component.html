@@ -8,26 +8,26 @@
         type="text"
         class="input"
         placeholder="Insert keyword">
-      </div>
-      <div class="wrap-input">
-        <button class="btn btn-green btn-medium btn-search" type="submit"><i class="fas fa-search"></i>Search</button>
+        <button class="btn btn-green btn-medium btn-search" type="submit">
+          <i class="fas fa-search"></i>Search
+        </button>
       </div>
     </form>
     <div [@popOverState]="success" class="wrap-suggest" *ngIf="state">
-        <ul class="list-result">
-          <ng-container>
-              <li class="result-item" *ngFor="let item of listeSiteSearch | filter:term; let i = index">
-                  <a routerLink="/site/{{item._id}}">
-                  <div class="wrap-item-result">
-                    <div class="wrap-content">
-                      <p class="content">{{item.name}}</p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-          </ng-container>
-          <li class="result-item" *ngIf="( listeSiteSearch | filter:term ).length === 0">No matching elements</li>
-        </ul>
+      <ul class="list-result">
+        <ng-container>
+          <li class="result-item" *ngFor="let item of listeSiteSearch | filter:term; let i = index">
+            <a routerLink="/site/{{item._id}}">
+              <div class="wrap-item-result">
+                <div class="wrap-content">
+                  <p class="content">{{item.name}}</p>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ng-container>
+        <li class="result-item" *ngIf="( listeSiteSearch | filter:term ).length === 0">No matching elements</li>
+      </ul>
     </div>
   </div>
   <div class="allsite-page">
@@ -42,3 +42,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

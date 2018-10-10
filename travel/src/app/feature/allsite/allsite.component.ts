@@ -51,7 +51,7 @@ export class AllSiteComponent implements OnInit {
         return site.backgroundImg !== '';
       });
       this.bindTolistBackGround();
-    })
+    });
   }
 
   bindTolistBackGround() {
@@ -62,7 +62,7 @@ export class AllSiteComponent implements OnInit {
       };
     });
   }
-  
+
   createForm() {
     this.formSearch = this.fb.group({
       site: [''],
@@ -78,6 +78,6 @@ export class AllSiteComponent implements OnInit {
       } else {
         this.state = false;
       }
-    })
+    });
   }
 }

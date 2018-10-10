@@ -35,8 +35,7 @@
     }
   }
   .wrap-destination {
-    width: 70%;
-    float: right;
+    width: 100%;
     margin-bottom: 40px;
     .wrap-des-list {
       width: 100%;
@@ -45,7 +44,7 @@
       float: right;
     }
     .wrap-des-item {
-      width: 50%;
+      width: calc(100%/3);
       margin-bottom: 25px;
       float: right;
       padding: 0 15px;

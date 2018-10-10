@@ -6,47 +6,45 @@
   left: 0;
   z-index: 2;
   background: #03030396;
-}
-.action {
-  float: right;
-}
-.dialog {
-  height: auto;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  transform: translateX(-50%) translateY(-50%);
-  background: $w-color;
-  box-shadow: 0px 3px 30px 0;
-  border-radius: 4px;
-  .dialog-confirm {
-    width: 350px;
-  }
-  .dialog-head {
-    width: 100%;
-    float: left;
-    border-bottom: solid 1px $border-color-1;
-  }
-  .dialog-title {
-    padding: 15px 20px
-  }
-  .dialog-body {
-    width: 100%;
-    padding: 25px 20px;
-    float: left;
-    box-sizing: border-box;
-  }
-  .dialog-content {
-    padding: 15px 0 40px;
-    font-size: 15px;
-  }
-  .btn-cancel {
-    margin-right: 10px;
-  }
-  .message {
-    font-size: 15px;
-    color: $txt-color-1;
+
+  .dialog {
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%) translateY(-50%);
+    background: $w-color;
+    box-shadow: 0px 3px 30px 0;
+    border-radius: 4px;
+    .dialog-confirm {
+      width: 350px;
+    }
+    .dialog-head {
+      width: 100%;
+      float: left;
+      border-bottom: solid 1px $border-color-1;
+    }
+    .dialog-title {
+      padding: 15px 20px
+    }
+    .dialog-body {
+      width: 100%;
+      padding: 25px 20px;
+      float: left;
+      box-sizing: border-box;
+    }
+    .dialog-content {
+      padding: 15px 0 40px;
+      font-size: 15px;
+    }
+    .btn-cancel {
+      margin-right: 10px;
+    }
+    .message {
+      font-size: 15px;
+      color: $txt-color-1;
+    }
   }
   .dialog-picture {
     width: 500px
@@ -59,4 +57,7 @@
     background-position: 50% 50%;
     background-repeat: no-repeat;
   }
+}
+.action {
+  float: right;
 }

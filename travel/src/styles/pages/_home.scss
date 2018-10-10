@@ -36,8 +36,8 @@
     }
     .btn-detail-destination {
       &:hover {
-        background-color: #b9f3b3;
-        border-color: $bg-color-1;
+        border-color: $primary-color;
+        color: $primary-color;
       }
     }
   }

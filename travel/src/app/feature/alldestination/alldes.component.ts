@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Destination } from '../../share/model/destination';
 import { trigger,
   state,
@@ -34,9 +35,11 @@ export class AllDesComponent implements OnInit {
   state = false;
   formSearch : FormGroup;
   term;
+  destination;
 
   constructor(private fb: FormBuilder,
-              private api: APIService
+              private api: APIService,
+              private router: Router
   ) {
 
   }
@@ -69,5 +72,11 @@ export class AllDesComponent implements OnInit {
         this.state = false;
       }
     })
+  }
+
+  search() {
+    this.destination = this.formSearch.controls.destination.value;
+    this.router.navigate(['search']);
+    // this.router.navigate(['/home/' + this.destination]);
   }
 }

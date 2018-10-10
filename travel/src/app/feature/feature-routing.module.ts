@@ -24,7 +24,7 @@ const routes: Routes = [
         loadChildren: './site/site.module#SiteModule'
       },
       {
-        path: 'search',
+        path: 'search/:str',
         loadChildren: './search/search.module#PageSearchModule'
       },
       {

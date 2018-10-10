@@ -12,7 +12,8 @@
     max-height: calc(100vh - 210px);
     overflow-y: auto;
     padding: 30px;
-    float: left;
+    margin: 120px auto;
+    background: $w-color;
   }
   .back-icon {
     padding: 6px;

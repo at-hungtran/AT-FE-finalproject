@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ArticlePageRoutingModule } from './article-routing.module';
 import { RouterModule } from '@angular/router';
 import { ShareModule } from '../../share/share.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { ShareModule } from '../../share/share.module';
     CommonModule,
     RouterModule,
     ArticlePageRoutingModule,
-    ShareModule
+    ShareModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ArticlePageComponent
