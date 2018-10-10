@@ -76,7 +76,7 @@ export class AllDesComponent implements OnInit {
 
   search() {
     this.destination = this.formSearch.controls.destination.value;
-    this.router.navigate(['search']);
-    // this.router.navigate(['/home/' + this.destination]);
+    const str = `search/${this.destination}`;
+    this.router.navigate([str]);
   }
 }
