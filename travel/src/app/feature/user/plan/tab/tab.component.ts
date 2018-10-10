@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { APIService } from '../../../../share/service/api.service';
 import { END_POINT } from '../../../../share/service/api.registry';
 import { PlansService } from '../../../../share/service/plans.service';
+import { DialogService } from '../../../../share/service/dialog.service';
 
 @Component({
   selector: 'app-tab',
@@ -52,6 +53,7 @@ export class TabComponent implements OnInit {
   listPlans = [];
   listParent = [];
   listAddress = [];
+  isEdit = false;
 
   @Input() listSite;
   @Input() listCategory;
@@ -61,7 +63,8 @@ export class TabComponent implements OnInit {
   constructor(private tabs: TabsComponent,
               private fb: FormBuilder,
               private apiService: APIService,
-              private plansService: PlansService) {}
+              private plansService: PlansService,
+              private dialogService: DialogService) {}
 
   data = {
     plans: [
@@ -85,17 +88,6 @@ export class TabComponent implements OnInit {
     this.createForm();
     this.bindToListSiteNoParent();
     this.bindToListDestinations();
-  }
-
-  checkTime() {
-    this.myForm.controls.plans.valueChanges
-    .subscribe(value => {
-      let start = value[this.indexInput].startTime;
-      let end = value[this.indexInput].endTime;
-      if (start && end) {
-        this.myForm.controls.plans[this.indexInput]['destinationSubget'].enable();
-      }
-    });
   }
 
   SelectSiteOnChange(value, i) {
@@ -189,12 +181,36 @@ export class TabComponent implements OnInit {
   }
 
   submit(myForm) {
-    this.isFromVisible = false;
-    this.plansService.bindToPlans(myForm.value);
-    this.bindListPlans();
-    const FormArrayLength = this.plansService.getPlans().length;
-    if (FormArrayLength === this.tabs.tabs.length) {
-      this.plansService.saveAllSuccess(true);
+    let isValid = true;
+    myForm.get('plans').controls.map((form, index) => {
+      const destinationsIdValue = this.myForm.controls.plans['controls'][index].value.destinationId;
+      if (!destinationsIdValue) {
+        isValid = false;
+      }
+    });
+    if (isValid) {
+      this.isFromVisible = false;
+      if (!this.isEdit) {
+        this.plansService.bindToPlans(myForm.value);
+      } else {
+        const listPlans = this.plansService.getPlans().map(plan => {
+          if (plan.date === this.tabtitle) {
+            return plan = myForm.value;
+          }
+          return plan;
+        });
+        this.plansService.resetListPlans();
+        this.plansService.setToPlans(listPlans);
+      }
+      this.bindListPlans();
+      const FormArrayLength = this.plansService.getPlans().length;
+      if (FormArrayLength === this.tabs.tabs.length) {
+        this.plansService.saveAllSuccess(true);
+      }
+    } else {
+      const message = 'you must choice destination';
+      const dialogName = 'login-error';
+      this.dialogService.openDialog(message, dialogName);
     }
   }
 
@@ -235,10 +251,14 @@ export class TabComponent implements OnInit {
       const start = value[this.indexInput].startTime;
       const end = value[this.indexInput].endTime;
 
-      if (start && end && count === 0) {
-        count++;
-        this.myForm.controls.plans['controls'][this.indexInput]
-        .controls['destinationSubget'].enable();
+      if (start > end) {
+        this.dialogService.openDialog('time end must greter than time start', 'notifi-info');
+      } else {
+        if (start && end && count === 0) {
+          count++;
+          this.myForm.controls.plans['controls'][this.indexInput]
+          .controls['destinationSubget'].enable();
+        }
       }
 
       this.term[this.indexInput] = value[this.indexInput].destinationSubget;
@@ -336,7 +356,7 @@ export class TabComponent implements OnInit {
   hideResult(index) {
     this.successShow[index] = false;
   }
-
+  isFormValid = false;
   destination;
   choice(index, idDes, nameDes, addessDes) {
     this.listParent = [];
@@ -346,7 +366,7 @@ export class TabComponent implements OnInit {
     this.valueDes[index] = nameDes;
     this.valueDesId[index] = idDes;
     this.valueDesAddress[index] = addessDes;
-
+    this.isFormValid = true;
     this.destination = this.listDestinations.filter(item => {
       return item._id === idDes;
     });
@@ -379,5 +399,11 @@ export class TabComponent implements OnInit {
       item._id === siteId
     ).map(item => item.name);
     return siteName;
+  }
+
+  edit() {
+    this.isEdit = true;
+    this.isFromVisible = true;
+    this.plansService.saveAllSuccess(false);
   }
 }

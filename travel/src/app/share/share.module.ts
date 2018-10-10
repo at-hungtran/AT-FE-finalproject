@@ -20,6 +20,7 @@ import { NotifiComponent } from './component/notifi/notifi.component';
 import { CloseSearchDirestive } from './directive/click-close-search-directive';
 import { TimeLine } from './component/timeline/timeline.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
+import { DiaLogService } from './component/dislog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NotfoundComponent } from './component/notfound/notfound.component';
     NavigateComponent,
     CloseSearchDirestive,
     TimeLine,
-    NotfoundComponent
+    NotfoundComponent,
+    DiaLogService
   ],
   imports: [
     CommonModule,
@@ -63,7 +65,8 @@ import { NotfoundComponent } from './component/notfound/notfound.component';
     NavigateComponent,
     NotifiComponent,
     TimeLine,
-    NotfoundComponent
+    NotfoundComponent,
+    DiaLogService
   ]
 })
 

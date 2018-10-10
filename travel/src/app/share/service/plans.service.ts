@@ -20,8 +20,16 @@ export class PlansService {
     this.plans.push(plan);
   }
 
+  setToPlans(plans) {
+    this.plans = plans;
+  }
+
   getPlans() {
     return this.plans;
+  }
+
+  resetListPlans() {
+    this.plans = [];
   }
 
   saveAllSuccess(isVisible) {

@@ -101,3 +101,32 @@
   border-color: $border-color-1;
   color: $txt-color-1;
 }
+
+.btn-cancel {
+  @extend %btn;
+  padding: 7px 24px;
+  background: $w-color;
+  color: black;
+  border: solid 1px $border-color-1;
+  font-size: 15px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.btn-confirm {
+  @extend %btn;
+  padding: 8px 25px;
+  background: $four-color;
+  border-radius: 4px;
+}
+
+.btn-edit {
+  margin-left: 10px;
+  padding: 5px 12px;
+  border: solid 1px;
+  border-color: $primary-color;
+  border-radius: 4px;
+  background: white;
+  color: $primary-color;
+  font-size: 13px;
+}

@@ -6,13 +6,13 @@ import { trigger,
   transition } from '@angular/animations';
 import { FormBuilder,
   Validators,
-  FormGroup,
-  FormControl } from '@angular/forms';
+  FormGroup } from '@angular/forms';
 import { APIService } from '../../../share/service/api.service';
 import { END_POINT } from '../../../share/service/api.registry';
 import { PlansService } from '../../../share/service/plans.service';
 import { CheckUserService } from '../../../share/service/check-user.service';
 import { StorageService } from '../../../share/service/storage.service';
+import { DialogService } from '../../../share/service/dialog.service';
 
 const KEY = 'token';
 @Component({
@@ -40,18 +40,21 @@ export class PlanComponent implements OnInit {
   listDate = [];
   listCategory;
   listSite;
-  isSaveAllVisible;
-  Listplans;
+  isSaveAllVisible = false;
+  Listplans = [];
   user;
   token;
   isPlansVisible = false;
   isOpenForm = false;
+  isShowPlan = false;
+  isValid = false;
 
   constructor(private fb: FormBuilder,
               private apiService: APIService,
               private plansService: PlansService,
               private checkUserService: CheckUserService,
-              private storageService: StorageService) {}
+              private storageService: StorageService,
+              private dialogService: DialogService) {}
 
   ngOnInit() {
     this.createForm();
@@ -60,16 +63,24 @@ export class PlanComponent implements OnInit {
     this.bindToListSite();
     this.setToken();
     this.setUser();
+
+    this.plansService.saveAllSuccess(false);
+    this.plansService.openForm(false);
+
     this.plansService.isSaveAllVisibleChange
-    .subscribe(value => this.isSaveAllVisible = value);
+    .subscribe(value => {
+      this.isSaveAllVisible = value;
+    });
+
     this.plansService.isFormOpen.subscribe(value => {
       this.isOpenForm = value;
-      this.openForm();
+      this.isShowPlan = true;
+      this.successShow = true;
     });
   }
 
   openForm() {
-    this.successShow = true;
+    this.isOpenForm = true;
   }
 
   get success() {
@@ -86,7 +97,7 @@ export class PlanComponent implements OnInit {
   checkDate() {
     this.formDate.controls.start.valueChanges
     .subscribe(startDate => {
-      this.startDate = new Date(startDate);
+      this.startDate = startDate;
       this.formDate.controls['end'].enable();
     });
 
@@ -94,18 +105,33 @@ export class PlanComponent implements OnInit {
     .subscribe(endDate => {
       this.endDate = endDate;
       this.listDate = [];
+      this.isValid = false;
       const _endDate = new Date(this.endDate);
       let _startDate = new Date(this.startDate);
-      let count = 0;
-      while (_startDate < _endDate) {
-        if (count === 0) {
-          _startDate = new Date(_startDate.setDate(_startDate.getDate()));
-        } else {
-          _startDate = new Date(_startDate.setDate(_startDate.getDate() + 1));
-        }
+
+      const startDateConver = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
+      const endDateConver = `${_endDate.getMonth() + 1}/${_endDate.getDate()}/${_endDate.getFullYear()}`;
+
+      if (startDateConver === endDateConver) {
+        this.listDate = [];
+        _startDate = new Date(_startDate.setDate(_startDate.getDate()));
         const date = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
         this.listDate.push(date);
-        count = 1;
+      } else if (_startDate > _endDate) {
+        this.dialogService.openDialog('date end must greater than date start', 'notifi-info');
+      } else {
+        this.listDate = [];
+        let count = 0;
+        while (_startDate < _endDate) {
+          if (count === 0) {
+            _startDate = new Date(_startDate.setDate(_startDate.getDate()));
+          } else {
+            _startDate = new Date(_startDate.setDate(_startDate.getDate() + 1));
+          }
+          const date = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
+          this.listDate.push(date);
+          count = 1;
+        }
       }
     });
   }
@@ -124,14 +150,21 @@ export class PlanComponent implements OnInit {
 
   sendToServer() {
     const user = this.checkUserService.getUserInfo();
+    this.isSaveAllVisible = false;
+    this.formDate.reset();
+    this.formDate.controls['end'].disable();
     const body = {
       userId: user._id,
       plans: this.plansService.getPlans()
     };
     this.apiService.post([END_POINT.plans], body)
     .subscribe(message => {
-      console.log(message);
       this.plansService.updateListPlans(true);
+      this.plansService.resetListPlans();
+      this.listDate = [];
+      this.endDate = '';
+      this.startDate = '';
+      this.isShowPlan = false;
     });
   }
 

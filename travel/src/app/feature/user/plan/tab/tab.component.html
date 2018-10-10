@@ -1,9 +1,12 @@
 <div [hidden]="!active">
   <div class="wrap-content">
     <div class="wrap-form-plan">
-      <form *ngIf="isFromVisible" class="form-plan" [formGroup]="myForm" (ngSubmit)="submit(myForm)">
+      <form *ngIf="isFromVisible"
+        class="form-plan"
+        [formGroup]="myForm"
+        (ngSubmit)="submit(myForm)">
         <input type="hidden"
-        formControlName="date">
+          formControlName="date">
         <div formArrayName="plans">
           <div *ngFor="let comp of myForm.get('plans').controls; let i = index">
             <div class="wrap-item-form" [formGroupName]="i">
@@ -12,15 +15,18 @@
                   class="input input-plan input-time"
                   formControlName="startTime"
                   (click)="getIndex(i)"
+                  readonly
                   [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2">
                 <owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
                 <input placeholder="Time:"
                   class="input input-plan input-time"
                   formControlName="endTime"
+                  readonly
                   (click)="getIndex(i)"
                   [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1">
                 <owl-date-time [pickerType]="'timer'" #dt1></owl-date-time>
                 <button class="btn btn-border-green btn-divi"
+                  type="button"
                   (click)="deletePlan(i)">
                   <i class="fas fa-minus"></i>
                 </button>
@@ -79,7 +85,7 @@
                   type="hidden"
                   [value]=[(valueDesId[i])]
                   formControlName="destinationId">
-                  <input class="input input-plan input-des"
+                <input class="input input-plan input-des"
                   type="hidden"
                   [value]=[(valueDesAddress[i])]
                   formControlName="destiantionsAddress">
@@ -116,7 +122,9 @@
             </div>
           </div>
         </div>
-        <button type="submit" [disabled]="!myForm.valid" class="btn btn-green btn-medium">Add</button>
+        <button type="submit"
+          [disabled]="!myForm.valid"
+          class="btn btn-green btn-medium">Add</button>
       </form>
       <button *ngIf="isFromVisible" class="btn btn-medium btn-border-green"
       (click)="addNewPlan()">
@@ -149,6 +157,7 @@
               </div>
             </li>
           </ul>
+          <button (click)="edit()" class="btn btn-edit-result">edit</button>
         </div>
       </div>
     </div>

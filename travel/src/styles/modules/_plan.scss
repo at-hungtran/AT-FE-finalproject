@@ -17,7 +17,7 @@
     border-radius: 3px;
   }
   .wrap-form {
-    padding: 10px 30px 20px;
+    padding: 30px 30px 20px;
     text-align: center;
   }
   .fa-calendar-alt {
@@ -192,6 +192,15 @@
       border-radius: 3px;
       border-color: $primary-color;
       background: #f9f9f9;
+    }
+
+    .btn-edit-result {
+      background: $w-color;
+      color: $primary-color;
+      border: solid 1px;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 14px;
     }
   }
   .wrap-btn-save {

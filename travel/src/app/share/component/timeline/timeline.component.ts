@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 import { APIService } from '../../service/api.service';
 import { END_POINT } from '../../service/api.registry';
@@ -8,6 +7,7 @@ import { CheckUserService } from '../../service/check-user.service';
 import { StorageService } from '../../service/storage.service';
 import { PlansService } from '../../service/plans.service';
 import { environment } from '../../../../environments/environment';
+import { DialogService } from '../../service/dialog.service';
 
 const KEY = 'token';
 
@@ -28,7 +28,8 @@ export class TimeLine implements OnInit {
               private route: ActivatedRoute,
               private checkUserService: CheckUserService,
               private storageService: StorageService,
-              private planService: PlansService) {}
+              private planService: PlansService,
+              private dialogService: DialogService) {}
 
   ngOnInit() {
     this.setToken();
@@ -43,9 +44,12 @@ export class TimeLine implements OnInit {
   }
 
   bindToListPlans() {
-    this.apiService.get([END_POINT.plans], this.user._id).subscribe(plans => {
-      this.Listplans = plans;
-    });
+    if (this.user) {
+      this.apiService.get([END_POINT.plans], this.user._id)
+      .subscribe(plans => {
+        this.Listplans = plans;
+      });
+    }
   }
 
   binToListDestinations() {
@@ -155,5 +159,24 @@ export class TimeLine implements OnInit {
 
   openForm() {
     this.planService.openForm(true);
+  }
+
+  deletePlan(planId) {
+    const dialogName = 'dialog-confirm';
+    const dialogName2 = 'login-success';
+    const message = 'delete success';
+    this.dialogService.openDialog('', dialogName);
+    this.dialogService.notifiDelete.subscribe(value => {
+      if (value) {
+        this.apiService.delete([END_POINT.plans], planId).subscribe(callback => {
+          this.dialogService.openDialog(message, dialogName2);
+          this.bindToListPlans();
+        });
+      }
+    });
+  }
+
+  editTimeLine(planId) {
+    console.log(planId);
   }
 }
