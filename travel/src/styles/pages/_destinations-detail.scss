@@ -100,3 +100,58 @@
     }
   }
 }
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .page-destimation {
+    .sections-decription{
+      width: 100%;
+      .wrap-image {
+        width: 100%;
+      }
+      .wrap-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 480px) {
+  .page-destimation {
+    .sections-decription{
+      width: 100%;
+      .wrap-image {
+        width: 100%;
+      }
+      .wrap-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 320px) {
+  .page-destimation {
+    font-size: 10px;
+    .sections-decription{
+      width: 100%;
+      .wrap-image {
+        width: 100%;
+      }
+      .wrap-content {
+        width: 100%;
+      }
+    }
+    .section-image {
+      .list-image {
+        margin: -4px;
+      }
+      .image-item {
+        width: 100%;
+      }
+    }
+  }
+}

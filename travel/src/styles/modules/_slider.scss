@@ -25,3 +25,12 @@
     height: 20px;
   }
 }
+
+@media only screen and (max-width: 1023px) and (min-width: 320px ) {
+  .slider .slide-title {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+  }
+}
