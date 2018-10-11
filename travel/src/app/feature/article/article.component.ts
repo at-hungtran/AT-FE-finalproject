@@ -19,6 +19,7 @@ export class ArticlePageComponent implements OnInit {
               private apiService: APIService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.articleId = this.route.snapshot.params['id'];
     this.setArticle();
     this.setTobackgroundHeader();
@@ -34,8 +35,6 @@ export class ArticlePageComponent implements OnInit {
   setArticle() {
     this.apiService.get([END_POINT.articles], this.articleId).subscribe(item => {
       this.article = item;
-      console.log(item);
     });
-    
   }
 }

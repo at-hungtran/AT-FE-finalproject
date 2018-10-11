@@ -3,6 +3,13 @@
     height: 90vh;
     width: 100%;
   }
+  .slider-img::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #0000004a;
+  }
   .section-search {
     float: left;
     width: 100%;

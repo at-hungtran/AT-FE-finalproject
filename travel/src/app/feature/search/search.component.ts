@@ -15,7 +15,7 @@ import { ActivatedRoute, ParamMap, Params } from '@angular/router';
 
 export class PageSearchComponent implements OnInit {
   search;
-  listDestinations;
+  listDestinations = [];
   listDestinationsRaw;
   listDestinationsDisplay;
   listSites;
@@ -76,7 +76,6 @@ export class PageSearchComponent implements OnInit {
     this.listDestinationsRaw = [];
     this.api.post([END_POINT.search], body).subscribe(des => {
       this.listDestinationsRaw = des;
-      console.log(this.listDestinationsRaw);
       this.bindToListDestinationsDisplay(siteId);
     });
   }

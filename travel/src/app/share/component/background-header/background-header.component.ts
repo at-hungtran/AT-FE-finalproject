@@ -10,8 +10,7 @@ import { environment } from '../../../../environments/environment';
 export class BackgroundHeaderComponent implements OnInit, OnChanges {
   @Input() site;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     this.fetchUrl();
@@ -21,7 +20,7 @@ export class BackgroundHeaderComponent implements OnInit, OnChanges {
     if (this.site.backgroundImg) {
       return environment.img_url + this.site.backgroundImg;
     } else {
-      return '../../../assets/images/bg-article.jpg';
+      return '../../../assets/images/bg-article2.jpg';
     }
   }
 }

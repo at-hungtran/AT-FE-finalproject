@@ -2,7 +2,7 @@
   <swiper [config]="config">
     <div *ngIf="listImgAfterFetch" class="swiper-wrapper">
       <ng-container *ngFor="let img of listImgAfterFetch">
-        <div class="swiper-slide slider-img "
+        <div class="swiper-slide slider-img"
         [ngStyle]="{'background-image': 'url(' + img.backgroundImg + ')'}">
           <p *ngIf="img.name" class="slide-title">{{img.name}}</p>
         </div>

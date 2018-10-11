@@ -1,6 +1,11 @@
 .wrap-background-header {
   position: relative;
 }
+.header-background {
+  .img-background::after {
+    background: #00000000;
+  }
+}
 .destination-title {
   .destination-title-inner {
     width: 70%;

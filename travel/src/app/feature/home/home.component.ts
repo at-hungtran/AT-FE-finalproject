@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnChanges {
   constructor(private apiService: APIService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.bindToListSite();
     this.bindTolistDestinations();
     this.bindToListArticle();

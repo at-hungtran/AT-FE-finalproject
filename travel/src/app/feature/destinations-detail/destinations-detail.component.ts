@@ -23,6 +23,7 @@ export class DestinationsDetailComponent implements OnInit {
               private dialogService: DialogService) {}
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.desId = this.route.snapshot.params['id'];
     this.setDestination();
     this.bindToListSite();

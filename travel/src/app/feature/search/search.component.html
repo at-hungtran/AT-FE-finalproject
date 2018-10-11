@@ -2,13 +2,20 @@
   <div class="container">
     <div class="search-main clearfix">
       <section class="wrap-destination">
-        <ul *ngIf="listDestinations" class="wrap-des-list clearfix">
+        <ul *ngIf="listDestinations.length" class="wrap-des-list clearfix">
           <li class="wrap-des-item" *ngFor="let destinations of listDestinations">
             <div class="card-border" *ngIf="destinations">
               <app-card-destination [destination]=destinations></app-card-destination>
             </div>
           </li>
         </ul>
+        <div *ngIf="!listDestinations.length" class="wrap-content">
+          <p class="message">Not Found</p>
+          <button class="btn btn-large btn-blue btn-back" routerLink="/home">
+            <i class="fas fa-chevron-left"></i>
+            Back
+          </button>
+        </div>
       </section>
     </div>
   </div>

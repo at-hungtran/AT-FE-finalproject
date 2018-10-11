@@ -1,5 +1,5 @@
 <div class="card-site">
-  <div class="border-img-site">
+  <div routerLink="/site/{{site._id}}" class="border-img-site">
     <div class="img-site"
     [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
       <a routerLink="/site/{{site._id}}"><button class="btn btn-detail btn-medium">{{site.name}}</button></a>
