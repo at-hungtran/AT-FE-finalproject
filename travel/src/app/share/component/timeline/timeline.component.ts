@@ -168,7 +168,7 @@ export class TimeLine implements OnInit {
   deletePlan(planId) {
     const dialogName = 'dialog-confirm';
     const dialogName2 = 'login-success';
-    const message = 'delete success';
+    const message = 'success';
     this.dialogService.openDialog('', dialogName);
     this.dialogService.notifiDelete.subscribe(value => {
       if (value) {

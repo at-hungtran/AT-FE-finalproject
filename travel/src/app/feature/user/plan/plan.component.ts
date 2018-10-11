@@ -128,7 +128,7 @@ export class PlanComponent implements OnInit {
           const date = `${_startDate.getMonth() + 1}/${_startDate.getDate()}/${_startDate.getFullYear()}`;
           this.listDate.push(date);
         } else if (_startDate > _endDate) {
-          this.dialogService.openDialog('date end must greater than date start', 'notifi-info');
+          this.dialogService.openDialog('end date must greater than date start', 'notifi-info');
         } else {
           this.listDate = [];
           let count = 0;
@@ -161,7 +161,7 @@ export class PlanComponent implements OnInit {
 
   sendToServer() {
     const dialogName = 'login-success';
-    const message = 'create success';
+    const message = 'success';
     const user = this.checkUserService.getUserInfo();
     this.plansService.saveAllSuccess(false);
     this.formDate.reset();
