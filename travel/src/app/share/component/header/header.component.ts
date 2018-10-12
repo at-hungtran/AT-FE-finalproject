@@ -71,7 +71,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.setUser();
+    //this.setUser();
   }
 
   checkLogin() {

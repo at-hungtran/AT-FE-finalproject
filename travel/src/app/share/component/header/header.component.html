@@ -25,7 +25,7 @@
           <ul class="menu-list-right">
             <li class="menu-right-item">
               <a *ngIf="!isLogin" routerLink="/register" class="sign-up">Sign Up</a>
-              <a class="avatar" *ngIf="isLogin" href="javascript:void(0)">
+              <a class="avatar" *ngIf="isLogin && user" href="javascript:void(0)">
                 <div *ngIf="user" class="avatar"
                 [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
                 </div>

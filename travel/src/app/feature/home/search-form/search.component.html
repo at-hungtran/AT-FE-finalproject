@@ -14,7 +14,7 @@
           <option name="allSite"
           id="allSite"
           class="option"
-          value="allSite"
+          value=""
           [selected]="true">All Sites</option>
           <option *ngFor="let site of listSitesNoParent"
           name="site.name"
@@ -28,7 +28,7 @@
           <option name="category"
             id="allCategory"
             class="option"
-            value="allCategory"
+            value=""
             [selected]="true">All Categories</option>
           <option *ngFor="let category of listCategorys"
             name="category.name"
@@ -42,8 +42,8 @@
       </div>
     </form>
     <div [@popOverState]="success" class="wrap-suggest">
-      <ul class="list-result">
-        <ng-container *ngFor="let result of listResultDisplay | filter:term; let i = index">
+      <ul *ngIf="listResultDisplay.length" class="list-result">
+        <ng-container *ngFor="let result of listResultDisplay">
             <li class="result-item">
               <a routerLink="/destinations/{{result.destinationId}}">
                 <div class="wrap-item-result">
@@ -60,7 +60,7 @@
               </a>
             </li>
         </ng-container>
-        <li class="result-item" *ngIf="(listResultDisplay | filter: term).length === 0">No matching elements</li>
+        <!-- <li class="result-item" *ngIf="(listResultDisplay | filter: term).length === 0">No matching elements</li> -->
       </ul>
     </div>
   </div>

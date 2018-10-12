@@ -12,6 +12,8 @@ import { CloseSearchService } from '../../../share/service/close-search.service'
 import { environment } from '../../../../environments/environment';
 import { DialogService } from '../../../share/service/dialog.service';
 import { Router } from '@angular/router';
+import { SearchService } from '../../../share/service/search.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -46,12 +48,14 @@ export class SearchComponent implements OnInit {
   isShowMessage = false;
   term;
   destinationInput;
+  valueOb = new Subject<string>();
 
   constructor(private apiService: APIService,
               private fb: FormBuilder,
               private closeSearchService: CloseSearchService,
               private dialog: DialogService,
-              private router: Router) {}
+              private router: Router,
+              private searchService: SearchService) {}
 
   ngOnInit() {
     this.bindToListCategory();
@@ -114,11 +118,10 @@ export class SearchComponent implements OnInit {
       this.siteId = this.formSearch.controls.site.value;
       this.categoryId = this.formSearch.controls.category.value;
       if (value) {
-        this.bindToListResultSearch();
+        this.bindToListResultSearch(value, this.siteId);
       } else {
         this.listResultSearch.length = 0;
       }
-
       if (this.listResultSearch.length) {
         this.showResult();
       } else {
@@ -133,33 +136,35 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  bindToListResultSearch() {
-    this.listResultSearch = this.listDestinations
-    .filter(item => {
-      this.findParent(item.siteId);
-      if (this.categoryId === '' && this.siteId === '') {
-        return item;
-      } else if (this.categoryId === '' && this.siteId !== '') {
-        return (this.parentId === this.siteId);
-      } else if (this.categoryId !== '' && this.siteId === '') {
-        return (item.categoryId === this.categoryId);
-      } else {
-        return (item.categoryId === this.categoryId) && (this.parentId === this.siteId);
+  bindToListResultSearch(value, siteId) {
+    this.valueOb.next(value);
+    this.searchService.search(this.valueOb, this.categoryId).subscribe(listDestination => {
+      this.listResultSearch = listDestination;
+      if (this.formSearch.controls.site.value) {
+        this.listResultSearch = this.listResultSearch.filter(item => {
+          this.findParent(item.siteId);
+          return this.formSearch.controls.site.value === this.parentId;
+        });
       }
+      this.bindToListResultDisplay();
     });
   }
 
   bindToListResultDisplay() {
-    this.listResultDisplay = this.listResultSearch.map(item => {
-      const imageName = item.listPictures[0].name;
-      return {
-        image: this.fetchUrl(imageName),
-        name: item.name,
-        address: item.address,
-        site: item.sites[0].name,
-        destinationId: item._id
-      };
-    });
+    if (this.listResultSearch.length) {
+      this.listResultDisplay = this.listResultSearch.map(item => {
+        const imageName = item.listPictures[0].name;
+        return {
+          image: this.fetchUrl(imageName),
+          name: item.name,
+          address: item.address,
+          site: item.sites[0].name,
+          destinationId: item._id
+        };
+      });
+    } else {
+      this.listResultDisplay.length = 0;
+    }
   }
 
   findParent(siteId) {

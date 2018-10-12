@@ -89,7 +89,6 @@ export class TabComponent implements OnInit, OnDestroy {
     this.createForm();
     this.bindToListSiteNoParent();
     this.bindToListDestinations();
-    console.log('tab init');
   }
 
   ngOnDestroy() {
