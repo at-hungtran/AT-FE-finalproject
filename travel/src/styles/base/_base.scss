@@ -16,7 +16,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: $bg-color-1; 
+  background: $bg-color-1;
 }
 
 .container {
@@ -66,4 +66,5 @@ body {
 a {
   color: $txt-color-1;
   cursor: pointer;
+  text-transform: capitalize;
 }

@@ -18,7 +18,7 @@ export class TabsComponent implements OnInit, OnDestroy {
   addTab(tab: TabComponent) {
     if (this.tabs.length === 0) {
       tab.active = true;
-      tab.color = '#ffd205';
+      tab.color = '#1bbc9b';
       tab.colorTitle = '#fff';
     } else {
       tab.color = '#f9f9f9';
@@ -38,7 +38,7 @@ export class TabsComponent implements OnInit, OnDestroy {
       item.colorTitle = '#5e6d81';
     });
     tab.colorTitle = '#fff';
-    tab.color = '#ffd205';
+    tab.color = '#1bbc9b';
     tab.active = true;
   }
 }

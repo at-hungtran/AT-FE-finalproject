@@ -25,11 +25,12 @@
     top: 210px;
     z-index: 1;
   }
+  .title-small {
+    text-transform: capitalize;
+    padding: 10px 0 50px;
+  }
   .section-most-destination {
     padding: 80px 0 20px;
-    .title-small {
-      padding: 10px 0 50px;
-    }
     .list-destination {
       width: 100%;
       float: left;
@@ -87,7 +88,7 @@
 @media only screen and (min-width: 1024px) {
   .home-page {
     .slide-title {
-      font-size: $font-size-4;
+      font-size: 3rem;
       padding: 10px 0 50px;
     }
     .card-content {

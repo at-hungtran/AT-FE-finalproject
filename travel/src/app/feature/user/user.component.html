@@ -1,12 +1,12 @@
 <div class="page-user">
   <div class="container">
     <section class="section-info">
-      <div class="wrap-info">
-        <div class="wrap-avatar">
-          <div *ngIf="user" class="avatar"
-          [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
-          </div>
+      <div class="wrap-avatar">
+        <div *ngIf="user" class="avatar"
+        [ngStyle]="{'background-image': 'url(' + fetchUrl() + ')'}">
         </div>
+      </div>
+      <div class="wrap-info">
         <div class="info">
           <ul *ngIf="user" class="list-info">
             <li class="info-item">

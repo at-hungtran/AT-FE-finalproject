@@ -32,7 +32,7 @@
     line-height: 20px;
   }
   .article-row-description {
-    padding: 15px;
+    padding: 15px 10px;
     line-height: 22px;
   }
   .article-button {
@@ -40,16 +40,42 @@
     bottom: 16px;
     right: 12px;
     cursor: pointer;
+    outline: none;
+    &:hover {
+      color: $primary-color;
+    }
+    &:hover > .fa-chevron-circle-right {
+      @include animation-iteration-count(infinite);
+      @include animation-name(hover);
+      @include keyframe(hover) {
+        0% {
+          left: -5px;
+        }
+        25% {
+          right: -1px;
+        }
+        50% {
+          right: -6px;
+        }
+        75% {
+          right: -1px;
+        }
+        100% {
+          left: -5px;
+        }
+      }
+      @include animation-duration(3s);
+    }
   }
   .fa-chevron-circle-right {
     color: $primary-color;
     font-size: 15px;
+    position: relative;
   }
   .title {
+    font-style: italic;
+    text-transform: capitalize;
     padding: 4px 10px 0;
     display: inline-block;
-  }
-  .img {
-
   }
 }

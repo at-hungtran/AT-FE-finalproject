@@ -11,36 +11,48 @@
     <h2 class="title">Register</h2>
     <form class="form-register" [formGroup]="formRegister" (ngSubmit)="singIn(formRegister)">
       <div class="left-side">
+        <label class="label" for="name">Your Name</label>
         <input class="input input-login"
+          id="name"
           name="name"
           type="text"
           placeholder="Your Name"
           formControlName="name">
+        <label class="label" for="age">Age</label>
         <input class="input input-login"
+          id="age"
           name="age"
           type="number"
           placeholder="Your Age"
           formControlName="age">
+        <label class="label" for="email">Your email</label>
         <input class="input input-login"
+          id="email"
           name="email"
           type="text"
           placeholder="Your Email"
           formControlName="email">
         <p class="error-message display-none">{{emailValidate()}}</p>
+        <label class="label" for="hobbies">Your Hobbies</label>
         <input class="input input-login"
+          id="hobbies"
           name="hobbies"
           type="text"
           placeholder="Your Hobbies"
           formControlName="hobbies">
       </div>
       <div class="right-side">
+        <label class="label" for="userName">Your Username</label>
         <input class="input input-login"
+          id="userName"
           name="userName"
           type="text"
           placeholder="User Name"
           formControlName="userName">
         <p class="error-message display-none">{{userNameValidate()}}</p>
+        <label class="label" for="password">Password</label>
         <input class="input input-login"
+          id="password"
           name="password"
           type="password"
           placeholder="Password"

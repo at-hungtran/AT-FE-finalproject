@@ -23,6 +23,7 @@
   .footer-list-item {
     float: left;
     width: calc(100%/3);
+    text-transform: capitalize;
   }
   .footer-title {
     font-size: $font-size-3;

@@ -18,7 +18,11 @@ export class SliderComponent implements OnInit, OnChanges {
     prevButton: '.swiper-button-prev',
     spaceBetween: 0,
     slidesPerView: 1,
-};
+    parallax: true,
+    autoplay: 2500,
+    speed: 800,
+    autoplayDisableOnInteraction: false,
+  };
 
   constructor() {}
 
